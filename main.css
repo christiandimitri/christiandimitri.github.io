@@ -1,0 +1,52 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    color: #4b6cb7;  /* fallback for old browsers */
+color: -webkit-linear-gradient(to bottom, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+color: linear-gradient(to bottom, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.contact{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    color:inherit;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.contact:hover{
+    background-color: steelblue ;
+    color: whitesmoke;
+}
+p{
+    margin-block-start: 0em;}
+
+h1{
+    font-size: 600%;
+    font-weight: lighter;
+    margin-block-end: 0em;
+    margin-block-start: 0em;
+}
+h2{
+    font-weight: normal;
+}
+.icon::before{
+    
+}
