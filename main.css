@@ -2,9 +2,8 @@ body{
     height: 100vh;
     width: 100vw;
     color: #4b6cb7;  /* fallback for old browsers */
-color: -webkit-linear-gradient(to bottom, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
-color: linear-gradient(to bottom, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    color: -webkit-linear-gradient(to bottom, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to bottom, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,8 +21,8 @@ color: linear-gradient(to bottom, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firef
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-radius: 5px;
-    background-color: whitesmoke;
-    border: 1px solid whitesmoke;
+    background-color: #ECE9E6;
+    border: 1px solid #ECE9E6;
     color:inherit;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
@@ -33,7 +32,7 @@ color: linear-gradient(to bottom, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firef
 
 .contact:hover{
     background-color: steelblue ;
-    color: whitesmoke;
+    color: #ECE9E6;
 }
 p{
     margin-block-start: 0em;}
