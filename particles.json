@@ -28,7 +28,7 @@
       "opacity": {
         "value": 0.5,
         "random": false,
-        "anim": {
+        "animation": {
           "enable": false,
           "speed": 1,
           "opacity_min": 0.1,
@@ -38,7 +38,7 @@
       "size": {
         "value": 3,
         "random": true,
-        "anim": {
+        "animation": {
           "enable": false,
           "speed": 40,
           "size_min": 0.1,
@@ -70,11 +70,11 @@
     "interactivity": {
       "detect_on": "canvas",
       "events": {
-        "onhover": {
+        "on-hover": {
           "enable": true,
           "mode": "grab"
         },
-        "onclick": {
+        "on-click": {
           "enable": true,
           "mode": "push"
         },
