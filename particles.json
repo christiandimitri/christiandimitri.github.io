@@ -11,13 +11,13 @@
         "value": "#000000"
       },
       "shape": {
-        "type": "circle",
+        "type": "star",
         "stroke": {
           "width": 0,
           "color": "#000000"
         },
         "polygon": {
-          "nb_sides": 5
+          "nb_sides": 2
         },
         "image": {
           "src": "img/github.svg",
