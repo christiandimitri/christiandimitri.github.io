@@ -35,14 +35,19 @@ body{
     background-color: white ;
     color: #ECE9E6;
 }
+
+
 p{
-    margin-block-start: 0em;}
+    margin-block-start: 0em;    
+    z-index: 9999;
+}
 
 h1{
     font-size: 600%;
     font-weight: lighter;
     margin-block-end: 0em;
     margin-block-start: 0em;
+    z-index: 9999;
 }
 h2{
     font-weight: normal;
