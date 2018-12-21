@@ -22,6 +22,8 @@ body{
     padding-right: 0.5em;
     border-radius: 5px;
     border: 1px solid #ECE9E6;
+    background-color: white;
+    filter: alpha(opacity=0)
     color:inherit;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
