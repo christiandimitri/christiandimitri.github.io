@@ -35,7 +35,9 @@ body{
     background-color: white ;
     color: #ECE9E6;
 }
-
+a{
+    z-index: 9999;
+}
 
 p{
     margin-block-start: 0em;    
