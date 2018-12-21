@@ -1,18 +1,17 @@
 body{
-    height: 100vh;
-    width: 100vw;
-    color: white;  /* fallback for old browsers */
-    /* color: -webkit-linear-gradient(to bottom, #182848, #4b6cb7);  Chrome 10-25, Safari 5.1-6 */
-    /* color: linear-gradient(to bottom, #182848, #4b6cb7); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.welcome-page{
+    height: 100%;
+    width: 100%;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    background: #696969;  /* fallback for old browsers */
-    /* background: -webkit-linear-gradient(to bottom, #696969, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-    /* background: linear-gradient(to bottom, #696969, #ECE9E6); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #696969;
 }
 .contact{
     margin-left: auto;
