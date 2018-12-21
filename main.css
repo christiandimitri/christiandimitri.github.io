@@ -43,6 +43,7 @@ h1{
     margin-block-end: 0em;
     margin-block-start: 0em;
 }
+
 h2{
     font-weight: normal;
 }
@@ -55,4 +56,4 @@ h2{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-  }
+}
