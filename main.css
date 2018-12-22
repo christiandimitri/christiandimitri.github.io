@@ -22,9 +22,8 @@ body{
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-radius: 5px;
-    border: 1px solid #ECE9E6;
-    background-color: white;
-    color:#696969;
+    background-color: rgba(1,1,1, 0.5);
+    color:white;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
@@ -35,6 +34,7 @@ body{
     background-color: white ;
     color: #ECE9E6;
 }
+
 a{
     z-index: 9999;
 }
