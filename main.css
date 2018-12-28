@@ -3939,4 +3939,7 @@ a.navbar-item,
   left: 0;
   top: 0; }
 
+#main-text {
+  z-index: 1; }
+
 /*# sourceMappingURL=main.css.map */
