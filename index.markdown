@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Chris' crazy page
+title: CHRISTIAN DIMITRI
 subtitle: It's Fridayyyy
 categories:
  - title: Architect

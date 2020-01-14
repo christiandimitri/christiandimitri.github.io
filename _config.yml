@@ -1,0 +1,9 @@
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+gem 'github-pages', '170', group: :jekyll_plugins
+
+plugins: [
+  jekyll-paginate
+]
+
