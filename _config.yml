@@ -1,4 +1,16 @@
-paginate: 5
+
+
+title: Christian Dimitri
+
+navigation:
+  - name: Home
+    url: /
+  - name: About me
+    url: /about-me
+  - name: Blog
+    url: /blog
+
+paginate: 2
 paginate_path: "/blog/page:num/"
 
 gem 'github-pages', '170', group: :jekyll_plugins
