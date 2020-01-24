@@ -10,9 +10,3 @@ categories:
  - title: Tinder Addict
    url: /fuckyoualan
 ---
-
-# Hello 
-
-## Title 2
-
-Sorry

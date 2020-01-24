@@ -1,0 +1,43 @@
+name: Christian
+surname: Dimitri
+languages:
+  - name: English
+    level: 9
+  - name: Spanish
+    level: 3
+software:
+  - name: XXXX
+    level: 9
+  - name: fsdgfdgd
+    level: 3  
+programming:
+  - name: XXXX
+    level: 9
+  - name: fsdgfdgd
+    level: 3   
+education:
+  - school: fdsfvasvfs
+    course: fdsvfsvfs
+    start-date: cfasvfsd
+    end-date: feasr
+    location: vfeav
+  - school: vfsbtaeb
+    course: vfeab
+    start-date: varebtae
+    end-date: gresbtnar
+    location: btsrsn
+  - school: gtanrae
+    course: atrrbt
+    start-date: battrn
+    end-date: ttjhsgbhdt
+    location: bsytnyhsthdht
+projects:
+  - title: Project
+    subtitle: done
+    img: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
+
+links:
+  - link:
+    url:
+  
+    
