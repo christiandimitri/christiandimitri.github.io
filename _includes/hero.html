@@ -1,4 +1,12 @@
-<section class="hero is-primary {% if include.size %}{{include.size}}{%else%}is-medium{%endif%}">
+<section 
+    id='testHero' 
+    {% if include.image %}
+    data-header-image="{{include.image}}" 
+    {% endif %}
+    class="hero is-bold
+           {% if include.color %}{{include.color}}{%else%}is-primary{%endif%}
+           {% if include.size %}{{include.size}}{%else%}is-large{%endif%}"
+>
   <!-- Hero head: will stick at the top -->
   <div class="hero-head">
     <nav class="navbar">
@@ -42,7 +50,7 @@
         {% if page.title %} {{page.title}} {% else %} {{site.title}} {% endif %}
       </h1>
       {% if page.subtitle %}
-      <h2 class="subtitle has-text-black-ter">
+      <h2 class="subtitle">
         {{page.subtitle}}
       </h2>
       {% endif %}
@@ -55,7 +63,7 @@
       <div class="container">
         <ul>
           {% for item in page.categories %}
-          <li><a href="{{item.url}}">{{item.title}}</a></li>
+          <li><a disabled style="cursor:default;">{{item.title}}</a></li>
           {% endfor %}
         </ul>
       </div>

@@ -1,43 +1,89 @@
 name: Christian
 surname: Dimitri
+author-img: assets\img\MyImage.jpg
+intro: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis
 languages:
   - name: English
-    level: 9
+    level: Fluent
+  - name: French
+    level: Native
+  - name: Arabic
+    level: Native
   - name: Spanish
-    level: 3
-software:
-  - name: XXXX
+    level: Intermediate
+softwares-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
+softwares:
+  - name: Autocad
     level: 9
-  - name: fsdgfdgd
-    level: 3  
+  - name: Autocad
+    level: 3 
+  - name: Autocad
+    level: 9
+  - name: Autocad
+    level: 3 
+  - name: Autocad
+    level: 9
+  - name: Autocad
+    level: 3 
+  - name: Autocad
+    level: 9
+  - name: Autocad
+    level: 3 
+programming-intro:  This is not Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
 programming:
-  - name: XXXX
+  - name: Python
     level: 9
-  - name: fsdgfdgd
-    level: 3   
+  - name: Python
+    level: 3 
+  - name: Python
+    level: 9
+  - name: Python
+    level: 3 
+  - name: Python
+    level: 9
+  - name: Python
+    level: 3 
+webDesign-intro:  This is not Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
+webDesign:
+  - name: Python
+    level: 9
+  - name: Python
+    level: 3 
+  - name: Python
+    level: 9
+  - name: Python
+    level: 3 
+  - name: Python
+    level: 9
+  - name: Python
+    level: 3
+edu-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.  
 education:
-  - school: fdsfvasvfs
-    course: fdsvfsvfs
-    start-date: cfasvfsd
-    end-date: feasr
-    location: vfeav
-  - school: vfsbtaeb
-    course: vfeab
-    start-date: varebtae
-    end-date: gresbtnar
-    location: btsrsn
-  - school: gtanrae
-    course: atrrbt
-    start-date: battrn
-    end-date: ttjhsgbhdt
-    location: bsytnyhsthdht
+  - school: Universitat Politècnica de Catalunya
+    course: Masters of parametric design in architecture
+    start-date: (October 2017
+    end-date: September 2018)
+    location: Spain
+  - school: Holy Spirit University Of Kaslik
+    course: Master in architecture
+    start-date: 2016
+    end-date: 2019
+    location: Lebanon
+  - school: SSCC
+    course: ARCH
+    start-date: 2016
+    end-date: 2019
+    location: Lebanon
 projects:
-  - title: Project
-    subtitle: done
+  - title: Project Title
+    subtitle: Project subtitle
     img: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
-
+links-text: This for link Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
 links:
-  - link:
-    url:
-  
+  - link: Blog
+    url: blog/index.html
+  - link: My CV
+    url: assets/downloads/CV
+  - link: My Work
+    url: assets/downloads/Portfolio
     

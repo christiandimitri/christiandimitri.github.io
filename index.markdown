@@ -1,5 +1,10 @@
 ---
 layout: home
+hero:
+  size: is-small
+  color: is-primary
+  image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+
 title: CHRISTIAN DIMITRI
 subtitle: Architect & Computational Desginer
 categories:

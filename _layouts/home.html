@@ -64,8 +64,7 @@ layout: page-base
   <div class="card">
     <div class="card-content">
       <div class="content has-text-centered is-italic">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
-        vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+        {{page.links-text}}
         <br>
       </div>
     </div>
@@ -79,24 +78,40 @@ layout: page-base
       </div>
     </div>
     <div class="tile is-ancestor">
+      {%for interest in page.interests %}
       <div class="tile is-vertical is-parent has-text-centered">
-        {% for skill in page.interests %}
-        <div class="tile is-child box">
-          <p class="title">{{skill.title}}</p>
-          <p class="subtitle">{{skill.subtitle}}</p>
-          <p>{{skill.text}}</p>
-        </div>
-        {% endfor %}
+        <section class="hero is-primary is-medium">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                {{interest.title}}
+              </h1>
+              <h2 class="subtitle">
+                {{interest.subtitle}}
+              </h2>
+            </div>
+          </div>
+        </section>
       </div>
+      {%endfor%}
+    </div>
+    <div class="tile is-ancestor">
+      {%for interest in page.add-interests %}
       <div class="tile is-vertical is-parent has-text-centered">
-        {% for skill in page.add-interests %}
-        <div class="tile is-child box">
-          <p class="title">{{skill.title}}</p>
-          <p class="subtitle">{{skill.subtitle}}</p>
-          <p>{{skill.text}}</p>
-        </div>
-        {%endfor%}
+        <section class="hero is-primary is-medium">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                {{interest.title}}
+              </h1>
+              <h2 class="subtitle">
+                {{interest.subtitle}}
+              </h2>
+            </div>
+          </div>
+        </section>
       </div>
+      {%endfor%}
     </div>
   </div>
 </section>
@@ -115,7 +130,7 @@ layout: page-base
     <div class="container">
       <div class="buttons is-centered are-medium">
         {% for button in page.buttons %}
-        <button class="button is-primary is-outlined">{{All}}</button>
+        <button class="button is-primary is-outlined">{{button.title}}</button>
         {% endfor %}
       </div>
     </div>
