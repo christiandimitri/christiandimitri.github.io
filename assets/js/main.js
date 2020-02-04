@@ -32,13 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Working!!", url)
     item.style.backgroundImage = "url('" + url + "')";
   }
-// // projects slider image
-//   var list2 = document.querySelectorAll('[data-header-image]')
-//   console.log("list2",list2);
-//   for (let item of list2){
-//     var url = item.getAttribute('data-header-image');
-//     console.log("Working!!", url);
-//     item.style.backgroundImage="url('" + url + "')";
-//   }
+
 });
 
