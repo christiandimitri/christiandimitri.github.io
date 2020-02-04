@@ -24,37 +24,15 @@ layout: page-base
     </div>
     <div class="tile is-ancestor">
       {%for skill in page.skills %}
-      <div class="tile is-vertical is-parent has-text-centered" id="tile-skill">
-        <section class="hero is-primary is-medium">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                {{skill.title}}
-              </h1>
-              <h2 class="subtitle">
-                {{skill.subtitle}}
-              </h2>
-            </div>
-          </div>
-        </section>
+      <div class="tile is-vertical is-parent has-text-centered">
+        {% include skills.html size=skill.size color=skill.color image=skill.image %}
       </div>
       {%endfor%}
     </div>
     <div class="tile is-ancestor">
-      {%for skill in page.add-skills %}
+      {%for add-skill in page.add-skills %}
       <div class="tile is-vertical is-parent has-text-centered">
-        <section class="hero is-primary is-medium">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                {{skill.title}}
-              </h1>
-              <h2 class="subtitle">
-                {{skill.subtitle}}
-              </h2>
-            </div>
-          </div>
-        </section>
+        {% include add-skills.html size=add-skill.size color=add-skill.color image=add-skill.image %}
       </div>
       {%endfor%}
     </div>
@@ -80,36 +58,14 @@ layout: page-base
     <div class="tile is-ancestor">
       {%for interest in page.interests %}
       <div class="tile is-vertical is-parent has-text-centered">
-        <section class="hero is-primary is-medium">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                {{interest.title}}
-              </h1>
-              <h2 class="subtitle">
-                {{interest.subtitle}}
-              </h2>
-            </div>
-          </div>
-        </section>
+        {% include interests.html size=interest.size color=interest.color image=interest.image %}
       </div>
       {%endfor%}
     </div>
     <div class="tile is-ancestor">
       {%for interest in page.add-interests %}
       <div class="tile is-vertical is-parent has-text-centered">
-        <section class="hero is-primary is-medium">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                {{interest.title}}
-              </h1>
-              <h2 class="subtitle">
-                {{interest.subtitle}}
-              </h2>
-            </div>
-          </div>
-        </section>
+        {% include interests.html size=interest.size color=interest.color image=interest.image %}
       </div>
       {%endfor%}
     </div>

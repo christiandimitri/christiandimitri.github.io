@@ -19,39 +19,56 @@ intro: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare    
 skills: 
  - title: Architecture & Urban Design
    subtitle: From Conceptual to Design Development
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
- - title: Parametric Design in Architecture
+   image: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
+   size: is-medium
+   color: is-primary
+ - title: Parametric Design
    subtitle: Integration of Computational Tools in Construction
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: And Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-link
 add-skills:
  - title: Programming & Algorithm Development
    subtitle: Design and Optimization workflows
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   image: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
    text: For Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
+   image: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
+   size: is-medium
+   color: is-info
  - title: Computational Design & Digital Fabrication
    subtitle: Form-Finding Processes
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: This Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-success
 interests: 
  - title: Music & Euclidian Rythm
    subtitle: Electronic & Music in General
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-primary
  - title: Technology & Art
    subtitle: Technology & Art
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-success
 add-interests:
  - title: Animals & Nature
    subtitle: Animals & Nature
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-info
  - title: Travelling & Discovering
    subtitle: Travelling & Discovering
-   url: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
+   image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+   size: is-medium
+   color: is-link
 links-text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
         vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
 buttons:

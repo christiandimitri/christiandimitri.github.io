@@ -1,0 +1,15 @@
+
+<section id='skills' {% if skill.image %} data-header-image="{{skill.image}}" {% endif %} class="hero is-bold
+           {% if skill.color %}{{skill.color}}{%else%}is-primary{%endif%}
+           {% if include.size %}{{include.size}}{%else%}is-large{%endif%}">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-4">
+                {{skill.title}}
+            </h1>
+            <h2 class="subtitle is-6">
+                {{skill.subtitle}}
+            </h2>
+        </div>
+    </div>
+</section>
