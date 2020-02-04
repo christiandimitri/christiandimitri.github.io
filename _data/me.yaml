@@ -2,6 +2,7 @@ name: Christian
 surname: Dimitri
 author-img: assets\img\MyImage.jpg
 intro: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis
+languages-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
 languages:
   - name: English
     level: Fluent
@@ -13,20 +14,20 @@ languages:
     level: Intermediate
 softwares-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
 softwares:
-  - name: Autocad
+  - name: Rhino3D/Grasshopper3d
     level: 9
-  - name: Autocad
+  - name: 3D Studio Max
+    level: 7 
+  - name: AutoCAD
+    level: 8
+  - name: Photoshop
     level: 3 
   - name: Autocad
     level: 9
-  - name: Autocad
-    level: 3 
-  - name: Autocad
+  - name: Illustrator
     level: 9
-  - name: Autocad
+  - name: InDesign
     level: 3 
-  - name: Autocad
-    level: 9
   - name: Autocad
     level: 3 
 programming-intro:  This is not Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
@@ -74,10 +75,14 @@ education:
     start-date: 2016
     end-date: 2019
     location: Lebanon
+
 projects:
   - title: Project Title
     subtitle: Project subtitle
-    img: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
+    size: is-fullheight
+    color: is-primary
+    image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+    
 links-text: This for link Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
 links:
   - link: Blog

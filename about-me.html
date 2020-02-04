@@ -2,28 +2,31 @@
 layout: page-base
 title: About Me
 subtitle: Get to know more about me
-hero-size: is-medium
+hero:
+  size: is-fullheight
+  color: is-primary
+  image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
 ---
 
 <section class="section" id="intro">
   <div class="content">
-   <div class="centered-block">
-        <article class="media">
-          <div class="media-left">
-            <figure class="image is-128x128" id="author-img">
-              <img class="is-rounded" src="{{site.data.me.author-img}}" alt="Image">
-            </figure>
+    <div class="centered-block">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-128x128" id="author-img">
+            <img class="is-rounded" src="{{site.data.me.author-img}}" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <br>
+              {{site.data.me.intro}}
+            </p>
           </div>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <br>
-                {{site.data.me.intro}}
-              </p>
-            </div>
-          </div>
-        </article>
-   </div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -32,6 +35,29 @@ hero-size: is-medium
     <h1 class="has-text-centered">Skills</h1>
     <div class="tile is-ancestor">
       <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <p class="title">Languages</p>
+          <p>{{site.data.me.languages-intro}}</p>
+          {%for language in site.data.me.languages%}
+          <ul>
+            <li><strong>{{language.name}}
+              </strong>- {{language.level}}</p>
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+        <div class="tile is-child box">
+          <p class="title">Softwares</p>
+          <p>{{site.data.me.softwares-intro}}</p>
+          {%for software in site.data.me.softwares%}
+          <ul>
+            <li><strong>{{software.name}}
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+      </div>
+      <div class="tile is-vertical is-parent">
         <div class="tile is-child box">
           <p class="title">Education</p>
           <p>{{site.data.me.edu-intro}}</p>
@@ -46,30 +72,7 @@ hero-size: is-medium
           </ul>
           {%endfor%}
         </div>
-        <div class="tile is-child box">
-          <p class="title">Languages</p>
-          <p>{{site.data.me.languages-intro}}</p>
-          {%for language in site.data.me.languages%}
-          <ul>
-            <li><strong>{{language.name}}
-              </strong>- {{language.level}}</p>
-            </li>
-          </ul>
-          {%endfor%}
-        </div>
-      </div>
-      <div class="tile is-vertical is-parent">
-        <div class="tile is-child box">
-          <p class="title">Architecture Softwares</p>
-          <p>{{site.data.me.softwares-intro}}</p>
-          {% for software in site.data.me.softwares%}
-          <ul>
-            <li><strong>{{software.name}}
-              </strong>- {{software.level}}</p>
-            </li>
-          </ul>
-          {%endfor%}
-        </div>
+
         <div class="tile is-child box">
           <p class="title">Programming</p>
           <p>{{site.data.me.programming-intro}}</p>
@@ -97,7 +100,8 @@ hero-size: is-medium
   </div>
 </section>
 
-<section class="" id="projects">
+<!-- projects slider -->
+<section class="projects-slider">
   <div class="section">
     <div class="container">
       <div class="content">
@@ -105,21 +109,12 @@ hero-size: is-medium
       </div>
     </div>
   </div>
-  <div class="hero is-primary is-fullheight">
-    <div class="hero-body">
-      {%for project in site.data.me.projects%}
-      <div class="container">
-        <h1 class="title">
-          {{project.title}}
-        </h1>
-        <h2 class="subtitle">
-          {{project.subtitle}}
-        </h2>
-      </div>
-      {%endfor%}
-    </div>
-  </div>
 </section>
+
+{% include projects.html size=data.me.projects.size color=data.me.projects.image image=data.me.projects.image %}
+
+
+<!-- end of projects slider -->
 
 <section class="" id="links-about">
   <div class="section">
