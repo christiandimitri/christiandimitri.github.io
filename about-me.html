@@ -3,29 +3,31 @@ layout: page-base
 title: About Me
 subtitle: Get to know more about me
 hero:
-  size: is-fullheight
-  color: is-primary
-  image: assets/img/parametric-lavabo-double.jpg
+size: is-large
+color: is-primary
+image: assets/img/parametric-lavabo-double.jpg
 ---
 
 <section class="section" id="intro">
-  <div class="content">
-    <div class="centered-block">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-128x128" id="author-img">
-            <img class="is-rounded" src="{{site.data.me.author-img}}" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <br>
-              {{site.data.me.intro}}
-            </p>
+  <div class="card">
+    <div class="card-content is-italic">
+      <div class="centered-block">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-128x128" id="author-img">
+              <img class="is-rounded" src="{{site.data.me.author-img}}" alt="Image">
+            </figure>
           </div>
-        </div>
-      </article>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <br>
+                {{site.data.me.intro}}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -37,21 +39,21 @@ hero:
       <div class="tile is-4 is-vertical is-parent">
         <div class="tile is-child box">
           <p class="title">Languages</p>
-          <p>{{site.data.me.languages-intro}}</p>
+          <p class="is-italic">{{site.data.me.languages-intro}}</p>
           {%for language in site.data.me.languages%}
           <ul>
             <li><strong>{{language.name}}
-              </strong>- {{language.level}}</p>
+              </strong>- {{language.level}}
             </li>
           </ul>
           {%endfor%}
         </div>
         <div class="tile is-child box">
           <p class="title">Softwares</p>
-          <p>{{site.data.me.softwares-intro}}</p>
+          <p class="is-italic">{{site.data.me.softwares-intro}}</p>
           {%for software in site.data.me.softwares%}
           <ul>
-            <li><strong>{{software.name}}
+            <li><strong>{{software.name}}</strong>
             </li>
           </ul>
           {%endfor%}
@@ -60,7 +62,7 @@ hero:
       <div class="tile is-vertical is-parent">
         <div class="tile is-child box">
           <p class="title">Education</p>
-          <p>{{site.data.me.edu-intro}}</p>
+          <p class="is-italic">{{site.data.me.edu-intro}}</p>
           {%for edu in site.data.me.education %}
           <ul>
             <li>
@@ -74,23 +76,20 @@ hero:
         </div>
 
         <div class="tile is-child box">
-          <p class="title">Programming</p>
-          <p>{{site.data.me.programming-intro}}</p>
-          {% for code in site.data.me.programming%}
+          <p class="title">Area of Expertise</p>
+          {% for exp in site.data.me.expertise%}
           <ul>
-            <li><strong>{{code.name}}
-              </strong>- {{code.level}}</p>
-            </li>
+            <li><strong>{{exp.name}}</strong></li>
           </ul>
           {%endfor%}
         </div>
         <div class="tile is-child box">
-          <p class="title">Web Design</p>
-          <p>{{site.data.me.webDesign-intro}}</p>
-          {% for webD in site.data.me.webDesign%}
+          <p class="title">Programming & Web Design</p>
+          <p class="is-italic">{{site.data.me.programming-intro}}</p>
+          {% for code in site.data.me.programming%}
           <ul>
-            <li><strong>{{webD.name}}
-              </strong> - {{webD.level}}</p>
+            <li><strong>{{code.name}}
+              </strong>- {{code.level}}</p>
             </li>
           </ul>
           {%endfor%}

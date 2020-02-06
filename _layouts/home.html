@@ -9,7 +9,7 @@ layout: page-base
   <div class="card">
     <div class="card-content">
       <div class="content has-text-centered is-italic">
-        {{page.intro}}
+        <i>{{page.intro}}</i>
         <br>
       </div>
     </div>
@@ -42,7 +42,7 @@ layout: page-base
   <div class="card">
     <div class="card-content">
       <div class="content has-text-centered is-italic">
-        {{page.links-text}}
+        {{page.interests-text}}
         <br>
       </div>
     </div>
@@ -84,9 +84,10 @@ layout: page-base
 <section class="" id="links-home">
   <div class="section">
     <div class="container">
-      <div class="buttons is-centered are-medium">
+      <div class="content">
+      <div class="buttons is-centered are-large">
         {% for button in page.buttons %}
-        <button class="button is-primary is-outlined">{{button.title}}</button>
+        <button onclick="window.location.href = '{{button.url}}';" class="button is-primary is-outlined is-rounded">{{button.title}}</button>
         {% endfor %}
       </div>
     </div>

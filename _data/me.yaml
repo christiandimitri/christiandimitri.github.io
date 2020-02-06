@@ -1,18 +1,17 @@
 name: Christian
 surname: Dimitri
 author-img: assets\img\MyImage.jpg
-intro: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis
-languages-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
+intro: I am a Lebanese Architect currently based in Barcelona, I have a competent experience varying from Architecture & Urban Design; Parametric Design in Architecture; Programming skills to develop custom grasshopper plugins; Web Design; I am also a self-learner by consisting my free time to learn the things I want through the web; I am passionate in the technology and the parametric processes for the construction by using visual programming and sometimes C# to develop custom tasks; enthusiastic about free-form surfaces in Architecture and how to rationalize them in order to be built them.
+# languages-intro: Languages are the generators of our societies. Fortunatly I had a Bilingual childhood that made me assimilate and learn more languages in order to communicate with more people around the world.
 languages:
-  - name: English
-    level: Fluent
   - name: French
     level: Native
   - name: Arabic
     level: Native
+  - name: English
+    level: Fluent
   - name: Spanish
     level: Intermediate
-softwares-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
 softwares:
   - name: Rhino3D/Grasshopper3d
     level: 9
@@ -30,7 +29,6 @@ softwares:
     level: 3 
   - name: Autocad
     level: 3 
-programming-intro:  This is not Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
 programming:
   - name: Python
     level: 9
@@ -44,26 +42,35 @@ programming:
     level: 9
   - name: Python
     level: 3 
-webDesign-intro:  This is not Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.
-webDesign:
-  - name: Python
-    level: 9
-  - name: Python
-    level: 3 
-  - name: Python
-    level: 9
-  - name: Python
-    level: 3 
-  - name: Python
-    level: 9
-  - name: Python
-    level: 3
+expertise:
+  - name: Architectural Planning & Conceptual Composition
+    level: 
+  - name: Construction Management
+    level: 
+  - name: Architectural Visualization & Rendering
+    level: 
+  - name: Grasshopper(Rhino) and C# programming
+    level: 
+  - name: Complex 3D Modelling
+    level: 
+  - name: Optimization & Algorithm Development
+    level:
+  - name: Interior Design & Visualization & Rendering
+    level: 
+  - name: Computational Form-Finding & Structural Design
+    level: 
+  - name: Digital Fabrication (CNC & Robotic Arm)
+    level: 
+  - name: Architectural Free-Form Surfaces Rationalization
+    level: 
+  - name: BIM
+    level:  
 edu-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.  
 education:
   - school: Universitat Politècnica de Catalunya
     course: Masters of parametric design in architecture
-    start-date: (October 2017
-    end-date: September 2018)
+    start-date: 2017
+    end-date: 2018
     location: Spain
   - school: Holy Spirit University Of Kaslik
     course: Master in architecture
@@ -85,7 +92,7 @@ projects:
     
 links-text: This for link Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
 links:
-  - link: Blog
+  - link: My Blog
     url: blog/index.html
   - link: My CV
     url: assets/downloads/CV

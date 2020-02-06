@@ -13,12 +13,15 @@ $pink: #FA7C91;
 $brown: #757763;
 $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
+$dark-grey: #363636;
+$light-grey: hsl(0, 0%, 71%) ;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
+$grey-dark: $dark-grey;
+$grey-light: $light-grey;
 $primary: $steel-blue;
+$info: $purple;
 $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
