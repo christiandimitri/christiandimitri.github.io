@@ -1,7 +1,7 @@
 
 
 title: Christian Dimitri
-logo: assets\img\dimi-white.png
+logo: assets/img/dimi-white.png
 
 paginate: 2
 paginate_path: "/blog/page:num/"

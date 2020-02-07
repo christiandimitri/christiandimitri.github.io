@@ -1,5 +1,10 @@
 ---
 layout: page-base
+title: My Blog
+hero:
+  size: is-fullheight
+  color: is-primary
+  image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 ---
 
 {% for post in paginator.posts %}
@@ -7,15 +12,15 @@ layout: page-base
   <div class="column">
     <div class="card" onclick="location.href='{{post.url}}'">
       <div class="card-image">
-        <figure class="image post-image">
-          <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+        <figure class="image is-16by9" id="post-img">
+          <img src="{{post.hero.image | absolute_url}}" alt="Post Image">
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
           <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            <figure class="image is-48x48" >
+              <img src="{{site.data.me.author-img | absolute_url}}" alt="Author Image">
             </figure>
           </div>
           <div class="media-content">

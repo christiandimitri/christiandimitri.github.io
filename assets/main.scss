@@ -94,6 +94,12 @@ $main-color: white;
   -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
 }
+#post-img{
+  background-position: center !important;
+  background-size: cover !important;
+  // background-repeat: no-repeat !important;
+}
+
 #projects{
   // display: none !important;
   background-position: center;

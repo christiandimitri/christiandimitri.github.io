@@ -1,8 +1,12 @@
 ---
 layout: post
-title: title
+title: Hello World
 author: Christian Dimitri
-description:
+hero:
+ size: is-large
+ color: is-primary
+ image: assets/img/11-jekyll.png
+description: 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis enim ut tellus elementum sagittis vitae. A arcu cursus vitae congue mauris rhoncus aenean.
 ---
 

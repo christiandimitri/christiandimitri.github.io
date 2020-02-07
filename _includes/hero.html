@@ -1,7 +1,7 @@
 <section 
     id='testHero' 
     {% if include.image %}
-    data-header-image="{{include.image}}" 
+    data-header-image="{{include.image | absolute_url}}" 
     {% endif %}
     class="hero is-bold
            {% if include.color %}{{include.color}}{%else%}is-primary{%endif%}
@@ -9,11 +9,11 @@
 >
   <!-- Hero head: will stick at the top -->
   <div class="hero-head">
-    <nav class="navbar">
+    <nav class="navbar is-black">
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="{{site.logo}}" alt="Logo">
+            <img src="{{site.logo | absolute_url}}" alt="Logo">
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
             <span></span>
