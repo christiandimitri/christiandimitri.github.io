@@ -1,12 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About me</title>
-</head>
-<body>
-    HELLO!!!!
-</body>
-</html>
+---
+layout: page-base
+title: About Me
+subtitle: Get to know more about me
+hero:
+  size: is-large
+  color: is-primary
+  image: assets/img/parametric-lavabo-double.jpg
+---
+
+<section class="section">
+  <div class="card" id="intro">
+    <div class="card-content is-italic">
+      <div class="centered-block">
+        <article class="media" id="author-card">
+          <div class="media-left">
+            <figure class="image is-128x128" id="author-img">
+              <img class="is-rounded" src="{{site.data.me.author-img}}" alt="Author Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <br>
+                {{site.data.me.intro}}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="content">
+    <h1 class="has-text-centered">Skills</h1>
+    <div class="tile is-ancestor">
+      <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <p class="title">Languages</p>
+          <p class="is-italic">{{site.data.me.languages-intro}}</p>
+          {%for language in site.data.me.languages%}
+          <ul>
+            <li><strong>{{language.name}}
+              </strong>- {{language.level}}
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+        <div class="tile is-child box">
+          <p class="title">Softwares</p>
+          <p class="is-italic">{{site.data.me.programming-intro}}</p>
+          {% for software in site.data.me.softwares%}
+          <ul>
+            <li><strong>{{software.name}}
+              </strong>
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+        <div class="tile is-child box">
+          <p class="title">Programming & Web Design</p>
+          <p class="is-italic">{{site.data.me.programming-intro}}</p>
+          {% for code in site.data.me.programming%}
+          <ul>
+            <li><strong>{{code.name}}
+              </strong>
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+      </div>
+      <div class="tile is-vertical is-parent">
+        <div class="tile is-child box">
+          <p class="title">Education</p>
+          <p class="is-italic">{{site.data.me.edu-intro}}</p>
+          {%for edu in site.data.me.education %}
+          <ul>
+            <li>
+              <h3>{{edu.school}}</h3>
+              <p><strong>
+                  {{edu.course}} - {{edu.location}}
+                </strong> {{edu.start-date}} - {{edu.end-date}}</p>
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+
+        <div class="tile is-child box">
+          <p class="title">Area of Expertise</p>
+          {% for exp in site.data.me.expertise%}
+          <ul>
+            <li><strong>{{exp.name}}</strong></li>
+          </ul>
+          {%endfor%}
+        </div>
+        <div class="tile is-child box">
+          <p class="title">Publications</p>
+          <p class="is-italic">{{site.data.me.publications-intro}}</p>
+          {% for publication in site.data.me.publications%}
+          <ul>
+            <li><strong>{{publication.name}}</strong>
+            </li>
+          </ul>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- projects slider -->
+<section class="projects-slider">
+  <div class="section">
+    <div class="container">
+      <div class="content">
+        <h1 class="has-text-centered">Projects</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{% include projects.html size=data.me.projects.size color=data.me.projects.image image=data.me.projects.image %}
+<!-- end of projects slider -->
+
+<section class="section">
+  <div class="card" id="ltext-about">
+    <div class="card-content">
+      <div class="content has-text-centered is-italic">
+        {{site.data.me.links-text}}
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="" id="links-about">
+  <div class="section">
+    <div class="container">
+      <div class="content">
+        <div class="buttons is-centered are-large">
+          {% for button in site.data.me.buttons %}
+          <button onclick="window.location.href = '{{button.url}}';"
+            class="button is-primary is-outlined is-rounded">{{button.title}}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+</section>

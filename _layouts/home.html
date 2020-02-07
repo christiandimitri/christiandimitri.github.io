@@ -1,0 +1,95 @@
+---
+layout: page-base
+---
+
+<div class="content">
+  {{ content }}
+</div>
+<section class="section">
+  <div class="card" id="intro-home">
+    <div class="card-content">
+      <div class="content has-text-centered is-italic">
+        <i>{{page.intro}}</i>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="" id="skills-home">
+  <div class="section">
+    <div class="container">
+      <div class="content has-text-centered is-uppercase">
+        <h1>Skills</h1>
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      {%for skill in page.skills %}
+      <div class="tile is-vertical is-parent has-text-centered">
+        {% include skills.html size=skill.size color=skill.color image=skill.image %}
+      </div>
+      {%endfor%}
+    </div>
+    <div class="tile is-ancestor">
+      {%for add-skill in page.add-skills %}
+      <div class="tile is-vertical is-parent has-text-centered">
+        {% include add-skills.html size=add-skill.size color=add-skill.color image=add-skill.image %}
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="card" id="desc-home">
+    <div class="card-content">
+      <div class="content has-text-centered is-italic">
+        {{page.interests-text}}
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="" id="interests-home">
+  <div class="section">
+    <div class="container">
+      <div class="content has-text-centered is-uppercase">
+        <h1>interests</h1>
+      </div>
+    </div>
+    <div class="tile is-ancestor">
+      {%for interest in page.interests %}
+      <div class="tile is-vertical is-parent has-text-centered">
+        {% include interests.html size=interest.size color=interest.color image=interest.image %}
+      </div>
+      {%endfor%}
+    </div>
+    <div class="tile is-ancestor">
+      {%for interest in page.add-interests %}
+      <div class="tile is-vertical is-parent has-text-centered">
+        {% include interests.html size=interest.size color=interest.color image=interest.image %}
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="card"  id="links-text">
+    <div class="card-content">
+      <div class="content has-text-centered is-italic">
+        {{page.links-text}}
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="" id="links-home">
+  <div class="section">
+    <div class="container">
+      <div class="content">
+      <div class="buttons is-centered are-large">
+        {% for button in page.buttons %}
+        <button onclick="window.location.href = '{{button.url}}';" class="button is-primary is-outlined is-rounded">{{button.title}}</button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
