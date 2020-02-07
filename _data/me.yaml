@@ -1,0 +1,100 @@
+name: Christian
+surname: Dimitri
+author-img: assets/img/0-MyImage.jpg
+intro: I am a Lebanese Architect currently based in Barcelona, I have a competent experience varying from Architecture & Urban Design; Parametric Design in Architecture; Programming skills to develop custom grasshopper plugins; Web Design; I am also a self-learner by consisting my free time to learn the things I want through the web; I am passionate in the technology and the parametric processes for the construction by using visual programming and sometimes C# to develop custom tasks; enthusiastic about free-form surfaces in Architecture and how to rationalize them in order to be built them.
+# languages-intro: Languages are the generators of our societies. Fortunatly I had a Bilingual childhood that made me assimilate and learn more languages in order to communicate with more people around the world.
+languages:
+  - name: French
+    level: Native
+  - name: Arabic
+    level: Native
+  - name: English
+    level: Fluent
+  - name: Spanish
+    level: Intermediate
+softwares:
+  - name: Rhino3D/Grasshopper3d
+    level: 9
+  - name: 3D Studio Max
+    level: 7 
+  - name: AutoCAD
+    level: 8
+  - name: Photoshop Illustrators
+    level: 8 
+  - name: Revit BIM
+    level: 7
+  - name: Microsoft Office Package
+    level: 8 
+  - name: CMS platforms(Wordpress)
+    level: 8
+  - name: Visual Studio/Code
+    level: 8
+  - name: Tekla Structures BIM
+    level: 6
+programming:
+  - name: C# (Scripting & Plugin Development for Grasshopper)
+    level: 9
+  - name: Python
+    level: 3 
+  - name: html5 & CSS
+    level: 9
+  - name: LaTex & Pandoc
+    level: 3 
+expertise:
+  - name: Architectural Planning & Conceptual Composition
+    level: 
+  - name: Construction Management BIM
+    level: 
+  - name: Architectural Visualization & Rendering
+    level: 
+  - name: Grasshopper(Rhino) and C# programming
+    level: 
+  - name: Complex 3D Modelling
+    level: 
+  - name: Optimization & Algorithm Development
+    level:
+  - name: Interior Design & Visualization & Rendering
+    level: 
+  - name: Computational Form-Finding & Structural Design
+    level: 
+  - name: Digital Fabrication (CNC & Robotic Arm)
+    level: 
+  - name: Architectural Free-Form Surfaces Rationalization
+    level:   
+edu-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.  
+education:
+  - school: Universitat Politècnica de Catalunya
+    course: Masters of parametric design in architecture
+    start-date: 2017
+    end-date: 2018
+    location: Spain
+  - school: Holy Spirit University Of Kaslik
+    course: Master in architecture
+    start-date: 2016
+    end-date: 2019
+    location: Lebanon
+  - school: SSCC
+    course: ARCH
+    start-date: 2016
+    end-date: 2019
+    location: Lebanon
+publications:
+  - name: "Study Case: Design & Construction Of A Spherical Actively-Bent Chebychev Net Triangular Gridshell Covered By A Stretchable Membrane"
+  - name: "ARTE ROBOTICA V.01: Computational Robotic Painting Workwhop With DesignMorphine - INSECTION"
+
+projects:
+  - title: In Between
+    subtitle: Cultural Center
+    size: is-large
+    color: is-primary
+    image: assets/img/10-InBetweenSkyview.jpg
+    
+links-text: You can always find the latests version of my ...
+buttons:
+  - title: My Blog
+    url: blog/index.html
+  - title: My CV
+    url: assets/downloads/CV
+  - title: My Work
+    url: assets/downloads/Portfolio
+    
