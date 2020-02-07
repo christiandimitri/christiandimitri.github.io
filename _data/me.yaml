@@ -61,7 +61,7 @@ expertise:
     level: 
   - name: Architectural Free-Form Surfaces Rationalization
     level:   
-education:
+veducation:
   - school: Universitat Politècnica de Catalunya
     course: Masters of parametric design in architecture
     start-date: 2017
@@ -93,7 +93,7 @@ buttons:
   - title: My Blog
     url: blog/index.html
   - title: My CV
-    url: assets/downloads/CV
+    url: assets/downloads/ChristianDimitri_CV.pdf
   - title: My Work
-    url: assets/downloads/Portfolio
+    url: assets/downloads/ChristianDimitri_Portfolio.pdf
     
