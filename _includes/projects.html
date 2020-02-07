@@ -1,7 +1,7 @@
 {%for project in site.data.me.projects%}
 <section id='projects' {% if project.image %} data-header-image="{{project.image}}" {% endif %} class="hero is-bold
            {% if project.color %}{{project.color}}{%else%}is-primary{%endif%}
-           {% if include.size %}{{include.size}}{%else%}is-large{%endif%}">
+           {% if project.size %}{{project.size}}{%else%}is-large{%endif%}">
     <div class="hero-body">
         <div class="container">
             <h1 class="title">

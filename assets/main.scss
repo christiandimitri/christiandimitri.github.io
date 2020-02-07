@@ -19,7 +19,7 @@ $light-grey: hsl(0, 0%, 71%) ;
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $grey-dark: $dark-grey;
-$grey-light: $light-grey;
+$grey-light: $brown;
 $primary: $steel-blue;
 $info: $purple;
 $link: $pink;
@@ -87,10 +87,43 @@ $main-color: white;
   background-size: cover;
   width: 100%;
   height: 100%;
+  margin-left:1em;
+  border-radius: 50% !important;
+  border: 5px double #727272;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
 }
 #projects{
   // display: none !important;
   background-position: center;
   background-size: cover;
   background-blend-mode: multiply;
+}
+#intro{
+  border-radius: 6px;
+}
+#author-card{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#author-card p{
+  margin-top:auto;
+  margin-bottom: 2em;
+  margin-right:2em;
+  margin-left:2em;
+  text-align: justify;
+}
+#intro-home{
+  border-radius: 6px;
+}
+#desc-home{
+  border-radius:6px;
+}
+#links-text{
+  border-radius: 6px;
+}
+#ltext-about{
+  border-radius: 6px;
 }

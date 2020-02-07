@@ -19,33 +19,31 @@ softwares:
     level: 7 
   - name: AutoCAD
     level: 8
-  - name: Photoshop
-    level: 3 
-  - name: Autocad
-    level: 9
-  - name: Illustrator
-    level: 9
-  - name: InDesign
-    level: 3 
-  - name: Autocad
-    level: 3 
+  - name: Photoshop Illustrators
+    level: 8 
+  - name: Revit BIM
+    level: 7
+  - name: Microsoft Office Package
+    level: 8 
+  - name: CMS platforms(Wordpress)
+    level: 8
+  - name: Visual Studio/Code
+    level: 8
+  - name: Tekla Structures BIM
+    level: 6
 programming:
-  - name: Python
+  - name: C# (Scripting & Plugin Development for Grasshopper)
     level: 9
   - name: Python
     level: 3 
-  - name: Python
+  - name: html5 & CSS
     level: 9
-  - name: Python
-    level: 3 
-  - name: Python
-    level: 9
-  - name: Python
+  - name: LaTex & Pandoc
     level: 3 
 expertise:
   - name: Architectural Planning & Conceptual Composition
     level: 
-  - name: Construction Management
+  - name: Construction Management BIM
     level: 
   - name: Architectural Visualization & Rendering
     level: 
@@ -62,9 +60,7 @@ expertise:
   - name: Digital Fabrication (CNC & Robotic Arm)
     level: 
   - name: Architectural Free-Form Surfaces Rationalization
-    level: 
-  - name: BIM
-    level:  
+    level:   
 edu-intro: This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.  
 education:
   - school: Universitat Politècnica de Catalunya
@@ -82,20 +78,23 @@ education:
     start-date: 2016
     end-date: 2019
     location: Lebanon
+publications:
+  - name: "Study Case: Design & Construction Of A Spherical Actively-Bent Chebychev Net Triangular Gridshell Covered By A Stretchable Membrane"
+  - name: "ARTE ROBOTICA V.01: Computational Robotic Painting Workwhop With DesignMorphine - INSECTION"
 
 projects:
-  - title: Project Title
-    subtitle: Project subtitle
-    size: is-fullheight
+  - title: In Between
+    subtitle: Cultural Center
+    size: is-large
     color: is-primary
-    image: https://images.adsttc.com/media/images/5bae/77bf/f197/cc3a/7d00/0056/newsletter/6.jpg?1538160565
+    image: assets/img/10-InBetweenSkyview.jpg
     
-links-text: This for link Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-links:
-  - link: My Blog
+links-text: You can always find the latests version of my ...
+buttons:
+  - title: My Blog
     url: blog/index.html
-  - link: My CV
+  - title: My CV
     url: assets/downloads/CV
-  - link: My Work
+  - title: My Work
     url: assets/downloads/Portfolio
     
