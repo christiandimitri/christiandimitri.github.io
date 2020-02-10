@@ -39,7 +39,7 @@ add-skills:
    color: is-success
  - title: Programming & Web Design
    subtitle: Algorithm Development & Parametrization
-   image: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
+   image: assets/img/5-programming-white.png
    text: For Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
    image: assets/img/5-programming-white.png
    size: is-medium
