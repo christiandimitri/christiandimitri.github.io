@@ -32,6 +32,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Working!!", url)
     item.style.backgroundImage = "url('" + url + "')";
   }
-
 });
 
