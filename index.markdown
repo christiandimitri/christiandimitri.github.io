@@ -41,7 +41,7 @@ add-skills:
    subtitle: Algorithm Development & Parametrization
    image: assets/img/5-programming-white.png
    text: For Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
-   image: assets/img/5-programming-white.png
+   image: assets/img/5-programming-white.PNG
    size: is-medium
    color: is-link
 
@@ -49,7 +49,7 @@ interests:
  - title: Electronic Music
    subtitle: Collecting Vinyls & Music in General
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
-   image: assets/img/6-electronic-music.png
+   image: assets/img/6-electronic-music.PNG
    size: is-medium
    color: is-primary
  - title: Technology & Art
