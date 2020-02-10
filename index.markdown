@@ -47,7 +47,7 @@ add-skills:
 
 interests: 
  - title: Electronic Music
-   subtitle: Euclidian Rythm & Music in General
+   subtitle: Collecting Vinyls & Music in General
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
    image: assets/img/6-electronic-music.png
    size: is-medium
