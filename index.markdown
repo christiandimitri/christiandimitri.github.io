@@ -12,7 +12,7 @@ categories:
    url: architecture
  - title: Design
    url: design
- - title: Codes
+ - title: Code
    url: codes
 intro: Hello !!! I’m Christian Dimitri, an architect specialized in parametric architecture & computational design. I am a self taught 3D visualizer, programmer and a tech geek ...
 
