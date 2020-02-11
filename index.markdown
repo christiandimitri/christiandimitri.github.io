@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  size: is-fullheight
+  size: is-large
   color: is-primary
   image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 

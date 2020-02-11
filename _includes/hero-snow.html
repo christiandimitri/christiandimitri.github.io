@@ -1,13 +1,6 @@
-<section 
-    id='testHero' 
-    {% if include.image %}
-    data-header-image="{{include.image | absolute_url}}" 
-    {% endif %}
-    class="hero is-bold
+<section id='testHero' {% if include.image %} data-header-image="{{include.image | absolute_url}}" {% endif %} class="hero is-bold
            {% if include.color %}{{include.color}}{%else%}is-primary{%endif%}
-           {% if include.size %}{{include.size}}{%else%}is-large{%endif%}"
->
-<div id="particles-js"></div>
+           {% if include.size %}{{include.size}}{%else%}is-large{%endif%}">
   <!-- Hero head: will stick at the top -->
   <div class="hero-head">
     <nav class="navbar is-black">
@@ -70,6 +63,7 @@
       </div>
     </nav>
   </div>
+  <div id="particles-js-snow"></div>
+  <script src="assets/particles-js-snow/js/particles.js"></script>
+  <script src="assets/particles-js-snow/js/app.js"></script>
 </section>
-<script src="assets/particles-js-snow/js/particles.js"></script>
-<script src="assets/particles-js-snow/js/app.js"></script>
