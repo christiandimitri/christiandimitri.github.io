@@ -1,18 +1,18 @@
 ---
 layout: home
 hero:
-  size: is-fullheight
+  size: is-large
   color: is-primary
   image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 
 title: CHRISTIAN DIMITRI
-subtitle: Architect & Computational Desginer
+subtitle: Architect & Computational Designer
 categories:
  - title: Architecture
    url: architecture
  - title: Design
    url: design
- - title: Codes
+ - title: Code
    url: codes
 intro: Hello !!! I’m Christian Dimitri, an architect specialized in parametric architecture & computational design. I am a self taught 3D visualizer, programmer and a tech geek ...
 
@@ -39,17 +39,17 @@ add-skills:
    color: is-success
  - title: Programming & Web Design
    subtitle: Algorithm Development & Parametrization
-   image: assets/img/60-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.JPG
-   text: For Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
    image: assets/img/5-programming-white.png
+   text: For Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis.
+   image: assets/img/5-programming-white.PNG
    size: is-medium
    color: is-link
 
 interests: 
  - title: Electronic Music
-   subtitle: Euclidian Rythm & Music in General
+   subtitle: Collecting Vinyls & Music in General
    text: Eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam          finibus odio quis feugiat facilisis. This is Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna        eros.
-   image: assets/img/6-electronic-music.png
+   image: assets/img/6-electronic-music.PNG
    size: is-medium
    color: is-primary
  - title: Technology & Art

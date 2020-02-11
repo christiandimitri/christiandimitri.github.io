@@ -84,12 +84,10 @@ layout: page-base
   <div class="section">
     <div class="container">
       <div class="content">
-        <div class="buttons is-centered are-large">
-          {% for button in page.buttons %}
-          <button onclick="window.location.href = '{{button.url}}';"
-            class="button is-primary is-outlined is-rounded">{{button.title}}</button>
-          {% endfor %}
-        </div>
+      <div class="buttons is-centered are-large">
+        {% for button in page.buttons %}
+        <button onclick="window.location.href = '{{button.url}}';" class="button is-primary is-outlined">{{button.title}}</button>
+        {% endfor %}
       </div>
     </div>
 </section>
