@@ -170,22 +170,25 @@ background-blend-mode: difference !important;
   transform: translate(-50% , 120px);
 }
 #header-buttons .button{
-  background-image: linear-gradient(to bottom,$primary, transparent); 
+  background-color: white;
   width: 50px;
   height: 50px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 35px;
+  margin-right: 35px;
   padding:0;
   z-index: 1000;
 }
 #linkedin{
-  color:white;
+  color:$primary;
   width: 30px;
   height: 30px;
-  
+  margin-right: auto;
+  margin-left: auto;
 }
 #github{
-  color:black;
+  margin-right: auto;
+  margin-left: auto;
+  color:$primary;
   width: 35px;
   height: 35px;
 }
