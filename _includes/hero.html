@@ -50,6 +50,25 @@
         {{page.subtitle}}
       </h2>
       {% endif %}
+      <div class="container" id="header-buttons">
+        <p class="buttons">
+          <a class="button is-white is-outlined">
+            {%for button in site.data.contact.linkedin%}
+            <span class="icon is-small">
+              <i id="linkedin" class="{{button.icon}}"></i>
+            </span>
+            {%endfor%}
+          </a>
+          {% for button in site.data.contact.github %}
+          <a class="button is-black is-outlined" href="{{button.url}}">
+            <span class=" icon is-small">
+            <i id="github" class="{{button.icon}}"></i>
+            </span>
+          </a>
+          {%endfor%}
+        </p>
+      </div>
+
     </div>
   </div>
 
