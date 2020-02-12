@@ -23,12 +23,14 @@
             </a>
             {%endfor%}
             <span class="navbar-item">
-              <a class="button is-primary is-inverted">
+              {%for button in site.data.contact.email %}
+              <a class="button is-primary is-inverted" href="mailto:{{button.url}}" target="_blank">
                 <span class="icon">
-                  <i class="fab fa-github"></i>
+                  <i class="{{button.icon}}"></i>
                 </span>
-                <span>Github</span>
+                <span>{{button.name}}</span>
               </a>
+              {%endfor%}
             </span>
           </div>
         </div>

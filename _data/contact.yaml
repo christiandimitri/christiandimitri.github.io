@@ -1,0 +1,8 @@
+github:
+  - name: Github
+    url: https://github.com/christiandimitri
+    icon: fab fa-github
+email:
+  - name: Email
+    url: contact@chrisdimi.me
+    icon: fas fa-envelope
