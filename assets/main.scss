@@ -75,14 +75,12 @@ $main-color: white;
 .image.post-image{
     height: 200px !important;
     overflow: hidden;
-    
 }
 .hero{
   max-height: 750px !important;
-  position: relative;
   background-position: center;
   background-size: cover;
-  background-blend-mode: multiply
+  background-blend-mode: multiply;
 }
 
 #author-img img{
@@ -157,36 +155,18 @@ background-blend-mode: difference !important;
   overflow: hidden;
   opacity: 1;
 }
-#header-buttons{
-  position: absolute;
-  left:50%;
-  bottom: 50%;
-  width: auto;
-  height: auto;
-  display:flex;
-  justify-content: center;
-  transform: translate(-50% , 120px);
+#header-buttons .buttons{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 40px;
 }
-#header-buttons .button{
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  margin-left: 35px;
-  margin-right: 35px;
-  padding:0;
-  z-index: 1000;
+#header-buttons .buttons .button{
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom:0;
 }
-#linkedin{
-  color:$primary;
-  width: 30px;
-  height: 30px;
-  margin-right: auto;
-  margin-left: auto;
-}
-#github{
-  margin-right: auto;
-  margin-left: auto;
-  color:$primary;
-  width: 35px;
-  height: 35px;
+#hero-foot{
+  // position: absolute;
+  // transform: translateY(710px);
 }
