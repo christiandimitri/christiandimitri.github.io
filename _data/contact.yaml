@@ -1,12 +1,9 @@
-github:
-  - name: Github
-    url: https://github.com/christiandimitri
-    icon: fab fa-github fa-lg
-email:
-  - name: Contact
-    url: contact@chrisdimi.me
-    icon: fas fa-envelope
-linkedin:
-  - name: Linkedin
-    url: https://linkedin.com/in/chrisdimitri
-    icon: fab fa-linkedin-in fa-lg
+- name: Github
+  url: https://github.com/christiandimitri
+  icon: fab fa-github fa-lg
+- name: Contact
+  url: contact@chrisdimi.me
+  icon: fas fa-envelope
+- name: Linkedin
+  url: https://linkedin.com/in/chrisdimitri
+  icon: fab fa-linkedin-in fa-lg
