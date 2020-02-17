@@ -1,8 +1,8 @@
-<section id='testHero' {% if include.image %} data-header-image="{{include.image | absolute_url}}" {% endif %} class="hero is-bold
+<section id='testHero' {% if include.image %} data-header-image="{{include.image | absolute_url}}" {% endif %} class="hero has-background is-bold
            {% if include.color %}{{include.color}}{%else%}is-primary{%endif%}
            {% if include.size %}{{include.size}}{%else%}is-large{%endif%}">
   <!-- Hero head: will stick at the top -->
-  <div class="hero" id="particles-js"></div>
+  <div class="" id="particles-js"></div>
   <div class="hero-head">
     <nav class="navbar is-black">
       <div class="container">
@@ -23,16 +23,6 @@
               {{item.name}}
             </a>
             {%endfor%}
-            <span class="navbar-item">
-              {%for button in site.data.contact.email %}
-              <a class="button is-primary is-inverted" href="mailto:{{button.url}}" target="_blank">
-                <span class="icon">
-                  <i class="{{button.icon}}"></i>
-                </span>
-                <span>{{button.name}}</span>
-              </a>
-              {%endfor%}
-            </span>
           </div>
         </div>
       </div>
@@ -51,38 +41,17 @@
         {{page.subtitle}}
       </h2>
       {% endif %}
-      <div class="container" id="header-buttons">
-        <p class="buttons">
-          {%for button in site.data.contact.linkedin %}
-          <a class="button is-primary is-inverted is-medium" href="{{button.url}}" target="_blank">
-            <span class="icon">
-              <i class="{{button.icon}}"></i>
-            </span>
-          </a>
-          {%endfor%}
-          {%for button in site.data.contact.github %}
-          <a class="button is-primary is-inverted is-medium" href="{{button.url}}" target="_blank">
-            <span class="icon">
-              <i class="{{button.icon}}"></i>
-            </span>
-          </a>
-          {%endfor%}
-        </p>
-      </div>
     </div>
   </div>
-  <!-- Hero footer: will stick at the bottom -->
-  <!-- <div class="hero-foot" id="hero-foot">
-    <nav class="tabs">
-      <div class="container">
-        <ul>
-          {% for item in page.categories %}
-          <li><a disabled style="cursor:default;">{{item.title}}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    </nav>
-  </div> -->
-  <script src="assets/particles-js-default/js/particles.js"></script>
-  <script src="assets/particles-js-default/js/app.js"></script>
+  <script src="{{'assets/js/particles.js' | absolute_url}}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+      {% capture particle-config %}{% if page.hero.particles == 'snow' %}assets/particles-snow.json{% else %}assets/particles.json{% endif %} {% endcapture %}
+
+      particlesJS.load('particles-js', "{{ particle-config | absolute_url}}", function () {
+        console.log('callback - particles.js config loaded');
+      });
+    })
+  </script>
 </section>

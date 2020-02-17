@@ -12,15 +12,16 @@
     <title> About Me  </title>
 </head>
 <body>
-    <section id='testHero'  data-header-image="http://localhost:4000/assets/img/parametric-lavabo-double.jpg"  class="hero is-bold
+    <section id='testHero'  data-header-image="http://localhost:4000/assets/img/parametric-lavabo-double.jpg"  class="hero has-background is-bold
            is-primary
            is-large">
   <!-- Hero head: will stick at the top -->
+  <div class="" id="particles-js"></div>
   <div class="hero-head">
     <nav class="navbar is-black">
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item">
+          <a class="navbar-item" id="author-logo">
             <img src="http://localhost:4000/assets/img/dimi-white.png" alt="Logo">
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroA">
@@ -44,16 +45,6 @@
               Blog
             </a>
             
-            <span class="navbar-item">
-              
-              <a class="button is-primary is-inverted" href="mailto:contact@chrisdimi.me" target="_blank">
-                <span class="icon">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <span>Contact</span>
-              </a>
-              
-            </span>
           </div>
         </div>
       </div>
@@ -177,20 +168,17 @@
       
     </div>
   </div>
+  <script src="http://localhost:4000/assets/js/particles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+      
 
-  <!-- Hero footer: will stick at the bottom -->
-  <div class="hero-foot">
-    <nav class="tabs">
-      <div class="container">
-        <ul>
-          
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div id="particles-js-snow"></div>
-  <script src="assets/particles-js-snow/js/particles.js"></script>
-  <script src="assets/particles-js-snow/js/app.js"></script>
+      particlesJS.load('particles-js', "http://localhost:4000/assets/particles-snow.json", function () {
+        console.log('callback - particles.js config loaded');
+      });
+    })
+  </script>
 </section>
 
 <section class="section">
@@ -500,6 +488,29 @@
     <div class="content has-text-centered">
         <p>
             Created by Christian Dimitri using Jekyll and Bulma
+            <div class="container" id="header-buttons">
+                <p class="buttons">
+                    
+                    <a class="button is-primary is-medium" href="https://github.com/christiandimitri" target="_blank">
+                        <span class="icon">
+                            <i class="fab fa-github fa-lg"></i>
+                        </span>
+                    </a>
+                    
+                    <a class="button is-primary is-medium" href="contact@chrisdimi.me" target="_blank">
+                        <span class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </a>
+                    
+                    <a class="button is-primary is-medium" href="https://linkedin.com/in/chrisdimitri" target="_blank">
+                        <span class="icon">
+                            <i class="fab fa-linkedin-in fa-lg"></i>
+                        </span>
+                    </a>
+                    
+                </p>
+            </div>
         </p>
     </div>
 </footer>

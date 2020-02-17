@@ -73,14 +73,14 @@ $main-color: white;
   }
 }
 .image.post-image{
-    height: 200px !important;
-    overflow: hidden;
+  height: 200px !important;
+  overflow: hidden;
 }
-.hero{
-  max-height: 750px !important;
+.hero.has-background{
   background-position: center;
   background-size: cover;
   background-blend-mode: multiply;
+  position: relative;
 }
 
 #author-img img{
@@ -99,6 +99,17 @@ $main-color: white;
   background-position: center !important;
   background-size: cover !important;
   // background-repeat: no-repeat !important;
+}
+.small-height{
+  height: 300px !important;
+  overflow: hidden;
+  background-position: center !important;
+  background-size: cover !important;
+}
+.small-height figure{ 
+
+  // height: auto;
+  // padding-top:0 !important;
 }
 
 #projects{
@@ -162,8 +173,8 @@ align-items: center;
 margin-top: 40px;
 }
 #header-buttons .buttons .button{
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 25px;
+  margin-left: 25px;
   margin-bottom:0;
 }
 #hero-foot{

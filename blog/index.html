@@ -7,44 +7,81 @@ hero:
   image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 ---
 
-{% for post in paginator.posts %}
-<div class="columns">
-  <div class="column">
-    <div class="card" onclick="location.href='{{post.url}}'">
-      <div class="card-image">
-        <figure class="image is-16by9" id="post-img">
-          <img src="{{post.hero.image | absolute_url}}" alt="Post Image">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48" >
-              <img src="{{site.data.me.author-img | absolute_url}}" alt="Author Image">
-            </figure>
+<section class="section">
+  <div class="container">
+    {% for post in paginator.posts %}
+    <div class="columns">
+      <div class="column">
+        <div class="card" onclick="location.href='{{post.url}}'">
+          <div class="card-image small-height" style="background-image: url('{{post.hero.image | absolute_url}}');">
           </div>
-          <div class="media-content">
-            <p class="title is-4">{{post.title}}</p>
-            <p class="subtitle is-7">@{{post.author}}</p>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="{{site.data.me.author-img | absolute_url}}" alt="Author Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{post.title}}</p>
+                <p class="subtitle is-7">@{{post.author}}</p>
+              </div>
+            </div>
+
+            <div class="content">
+              {{post.description}}
+              {% for tag in post.tags %}
+              <a href="#">#{{post.tag}}</a>
+              {%endfor%}
+              <br>
+              <span class="icon has-text-primary">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <time datetime="{{post.date | date: '%Y-%m-%d'}}"
+                class="has-text-grey">{{post.date | date_to_string}}</time>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="columns">
+      <div class="column">
+        <div class="card"">
+          <div class="card-image small-height" style="background-image: url('{{post.hero.image | absolute_url}}');">
+          {% include three-js.html %}
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="{{site.data.me.author-img | absolute_url}}" alt="Author Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{post.title}}</p>
+                <p class="subtitle is-7">@{{post.author}}</p>
+              </div>
+            </div>
 
-        <div class="content">
-          {{post.description}}
-          {% for tag in post.tags %}
-          <a href="#">#{{post.tag}}</a>
-          {%endfor%}
-          <br>
-          <span class="icon has-text-primary">
-            <i class="fas fa-calendar"></i>
-          </span>
-          <time datetime="{{post.date | date: '%Y-%m-%d'}}" class="has-text-grey">{{post.date | date_to_string}}</time>
+            <div class="content">
+              {{post.description}}
+              {% for tag in post.tags %}
+              <a href="#">#{{post.tag}}</a>
+              {%endfor%}
+              <br>
+              <span class="icon has-text-primary">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <time datetime="{{post.date | date: '%Y-%m-%d'}}"
+                class="has-text-grey">{{post.date | date_to_string}}</time>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-{% endfor %}
+</section>
 
 <nav class="pagination is-medium" role="navigation" aria-label="pagination">
   {% if paginator.previous_page %}

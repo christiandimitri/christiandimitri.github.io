@@ -1,4 +1,5 @@
-
+---
+---
 // Bulma navigation menu
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-// hero image header
+  // hero image header
   var list = document.querySelectorAll('[data-header-image]')
   console.log(list);
   for (let item of list) {
@@ -32,5 +33,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Working!!", url)
     item.style.backgroundImage = "url('" + url + "')";
   }
-});
 
+});
