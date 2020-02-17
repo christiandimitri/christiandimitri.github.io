@@ -12,8 +12,7 @@ layout: default
             Created by {{site.data.me.name}} {{site.data.me.surname}} using Jekyll and Bulma
             <div class="container" id="header-buttons">
                 <p class="buttons">
-                    {%for button in site.data.contact %}
-                    
+                    {% for button in site.data.contact %}
                     <a class="button is-primary is-medium" {% if button.type == 'social'%}href="{{button.url}}" target="_blank"{% else if button.type == 'mail'%}mailto='{{button.url}}'{%endif%}>
                         <span class="icon">
                             <i class="{{button.icon}}"></i>
