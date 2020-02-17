@@ -82,7 +82,11 @@ $main-color: white;
   background-blend-mode: multiply;
   position: relative;
 }
-
+.hero{
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
 #author-img img{
   background-position: center;
   background-size: cover;
