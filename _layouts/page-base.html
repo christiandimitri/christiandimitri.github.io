@@ -6,21 +6,27 @@ layout: default
 
 {{ content }}
 
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            Created by {{site.data.me.name}} {{site.data.me.surname}} using Jekyll and Bulma
-            <div class="container" id="header-buttons">
-                <p class="buttons">
-                    {% for button in site.data.contact %}
-                    <a class="button is-primary is-medium" {% if button.type == 'social'%}href="{{button.url}}" target="_blank"{% else if button.type == 'mail'%}mailto='{{button.url}}'{%endif%}>
-                        <span class="icon">
-                            <i class="{{button.icon}}"></i>
-                        </span>
-                    </a>
-                    {%endfor%}
-                </p>
-            </div>
-        </p>
+<footer class="footer" id="small-footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                Created by <strong>{{site.data.me.name}} {{site.data.me.surname}}</strong> using <strong>Jekyll</strong>
+                and <strong>Bulma</strong>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                <div id="footer-buttons">
+                    <p class="buttons">
+                        {% for button in site.data.contact %}
+                        <a class="button is-primary is-medium" {% if button.type == 'social'%}href="{{button.url}}"
+                            target="_blank" {% else if button.type == 'mail'%}mailto='{{button.url}}' {%endif%}>
+                            <span class="icon">
+                                <i class="{{button.icon}}"></i>
+                            </span>
+                        </a>
+                        {%endfor%}
+                    </p>
+                </div>
+            </p>
+        </div>
     </div>
 </footer>

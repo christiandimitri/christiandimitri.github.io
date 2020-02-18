@@ -1,31 +1,36 @@
-<section id="three-js" class="three-js">
-    <script src="{{assets/js/three.js | absolute_url}}"></script>
-    <script>
-        // Our Javascript will go here.
-        // create three-js scene and camera
-        var scene = new THREE.scene();
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+<script src={{'assets/js/three.js' | absolute_url}}></script>
+<script>
+    // Our Javascript will go here.
+    // create three-js scene and camera
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-        // create three-js renderer and set render size
-        var renderer = new THREE.webGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+    // create three-js renderer and set render size
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-        // create box and basic material
-        var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        var cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+    // create box and basic material
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
-        // set camera height
-        camera.position.z = 5;
+    // set camera height
+    camera.position.z = 5;
 
-        // render the scene
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-        animate();
+    // render the scene
+    function animate() {
+        requestAnimationFrame(animate);
+        // animating the cube
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    };
 
-    </script>
-</section>
+
+
+
+    animate();
+
+</script>

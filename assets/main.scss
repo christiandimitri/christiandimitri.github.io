@@ -136,14 +136,18 @@ background-blend-mode: difference !important;
   overflow: hidden;
   opacity: 1;
 }
-#header-buttons .buttons{
+#footer-buttons .buttons{
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: 40px;
+margin-top: 1.5rem;
 }
-#header-buttons .buttons .button{
-  margin-right: 25px;
-  margin-left: 25px;
+#footer-buttons .buttons .button{
+  margin-right: 30px;
+  margin-left: 30px;
   margin-bottom:0;
+}
+#small-footer{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
