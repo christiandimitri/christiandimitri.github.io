@@ -39,39 +39,6 @@ $input-shadow: none;
 
 $main-color: white;
 
-.animation-title {
-  overflow: hidden;
-
-  figure { 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  svg {
-    padding: 5vw;
-    width: 90vw;
-  }
-  
-  svg > * { 
-    fill: $main-color;
-    stroke: $main-color;
-    stroke-width: 0.85px;
-  }
-
-  &:after {
-    content: "Hover to Slow Motion";
-    position: absolute;
-    left: 0; right: 0; bottom: 1vh;
-    color: $main-color;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font: 700 9px/14px Tahoma, sans-serif;
-  }
-}
 .image.post-image{
   height: 200px !important;
   overflow: hidden;
@@ -110,10 +77,9 @@ $main-color: white;
   background-position: center !important;
   background-size: cover !important;
 }
-.small-height figure{ 
+.medium-height{ 
 
-  // height: auto;
-  // padding-top:0 !important;
+  height: 500px;
 }
 
 #projects{
@@ -180,8 +146,4 @@ margin-top: 40px;
   margin-right: 25px;
   margin-left: 25px;
   margin-bottom:0;
-}
-#hero-foot{
-  // position: absolute;
-  // transform: translateY(710px);
 }

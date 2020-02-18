@@ -3,9 +3,10 @@ layout: post
 title: Hello World
 author: Christian Dimitri
 hero:
+ particles: snow
  size: is-large
  color: is-primary
- image: assets/img/11-jekyll.png
+ image: assets/img/12-dome.jpg
 description: 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis enim ut tellus elementum sagittis vitae. A arcu cursus vitae congue mauris rhoncus aenean.
 ---
