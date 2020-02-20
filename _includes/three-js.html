@@ -1,36 +1,119 @@
-<script src={{'assets/js/three.js' | absolute_url}}></script>
+<canvas class="threeJS-canvas" id="{{include.id}}"></canvas>
+<script src={{'assets/js/three.js' | absolute_url}}>
+</script>
 <script>
     // Our Javascript will go here.
     // create three-js scene and camera
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    scene.background = new THREE.Color(0xa0a0a0);
+
+    {
+        const color = 0xFFFFFF;
+        const intensity = 1;
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(-1, 2, 4);
+        scene.add(light);
+    }
+    const fov =75;
+    const aspect= window.innerWidth/innerHeight;
+    const near= 0.1;
+    const far=100;
+    var camera = new THREE.PerspectiveCamera(fov,aspect, near, far);
+    // set camera height
+    // camera.position.set(0, 0, 100);
+    camera.lookAt(0, 0, 0);
+    camera.position.z = 10;
 
     // create three-js renderer and set render size
-    var renderer = new THREE.WebGLRenderer();
+    const canvas = document.querySelector('#{{include.id}}');
+    var renderer = new THREE.WebGLRenderer({ canvas });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
 
+
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    function makeInstance(geometry, color, x, y) {
+        const material = new THREE.MeshPhongMaterial({ color });
+
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        cube.position.x = x;
+        cube.position.y = y;
+
+        return cube;
+    }
     // create box and basic material
-    var geometry = new THREE.BoxGeometry();
-    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
 
-    // set camera height
-    camera.position.z = 5;
+    var cube = makeInstance(geometry, 0xaa8844, 0, 0);
 
-    // render the scene
-    function animate() {
-        requestAnimationFrame(animate);
-        // animating the cube
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+    function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        console.log(renderer);
+        console.log(canvas);
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+            renderer.setSize(width, height, false);
+
+        }
+        return needResize;
+    }
+
+
+
+
+    // create three-js text geometry
+    // var loader = new THREE.FontLoader();
+    // loader.load("{{'assets/Montserrat_Bold.json' | absolute_url }}", function (font) {
+    //     var geometry = new THREE.TextGeometry('Hello three.js!', {
+    //         font: font,
+    //         size: 80,
+    //         height: 5,
+    //         curveSegments: 12,
+    //         bevelEnabled: true,
+    //         bevelThickness: 10,
+    //         bevelSize: 8,
+    //         bevelOffset: 0,
+    //         bevelSegments: 5
+    //     });
+    //     var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    //     var text = new THREE.Mesh(geometry, material);
+    //     scene.add(text);
+
+    // });
+
+
+    // create a blue LineBasicMaterial
+    // var material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+    // geometry with some vertices
+    // var points = [];
+    // points.push(new THREE.Vector3(-50, 0, 0));
+    // points.push(new THREE.Vector3(0, 50, 0));
+    // points.push(new THREE.Vector3(50, 0, 0));
+    // var geometry = new THREE.BufferGeometry().setFromPoints(points);
+    // create a line
+    // var line = new THREE.Line(geometry, material);
+    // scene.add(line);
+
+    function render(time) {
+        time *= 0.001;
+        console.log(renderer);
+        if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectMatrix();
+        }
+        const speed = 1.1;
+        const rot = time * speed;
+        cube.rotation.x = rot;
+        cube.rotation.y = rot;
+
         renderer.render(scene, camera);
-    };
 
+        requestAnimationFrame(render);
+    }
 
-
-
-    animate();
+    requestAnimationFrame(render);
 
 </script>
