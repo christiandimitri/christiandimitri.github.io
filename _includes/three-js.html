@@ -1,6 +1,8 @@
 <canvas class="threeJS-canvas" id="{{include.id}}"></canvas>
 <script src={{'assets/js/three.js' | absolute_url}}>
 </script>
+<script src={{'assets/js/OrbitControls.js' | absolute_url}}>
+</script>
 <script>
     // Our Javascript will go here.
     // console.clear();
@@ -10,52 +12,86 @@
         const canvas = document.querySelector('#{{include.id}}');
         // set renderer
         var renderer = new THREE.WebGLRenderer({ canvas });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+
 
         //================== set camera ======================//
-        const fov = 75;
-        const aspect = 2;
-        const near = 0.1;
-        const far = 5;
+        const fov = 45;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 1;
+        const far = 2000;
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        // camera.lookAt(0, 0, 0);
-        camera.position.z = 3;
+        camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
+        camera.position.z = 400;
+        camera.position.y = 100;
+
+        // controls 
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 100;
+        controls.maxDistance = 500;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        // world
+        var world = new THREE.CylinderBufferGeometry(0, 10, 30, 4, 1);
+        var material = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true });
         //================== set scene ======================//
         var scene = new THREE.Scene();
         // set background color
         scene.background = new THREE.Color(0xa0a0a0);
+        scene.fog = new THREE.Fog(0xa0a0a0, 200, 1000);
         //  set light
         {
-            const color = 0xFFFFFF;
-            const intensity = 1;
-            const light = new THREE.DirectionalLight(color, intensity);
-            light.position.set(-2, 3, 4);
+            light = new THREE.HemisphereLight(0xffffff, 0x444444);
+            light.position.set(0, 200, 0);
+            scene.add(light);
+
+            light = new THREE.DirectionalLight(0xffffff);
+            light.position.set(0, 200, 100);
+            light.castShadow = true;
+            light.shadow.camera.top = 180;
+            light.shadow.camera.bottom = - 100;
+            light.shadow.camera.left = - 120;
+            light.shadow.camera.right = 120;
             scene.add(light);
         }
+        // ground
+        var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
+        mesh.rotation.x = - Math.PI / 2;
+        mesh.receiveShadow = true;
+        scene.add(mesh);
 
-        // set render size
-        // renderer.setSize(window.innerWidth, window.innerHeight);
+        var grid = new THREE.GridHelper(2000, 20, 0x000000, 0x000000);
+        grid.material.opacity = 0.2;
+        grid.material.transparent = true;
+        scene.add(grid);
+
 
         //========= create geometry and material ==============//     
         // create box and basic material
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        function makeInstance(geometry, color, x, y) {
+        const geometry = new THREE.BoxGeometry(20, 20, 20);
+        function makeInstance(geometry, color, x, y, z) {
             const material = new THREE.MeshPhongMaterial({ color });
 
             const cube = new THREE.Mesh(geometry, material);
+
             scene.add(cube);
 
             cube.position.x = x;
             cube.position.y = y;
-
+            cube.position.z = z;
             return cube;
         }
         const cubes = [
-            makeInstance(geometry, 0x44aa88, 0, 0),
-            makeInstance(geometry, 0x8844aa, -2, 0),
-            makeInstance(geometry, 0xaa8844, 2, 0)
+            makeInstance(geometry, 0x44aa88, 0, 16, 0),
+            makeInstance(geometry, 0x8844aa, -30, 16, 0),
+            makeInstance(geometry, 0xaa8844, 30, 16, 0)
         ];
 
         //===================== Events ======================//
+
         function resizeRendererToDisplaySize(renderer) {
             const canvas = document.querySelector('#{{include.id}}');
             const width = canvas.clientWidth;
@@ -69,7 +105,6 @@
         // adding scene and camera to the render
         function render(time) {
             time *= 0.001;
-
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = document.querySelector('#{{include.id}}');
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -81,7 +116,6 @@
                 cube.rotation.x = rot;
                 cube.rotation.y = rot;
             });
-
             renderer.render(scene, camera);
 
             requestAnimationFrame(render);
@@ -89,6 +123,7 @@
 
         requestAnimationFrame(render);
     }
+
 
     main();
 
