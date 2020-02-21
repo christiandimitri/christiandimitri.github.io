@@ -71,8 +71,8 @@
 
         //========= create geometry and material ==============//     
         // create box and basic material
-        const geometry = new THREE.BoxGeometry(20, 20, 20);
-        function makeInstance(geometry, color, x, y, z) {
+        const geometry = new THREE.BoxGeometry(40, 40, 40);
+        function makeBoxInstance(geometry, color, x, y, z) {
             const material = new THREE.MeshPhongMaterial({ color });
 
             const cube = new THREE.Mesh(geometry, material);
@@ -85,9 +85,41 @@
             return cube;
         }
         const cubes = [
-            makeInstance(geometry, 0x44aa88, 0, 16, 0),
-            makeInstance(geometry, 0x8844aa, -30, 16, 0),
-            makeInstance(geometry, 0xaa8844, 30, 16, 0)
+            makeBoxInstance(geometry, 0x44aa88, 0, 30, 0),
+        ];
+        // create box and basic material
+        const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
+        function makeTorusInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshPhongMaterial({ color });
+
+            const torus = new THREE.Mesh(geometry, material);
+
+            scene.add(torus);
+
+            torus.position.x = x;
+            torus.position.y = y;
+            torus.position.z = z;
+            return torus;
+        }
+        const toruses = [
+            makeTorusInstance(geometryTorus, 0xaa8844, 80, 30, 0)
+        ];
+        // create TorusKnot and basic material
+        const geometryTorusKnot = new THREE.TorusKnotGeometry(20,5, 100, 16);
+        function makeTorusKnotInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshPhongMaterial({ color });
+
+            const torusKnot = new THREE.Mesh(geometry, material);
+
+            scene.add(torusKnot);
+
+            torusKnot.position.x = x;
+            torusKnot.position.y = y;
+            torusKnot.position.z = z;
+            return torusKnot;
+        }
+        const torusKnots = [
+            makeTorusKnotInstance(geometryTorusKnot, 0x8844aa, -80, 30, 0),
         ];
 
         //===================== Events ======================//
@@ -110,6 +142,18 @@
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
                 camera.updateProjectionMatrix
             }
+            torusKnots.forEach((torusKnot, ndx) => {
+                const speed = 1 + ndx * .1;
+                const rot = time * speed;
+                torusKnot.rotation.x = rot;
+                torusKnot.rotation.y = rot;
+            });
+            toruses.forEach((torus, ndx) => {
+                const speed = 1 + ndx * .1;
+                const rot = time * speed;
+                torus.rotation.x = rot;
+                torus.rotation.y = rot;
+            });
             cubes.forEach((cube, ndx) => {
                 const speed = 1 + ndx * .1;
                 const rot = time * speed;
