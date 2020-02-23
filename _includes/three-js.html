@@ -3,6 +3,10 @@
 </script>
 <script src={{'assets/js/OrbitControls.js' | absolute_url}}>
 </script>
+<script type="module" src={{'assets/js/OBJLoader2.js' | absolute_url}}>
+</script>
+<script type="module" src={{'assets/js/MTLLoader.js' | absolute_url}}>
+</script>
 <script>
     // Our Javascript will go here.
     // console.clear();
@@ -14,7 +18,11 @@
         var renderer = new THREE.WebGLRenderer({ canvas });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
-
+        // ======== OBJ Loader ============ //
+        var objLoader = new THREE.OBJLoader2();
+        objLoader.load('assets/models/obj/Minotti_Aston_Armchair__vray.obj', (root) => {
+            scene.add(root);
+        });
 
         //================== set camera ======================//
         const fov = 45;
