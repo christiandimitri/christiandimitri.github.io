@@ -30,8 +30,9 @@
         const far = 2000;
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
-        camera.position.z = 400;
-        camera.position.y = 100;
+        camera.position.z = 300;
+        camera.position.y = 200;
+        camera.position.x=-100;
 
         // controls 
         var controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -80,7 +81,7 @@
         // create box and basic material
         const geometry = new THREE.BoxGeometry(40, 40, 40);
         function makeBoxInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshNormalMaterial({ color });
+            const material = new THREE.MeshNormalMaterial();
 
             const cube = new THREE.Mesh(geometry, material);
 
@@ -97,7 +98,7 @@
         // create box and basic material
         const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
         function makeTorusInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshNormalMaterial({ color });
+            const material = new THREE.MeshPhongMaterial({ color });
 
             const torus = new THREE.Mesh(geometry, material);
 
@@ -109,12 +110,12 @@
             return torus;
         }
         const toruses = [
-            makeTorusInstance(geometryTorus, 0xaa8844, 80, 30, 0)
+            makeTorusInstance(geometryTorus, 0xaa4488, 80, 30, 0)
         ];
         // create TorusKnot and basic material
         const geometryTorusKnot = new THREE.TorusKnotGeometry(20, 5, 100, 16);
         function makeTorusKnotInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshNormalMaterial({ color });
+            const material = new THREE.MeshPhongMaterial({ color });
 
             const torusKnot = new THREE.Mesh(geometry, material);
 
@@ -126,7 +127,7 @@
             return torusKnot;
         }
         const torusKnots = [
-            makeTorusKnotInstance(geometryTorusKnot, 0x8844aa, -80, 30, 0),
+            makeTorusKnotInstance(geometryTorusKnot, 0x44aa88, -80, 30, 0),
         ];
 
         //===================== Events ======================//
