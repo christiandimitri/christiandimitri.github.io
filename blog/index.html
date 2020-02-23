@@ -11,7 +11,7 @@ hero:
   <div class="container">
     {% for post in paginator.posts %}
     <div class="columns">
-      <div class="column">
+      <div class="column is-half is-offset-one-quarter">
         <div class="card" onclick="location.href='{{post.url}}'">
           <div class="card-image small-height" style="background-image: url('{{post.hero.image | absolute_url}}');">
           </div>

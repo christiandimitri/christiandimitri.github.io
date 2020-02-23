@@ -3,6 +3,7 @@ layout: post
 title: Hello World
 author: Christian Dimitri
 hero:
+ particles: snow
  size: is-large
  color: is-primary
  image: assets/img/11-jekyll.png

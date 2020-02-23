@@ -1,0 +1,182 @@
+<canvas class="threeJS-canvas" id="{{include.id}}"></canvas>
+<script src={{'assets/js/three.js' | absolute_url}}>
+</script>
+<script src={{'assets/js/OrbitControls.js' | absolute_url}}>
+</script>
+<script src={{'assets/js/GLTFLoader.js' | absolute_url}}>
+</script>
+
+<script>
+    // Our Javascript will go here.
+    // console.clear();
+
+    function main() {
+        //========= set renderer to 'canvas id' ===============//
+        const canvas = document.querySelector('#{{include.id}}');
+        // set renderer
+        var renderer = new THREE.WebGLRenderer({ canvas });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        // ======== OBJ Loader ============ //
+        // var loader = new THREE.GTLFLoader();
+
+
+
+
+        //================== set camera ======================//
+        const fov = 45;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 1;
+        const far = 2000;
+        var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
+        camera.position.z = 300;
+        camera.position.y = 200;
+        camera.position.x=-100;
+
+        // controls 
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 100;
+        controls.maxDistance = 1000;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        // world
+        var world = new THREE.CylinderBufferGeometry(0, 10, 30, 4, 1);
+        var material = new THREE.MeshNormalMaterial();
+        //================== set scene ======================//
+        var scene = new THREE.Scene();
+        // set background color
+        scene.background = new THREE.Color(0xa0a0a0);
+        scene.fog = new THREE.Fog(0xa0a0a0, 200, 3000);
+        //  set light
+        {
+            light = new THREE.HemisphereLight(0xffffff, 0x444444);
+            light.position.set(0, 200, 0);
+            scene.add(light);
+
+            light = new THREE.DirectionalLight(0xffffff);
+            light.position.set(0, 200, 100);
+            light.castShadow = true;
+            light.shadow.camera.top = 180;
+            light.shadow.camera.bottom = - 100;
+            light.shadow.camera.left = - 120;
+            light.shadow.camera.right = 120;
+            scene.add(light);
+        }
+        // ground
+        var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(5000, 5000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
+        mesh.rotation.x = - Math.PI / 2;
+        mesh.receiveShadow = true;
+        scene.add(mesh);
+
+        var grid = new THREE.GridHelper(5000, 50, 0x000000, 0x000000);
+        grid.material.opacity = 0.2;
+        grid.material.transparent = true;
+        scene.add(grid);
+
+
+        //========= create geometry and material ==============//     
+        // create box and basic material
+        const geometry = new THREE.BoxGeometry(40, 40, 40);
+        function makeBoxInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshNormalMaterial();
+
+            const cube = new THREE.Mesh(geometry, material);
+
+            scene.add(cube);
+
+            cube.position.x = x;
+            cube.position.y = y;
+            cube.position.z = z;
+            return cube;
+        }
+        const cubes = [
+            makeBoxInstance(geometry, 0x44aa88, 0, 30, 0),
+        ];
+        // create box and basic material
+        const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
+        function makeTorusInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshPhongMaterial({ color });
+
+            const torus = new THREE.Mesh(geometry, material);
+
+            scene.add(torus);
+
+            torus.position.x = x;
+            torus.position.y = y;
+            torus.position.z = z;
+            return torus;
+        }
+        const toruses = [
+            makeTorusInstance(geometryTorus, 0xaa4488, 80, 30, 0)
+        ];
+        // create TorusKnot and basic material
+        const geometryTorusKnot = new THREE.TorusKnotGeometry(20, 5, 100, 16);
+        function makeTorusKnotInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshPhongMaterial({ color });
+
+            const torusKnot = new THREE.Mesh(geometry, material);
+
+            scene.add(torusKnot);
+
+            torusKnot.position.x = x;
+            torusKnot.position.y = y;
+            torusKnot.position.z = z;
+            return torusKnot;
+        }
+        const torusKnots = [
+            makeTorusKnotInstance(geometryTorusKnot, 0x44aa88, -80, 30, 0),
+        ];
+
+        //===================== Events ======================//
+
+        function resizeRendererToDisplaySize(renderer) {
+            const canvas = document.querySelector('#{{include.id}}');
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            const needResize = canvas.width !== width || canvas.clientHeight !== height;
+            if (needResize) {
+                renderer.setSize(width, height, false);
+            }
+            return needResize;
+        }
+        // adding scene and camera to the render
+        function render(time) {
+            time *= 0.001;
+            if (resizeRendererToDisplaySize(renderer)) {
+                const canvas = document.querySelector('#{{include.id}}');
+                camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix
+            }
+            torusKnots.forEach((torusKnot, ndx) => {
+                const speed = 1 + ndx * .1;
+                const rot = time * speed;
+                torusKnot.rotation.x = rot;
+                torusKnot.rotation.y = rot;
+            });
+            toruses.forEach((torus, ndx) => {
+                const speed = 1 + ndx * .1;
+                const rot = time * speed;
+                torus.rotation.x = rot;
+                torus.rotation.y = rot;
+            });
+            cubes.forEach((cube, ndx) => {
+                const speed = 1 + ndx * .1;
+                const rot = time * speed;
+                cube.rotation.x = rot;
+                cube.rotation.y = rot;
+            });
+            renderer.render(scene, camera);
+
+            requestAnimationFrame(render);
+        }
+
+        requestAnimationFrame(render);
+    }
+
+
+    main();
+
+</script>
