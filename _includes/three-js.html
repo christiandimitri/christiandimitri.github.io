@@ -3,10 +3,9 @@
 </script>
 <script src={{'assets/js/OrbitControls.js' | absolute_url}}>
 </script>
-<script type="module" src={{'assets/js/OBJLoader2.js' | absolute_url}}>
+<script src={{'assets/js/GLTFLoader.js' | absolute_url}}>
 </script>
-<script type="module" src={{'assets/js/MTLLoader.js' | absolute_url}}>
-</script>
+
 <script>
     // Our Javascript will go here.
     // console.clear();
@@ -19,29 +18,9 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
         // ======== OBJ Loader ============ //
-        var loader = new THREE.ObjectLoader();
+        // var loader = new THREE.GTLFLoader();
 
-        loader.load(
-            // resource URL
-            "assets/models/obj/minotti_Aston_Armchair_vray_Converted.js",
 
-            // onLoad callback
-            // Here the loaded data is assumed to be an object
-            function (obj) {
-                // Add the loaded object to the scene
-                scene.add(obj);
-            },
-
-            // onProgress callback
-            function (xhr) {
-                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-            },
-
-            // onError callback
-            function (err) {
-                console.error('An error happened');
-            }
-        );
 
 
         //================== set camera ======================//
@@ -64,7 +43,7 @@
 
         // world
         var world = new THREE.CylinderBufferGeometry(0, 10, 30, 4, 1);
-        var material = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true });
+        var material = new THREE.MeshNormalMaterial();
         //================== set scene ======================//
         var scene = new THREE.Scene();
         // set background color
@@ -101,7 +80,7 @@
         // create box and basic material
         const geometry = new THREE.BoxGeometry(40, 40, 40);
         function makeBoxInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshPhongMaterial({ color });
+            const material = new THREE.MeshNormalMaterial({ color });
 
             const cube = new THREE.Mesh(geometry, material);
 
@@ -118,7 +97,7 @@
         // create box and basic material
         const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
         function makeTorusInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshPhongMaterial({ color });
+            const material = new THREE.MeshNormalMaterial({ color });
 
             const torus = new THREE.Mesh(geometry, material);
 
@@ -135,7 +114,7 @@
         // create TorusKnot and basic material
         const geometryTorusKnot = new THREE.TorusKnotGeometry(20, 5, 100, 16);
         function makeTorusKnotInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshPhongMaterial({ color });
+            const material = new THREE.MeshNormalMaterial({ color });
 
             const torusKnot = new THREE.Mesh(geometry, material);
 
