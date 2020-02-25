@@ -3,7 +3,9 @@
 </script>
 <script src={{'assets/js/OrbitControls.js' | absolute_url}}>
 </script>
-<script src={{'assets/js/GLTFLoader.js' | absolute_url}}>
+<script src={{'assets/js/OBJLoader.js' | absolute_url}}>
+</script>
+<script src={{'assets/js/MTLLoader.js' | absolute_url}}>
 </script>
 
 <script>
@@ -18,21 +20,32 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
         // ======== OBJ Loader ============ //
-        // var loader = new THREE.GTLFLoader();
+        var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.setPath('/assets/models/downloads/helecopter/obj/chopper.obj');
+        mtlLoader.load('/assets/models/downloads/helecopter/obj/chopper.mtl', function (materials) {
+            materials.preload();
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setMaterials(materials);
+            objLoader.setPath('/assets/models/downloads/helecopter/obj/chopper.obj');
+            objLoader.load('/assets/models/downloads/helecopter/obj/chopper.obj', function (object) {
+                scene.add(object);
 
-
-
+                var light = new THREE.PointLight(0xff0000, 1, 100);
+                light.position.set(50, 50, 50);
+                scene.add(light);
+            });
+        });
 
         //================== set camera ======================//
         const fov = 45;
         const aspect = window.innerWidth / window.innerHeight;
         const near = 1;
-        const far = 2000;
+        const far = 3000;
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
         camera.position.z = 300;
         camera.position.y = 200;
-        camera.position.x=-100;
+        camera.position.x = -100;
 
         // controls 
         var controls = new THREE.OrbitControls(camera, renderer.domElement);

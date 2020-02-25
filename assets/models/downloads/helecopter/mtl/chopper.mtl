@@ -1,0 +1,70 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.02.2020 01:11:43
+
+newmtl Mat_maverick_012_ec135_bmp
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0500 0.0500 0.0500
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\chris\Desktop\helecopter\ec135.bmp
+	map_Kd C:\Users\chris\Desktop\helecopter\ec135.bmp
+
+newmtl Mat_maverick_011_ec1351_bmp
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0500 0.0500 0.0500
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\chris\Desktop\helecopter\ec1351.bmp
+	map_Kd C:\Users\chris\Desktop\helecopter\ec1351.bmp
+
+newmtl Mat_maverick_008_ec135_bmp
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0500 0.0500 0.0500
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\chris\Documents\3ds Max 2020\sceneassets\images\ec135.bmp
+	map_Kd C:\Users\chris\Documents\3ds Max 2020\sceneassets\images\ec135.bmp
+
+newmtl Mat_maverick_009_ec1351_bmp
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0500 0.0500 0.0500
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\chris\Documents\3ds Max 2020\sceneassets\images\ec1351.bmp
+	map_Kd C:\Users\chris\Documents\3ds Max 2020\sceneassets\images\ec1351.bmp
+
+newmtl Mat_maverick_010
+	Ns 96.0784
+	Ni 1.5000
+	d 0.3922
+	Tr 0.6078
+	Tf 0.3922 0.3922 0.3922 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0500 0.0500 0.0500
+	Ke 0.0000 0.0000 0.0000
