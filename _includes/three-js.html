@@ -1,11 +1,12 @@
-<canvas class="threeJS-canvas" id="{{include.id}}"></canvas>
-<script src={{'assets/js/three.js' | absolute_url}}>
+<canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+
+<script src="{{'assets/js/three.js' | absolute_url}}">
 </script>
-<script src={{'assets/js/OrbitControls.js' | absolute_url}}>
+<script src="{{'assets/js/OrbitControls.js' | absolute_url}}">
 </script>
-<script src={{'assets/js/OBJLoader.js' | absolute_url}}>
+<script src="{{'assets/js/OBJLoader.js' | absolute_url}}">
 </script>
-<script src={{'assets/js/MTLLoader.js' | absolute_url}}>
+<script src="{{'assets/js/MTLLoader.js' | absolute_url}}">
 </script>
 
 <script>
@@ -19,24 +20,7 @@
         var renderer = new THREE.WebGLRenderer({ canvas });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
-        // ======== OBJ Loader ============ //
-        function getChopper() {
-            var mtlLoader = new THREE.MTLLoader();
-            mtlLoader.setPath('/assets/models/obj/Cubierta-Lidel-Can-Vidalet.obj');
-            mtlLoader.load('/assets/models/mtl/Cubierta-Lidel-Can-Vidalet.mtl', function (materials) {
-                materials.preload();
-                var objLoader = new THREE.OBJLoader();
-                objLoader.setMaterials(materials);
-                objLoader.setPath('/assets/models/obj/Cubierta-Lidel-Can-Vidalet.obj');
-                objLoader.load('/assets/models/mtl/Cubierta-Lidel-Can-Vidalet.mtl', function (object) {
-                    scene.add(object);
-                    var light = new THREE.PointLight(0xff0000, 1, 100);
-                    light.position.set(50, 50, 50);
-                    scene.add(light);
-                });
-            });
-        }
-        const chopper = getChopper();
+
         //================== set camera ======================//
         const fov = 45;
         const aspect = window.innerWidth / window.innerHeight;
@@ -109,7 +93,8 @@
         const cubes = [
             makeBoxInstance(geometry, 0x44aa88, 0, 30, 0),
         ];
-        // create box and basic material
+
+        // create torus and basic material
         const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
         function makeTorusInstance(geometry, color, x, y, z) {
             const material = new THREE.MeshPhongMaterial({ color });
@@ -126,6 +111,7 @@
         const toruses = [
             makeTorusInstance(geometryTorus, 0xaa4488, 80, 30, 0)
         ];
+
         // create TorusKnot and basic material
         const geometryTorusKnot = new THREE.TorusKnotGeometry(20, 5, 100, 16);
         function makeTorusKnotInstance(geometry, color, x, y, z) {
@@ -145,7 +131,6 @@
         ];
 
         //===================== Events ======================//
-
         function resizeRendererToDisplaySize(renderer) {
             const canvas = document.querySelector('#{{include.id}}');
             const width = canvas.clientWidth;
@@ -194,3 +179,4 @@
     main();
 
 </script>
+
