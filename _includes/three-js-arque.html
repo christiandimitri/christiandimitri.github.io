@@ -1,13 +1,11 @@
-<canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+<div class="column">
+    <div class="card">
+        <div class="card-image medium-height">
+            <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+        </div>
+    </div>
+</div>
 
-<script src="{{'assets/js/three.js' | absolute_url}}">
-</script>
-<script src="{{'assets/js/OrbitControls.js' | absolute_url}}">
-</script>
-<script src="{{'assets/js/OBJLoader.js' | absolute_url}}">
-</script>
-<script src="{{'assets/js/MTLLoader.js' | absolute_url}}">
-</script>
 
 <script>
     // Our Javascript will go here.
@@ -20,27 +18,18 @@
         var renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.shadowMap.enabled = true;
-
-
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         //================== set camera ======================//
         const fov = 45;
         const aspect = window.innerWidth / window.innerHeight;
         const near = 1;
-        const far = 5000;
+        const far = 6000;
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
         camera.position.z = 1000;
         camera.position.y = 1000;
         camera.position.x = -1500;
-
-        // controls 
-        var controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 100;
-        controls.maxDistance = 2500;
-        controls.maxPolarAngle = Math.PI / 2;
 
         // world
         var world = new THREE.CylinderBufferGeometry(0, 10, 30, 4, 1);
@@ -50,56 +39,71 @@
         var scene = new THREE.Scene();
         // set background color
         scene.background = new THREE.Color(0xa0a0a0);
-        scene.fog = new THREE.Fog(0xa0a0a0, 200, 4000);
+        scene.fog = new THREE.Fog(0xa0a0a0, 200, 6000);
+
         //  set light
-        {
-            scene.add(new THREE.AmbientLight(0x666666));
 
-            light = new THREE.HemisphereLight(0xffffff, 0x444444);
-            light.position.set(0, 200, 0);
-            scene.add(light);
+        var light = new THREE.DirectionalLight(0xffffff, 2);
+        light.position.set(0, 1000, 0);
+        light.castShadow = true;
+        scene.add(light);
 
-            light = new THREE.DirectionalLight(0xffffff);
-            light.position.set(0, 3000, 2000);
-            light.castShadow = true;
-            light.shadow.camera.top = 180;
-            light.shadow.camera.bottom = - 100;
-            light.shadow.camera.left = - 120;
-            light.shadow.camera.right = 120;
-            scene.add(light);
-        }
+        // set up shadow properties for the light
+        light.shadow.mapSize.width = 512;
+        light.shadow.mapSize.height = 512;
+        light.shadow.camera.near = 0.5;
+        light.shadow.camera.far = 1000;
+
+
 
         // ground
-        var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(10000, 10000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
-        mesh.rotation.x = - Math.PI / 2;
-        mesh.receiveShadow = true;
-        scene.add(mesh);
 
-        var grid = new THREE.GridHelper(10000, 100, 0x000000, 0x000000);
-        grid.material.opacity = 0.05;
-        grid.material.transparent = true;
-        scene.add(grid);
+        var ground = new THREE.Mesh(new THREE.PlaneBufferGeometry(100000, 100000), new THREE.MeshStandardMaterial({ color: 0xffffff }));
+        ground.rotation.x = - Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // var grid = new THREE.GridHelper(10000, 100, 0x000000, 0x000000);
+        // grid.material.opacity = 0.05;
+        // grid.material.transparent = true;
+        // scene.add(grid);
+
+        // controls 
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 100;
+        controls.maxDistance = 3000;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        // ============== compute scene boundingbox ====================//
+
+
+        // ============ TODO loading buffer ==============//
+
+
+
 
         // ======== OBJ Loader ============ //
-        function getStructure() {
-            var mtlLoader = new THREE.MTLLoader();
-            mtlLoader.setPath('{{include.obj}}');
-            mtlLoader.load('{{include.mtl}}', function (materials) {
-                materials.preload();
-                var objLoader = new THREE.OBJLoader();
-                objLoader.setMaterials(materials);
-                objLoader.setPath('{{include.obj}}');
-                objLoader.load('{{include.mtl}}', function (object) {
-                    scene.add(object);
-                });
+        function loadModel(color) {
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setPath('/assets/models/obj/');
+            objLoader.load('{{include.obj}}', function (object) {
+                object.traverse(child => {
+                    if (child.material) child.material = new THREE.MeshStandardMaterial({ color });
+                })
+                scene.traverse(function (child) {
+                    if (child.isMesh) {
+
+                        object.castShadow = true;
+                        object.receiveShadow = true;
+                    }
+                })
+                scene.add(object);
             });
         }
-        function structureColor(color) {
-            const material = new THREE.MeshStandardMaterial({ color });
-            const loadStructure = new THREE.Mesh(getStructure(), material);
-        };
-        const newStructure= structureColor(0x44aa88);
-        
+        var model = loadModel('{{ include.color }}');
         //===================== Events ======================//
         function resizeRendererToDisplaySize(renderer) {
             const canvas = document.querySelector('#{{include.id}}');
@@ -111,18 +115,23 @@
             }
             return needResize;
         }
+
+        // ====================== helpers ==========//
+        var helper = new THREE.CameraHelper(light.shadow.camera);
+        scene.add(helper);
+
         // adding scene and camera to the render
         function render(time) {
             time *= 0.001;
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = document.querySelector('#{{include.id}}');
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix
-            }
+                camera.updateProjectionMatrix;
+            };
             renderer.render(scene, camera);
 
             requestAnimationFrame(render);
-        }
+        };
 
         requestAnimationFrame(render);
     }
