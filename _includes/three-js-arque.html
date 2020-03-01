@@ -1,0 +1,228 @@
+<div class="column">
+    <div class="card">
+        <div class="card-image medium-height">
+            <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="x-shader/x-vertex" id="vertexShader">
+
+	varying vec3 vWorldPosition;
+
+			void main() {
+
+				vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+				vWorldPosition = worldPosition.xyz;
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+			}
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+
+			uniform vec3 topColor;
+			uniform vec3 bottomColor;
+			uniform float offset;
+			uniform float exponent;
+
+			varying vec3 vWorldPosition;
+
+			void main() {
+
+				float h = normalize( vWorldPosition + offset ).y;
+				gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );
+
+			}
+</script>
+
+<script>
+    // Our Javascript will go here.
+    // console.clear();
+
+    function main() {
+
+        //========= set renderer to 'canvas id' ===============//
+        const canvas = document.querySelector('#{{include.id}}');
+
+        //================== set camera ======================//
+        const fov = 30;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 0.1;
+        const far = 5000;
+        var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.lookAt(new THREE.Vector3(0, 1, 0));
+        camera.position.z = 8;
+        camera.position.y = 8;
+        camera.position.x = -8;
+
+        //================== set scene ======================//
+        var scene = new THREE.Scene();
+
+        // ======== OBJ Loader ============ //
+        function loadModel(color) {
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setPath('/assets/models/obj/');
+            objLoader.load('{{include.obj}}', function (object) {
+                object.traverse(child => {
+                    if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
+                    object.castShadow = true;
+                    object.receiveShadow = true;
+                });
+                object.position.y += 1;
+                scene.add(object);
+            });
+        }
+        var model = loadModel('{{ include.color }}');
+
+        // =============== STL loader =================//
+
+        // Binary files 
+
+        // var material = new THREE.MeshPhongMaterial({ color: 0xAAAAAA, specular: 0x111111, shininess: 200 });
+        // var loader = new THREE.STLLoader();
+        // loader.load('/assets/models/stl/Cubierta-Marbella.stl/', function (geometry) {
+
+        //     var mesh = new THREE.Mesh(geometry, material);
+        //     mesh.rotation.set(- Math.PI / 2, 0, 0);
+        //     mesh.castShadow = true;
+        //     mesh.receiveShadow = true;
+
+        //     scene.add(mesh);
+
+        // });
+
+        // =============== set light =====================================//
+        // // // set background color
+        scene.background = new THREE.Color().setHSL(0.6, 0, 1);
+        scene.fog = new THREE.Fog(scene.background, 1, 5000);
+        //  set hemlight
+        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
+        hemiLight.color.setHSL(0.6, 1, 0.6);
+        hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+        hemiLight.position.set(0, 50, 0);
+        scene.add(hemiLight);
+        // 
+        var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+        scene.add(ambientLight);
+
+        var dirLight = new THREE.PointLight(0xffffff, 0.8, 18, 2);
+        dirLight.color.setHSL(0.1, 1, 0.95);
+        dirLight.position.set(-3, 6, -3);
+        // ============= set up shadow properties for the light ============//
+        dirLight.castShadow = true;
+
+        dirLight.shadow.mapSize.width = 2048;
+        dirLight.shadow.mapSize.height = 2048;
+        var d = 50;
+
+        dirLight.shadow.camera.left = - d;
+        dirLight.shadow.camera.right = d;
+        dirLight.shadow.camera.top = d;
+        dirLight.shadow.camera.bottom = - d;
+
+        dirLight.shadow.camera.near = 0.01;
+        dirLight.shadow.camera.far = 3500;
+        dirLight.shadow.bias = -0.0001;
+        scene.add(dirLight);
+
+        // ==================== set renderer ==============================//
+        var renderer = new THREE.WebGLRenderer({ antilias: true, canvas });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.BasicShadowMap;
+        // ===================== ground ===================================//
+        var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
+        var groundMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
+        groundMat.color.setHSL(0.095, 1, 0.75);
+
+        var ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = - Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        var grid = new THREE.GridHelper(10000, 1000, 0x000000, 0x000000);
+        grid.material.opacity = 0.2;
+        grid.material.transparent = true;
+        scene.add(grid);
+
+        // ===================== controls ==================================//
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 1.2;
+        controls.maxDistance = 20;
+        controls.maxPolarAngle = Math.PI / 2;
+
+
+        // ==================== SKYDOME ===================================//
+
+        var vertexShader = document.getElementById('vertexShader').textContent;
+        var fragmentShader = document.getElementById('fragmentShader').textContent;
+        var uniforms = {
+            "topColor": { value: new THREE.Color(0x0077ff) },
+            "bottomColor": { value: new THREE.Color(0xffffff) },
+            "offset": { value: 0 },
+            "exponent": { value: 0.75 }
+        };
+        uniforms["topColor"].value.copy(hemiLight.color);
+
+        scene.fog.color.copy(uniforms["bottomColor"].value);
+
+        var skyGeo = new THREE.SphereBufferGeometry(4000, 100, 100);
+        var skyMat = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: vertexShader,
+            fragmentShader: fragmentShader,
+            side: THREE.BackSide
+        });
+
+        var sky = new THREE.Mesh(skyGeo, skyMat);
+        scene.add(sky);
+
+
+
+        // ============== TODO compute scene boundingbox ====================//
+
+
+        // ============== TODO loading buffer ==============================//
+
+
+
+
+
+        //===================== Events ======================//
+        function resizeRendererToDisplaySize(renderer) {
+            const canvas = document.querySelector('#{{include.id}}');
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            const needResize = canvas.width !== width || canvas.clientHeight !== height;
+            if (needResize) {
+                renderer.setSize(width, height, false);
+            }
+            return needResize;
+        }
+        // ===================== Render ==========================//
+        // adding scene and camera to the render
+        function render(time) {
+            time *= 0.001;
+            if (resizeRendererToDisplaySize(renderer)) {
+                const canvas = document.querySelector('#{{include.id}}');
+                camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix();
+            };
+            renderer.render(scene, camera);
+
+            requestAnimationFrame(render);
+        };
+
+        requestAnimationFrame(render);
+    }
+
+
+    main();
+
+</script>
