@@ -6,125 +6,209 @@
     </div>
 </div>
 
+<script type="x-shader/x-vertex" id="vertexShader">
+
+	varying vec3 vWorldPosition;
+
+			void main() {
+
+				vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+				vWorldPosition = worldPosition.xyz;
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+			}
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+
+			uniform vec3 topColor;
+			uniform vec3 bottomColor;
+			uniform float offset;
+			uniform float exponent;
+
+			varying vec3 vWorldPosition;
+
+			void main() {
+
+				float h = normalize( vWorldPosition + offset ).y;
+				gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );
+
+			}
+</script>
+
 <script>
     // Our Javascript will go here.
-    // console.clear();
+    console.clear();
 
     function main() {
         //========= set renderer to 'canvas id' ===============//
         const canvas = document.querySelector('#{{include.id}}');
         // set renderer
-        var renderer = new THREE.WebGLRenderer({ canvas });
+        var renderer = new THREE.WebGLRenderer({ antilias: true, canvas });
         renderer.setPixelRatio(window.devicePixelRatio);
+        
         renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.BasicShadowMap;
 
         //================== set camera ======================//
-        const fov = 45;
+        const fov = 30;
         const aspect = window.innerWidth / window.innerHeight;
-        const near = 1;
-        const far = 3000;
+        const near = 0.1;
+        const far = 5000;
         var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera.lookAt(new THREE.Vector3(0, 0, 0)); // Set look at coordinate like this
-        camera.position.z = 300;
-        camera.position.y = 200;
-        camera.position.x = -100;
+        camera.lookAt(new THREE.Vector3(0, 1, 0));
+        camera.position.z = 8;
+        camera.position.y = 8;
+        camera.position.x = -8;
 
         // controls 
         var controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        controls.enableDamping = true;
+        // an animation loop is required when either damping or auto-rotation are enabled
         controls.dampingFactor = 0.05;
-        controls.minDistance = 100;
-        controls.maxDistance = 1000;
+        controls.minDistance = 1.2;
+        controls.maxDistance = 20;
         controls.maxPolarAngle = Math.PI / 2;
 
-        // world
-        var world = new THREE.CylinderBufferGeometry(0, 10, 30, 4, 1);
-        var material = new THREE.MeshNormalMaterial();
+
         //================== set scene ======================//
         var scene = new THREE.Scene();
-        // set background color
-        scene.background = new THREE.Color(0xa0a0a0);
-        scene.fog = new THREE.Fog(0xa0a0a0, 200, 3000);
-        //  set light
-        {
-            light = new THREE.HemisphereLight(0xffffff, 0x444444);
-            light.position.set(0, 200, 0);
-            scene.add(light);
 
-            light = new THREE.DirectionalLight(0xffffff);
-            light.position.set(0, 200, 100);
-            light.castShadow = true;
-            light.shadow.camera.top = 180;
-            light.shadow.camera.bottom = - 100;
-            light.shadow.camera.left = - 120;
-            light.shadow.camera.right = 120;
-            scene.add(light);
-        }
+        // // // set background color
+        scene.background = new THREE.Color().setHSL(0.6, 0, 1);
+        scene.fog = new THREE.Fog(scene.background, 1, 5000);
+
+        //  set hemlight
+        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
+        hemiLight.color.setHSL(0.6, 1, 0.6);
+        hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+        hemiLight.position.set(0, 50, 0);
+        scene.add(hemiLight);
+
+        // 
+
+        var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+        scene.add(ambientLight);
+
+        var dirLight = new THREE.PointLight(0xffffff, 0.8, 18, 2);
+        dirLight.color.setHSL(0.1, 1, 0.95);
+        dirLight.position.set(-3, 6, -3);
+
+        dirLight.castShadow = true;
+
+        dirLight.shadow.mapSize.width = 2048;
+        dirLight.shadow.mapSize.height = 2048;
+        var d = 50;
+
+        dirLight.shadow.camera.left = - d;
+        dirLight.shadow.camera.right = d;
+        dirLight.shadow.camera.top = d;
+        dirLight.shadow.camera.bottom = - d;
+
+        dirLight.shadow.camera.near = 0.01;
+        dirLight.shadow.camera.far = 3500;
+        dirLight.shadow.bias = -0.0001;
+        scene.add(dirLight);
+
         // ground
-        var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(5000, 5000), new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false }));
-        mesh.rotation.x = - Math.PI / 2;
-        mesh.receiveShadow = true;
-        scene.add(mesh);
+        var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
+        var groundMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
+        groundMat.color.setHSL(0.095, 1, 0.75);
 
-        var grid = new THREE.GridHelper(5000, 50, 0x000000, 0x000000);
+        var ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = - Math.PI / 2;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        var grid = new THREE.GridHelper(10000, 1000, 0x000000, 0x000000);
         grid.material.opacity = 0.2;
         grid.material.transparent = true;
         scene.add(grid);
 
+        // world
+        // SKYDOME
+        var vertexShader = document.getElementById('vertexShader').textContent;
+        var fragmentShader = document.getElementById('fragmentShader').textContent;
+        var uniforms = {
+            "topColor": { value: new THREE.Color(0x0077ff) },
+            "bottomColor": { value: new THREE.Color(0xffffff) },
+            "offset": { value: 0 },
+            "exponent": { value: 0.75 }
+        };
+        uniforms["topColor"].value.copy(hemiLight.color);
+
+        scene.fog.color.copy(uniforms["bottomColor"].value);
+
+        var skyGeo = new THREE.SphereBufferGeometry(4000, 100, 100);
+        var skyMat = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: vertexShader,
+            fragmentShader: fragmentShader,
+            side: THREE.BackSide
+        });
+
+        var sky = new THREE.Mesh(skyGeo, skyMat);
+        scene.add(sky);
+
+
 
         //========= create geometry and material ==============//     
         // create box and basic material
-        const geometry = new THREE.BoxGeometry(40, 40, 40);
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
         function makeBoxInstance(geometry, color, x, y, z) {
-            const material = new THREE.MeshNormalMaterial();
+            const material = new THREE.MeshPhongMaterial({ color });
 
             const cube = new THREE.Mesh(geometry, material);
-
-            scene.add(cube);
-
             cube.position.x = x;
             cube.position.y = y;
             cube.position.z = z;
+            cube.receiveShadow = true;
+            cube.castShadow = true;
+            scene.add(cube);
             return cube;
         }
         const cubes = [
-            makeBoxInstance(geometry, 0x44aa88, 0, 30, 0),
+            makeBoxInstance(geometry, 0xff4444, 0, 1, 0),
         ];
 
         // create torus and basic material
-        const geometryTorus = new THREE.TorusGeometry(20, 10, 16, 100);
+        const geometryTorus = new THREE.TorusGeometry(0.5, .2, 16, 100);
         function makeTorusInstance(geometry, color, x, y, z) {
             const material = new THREE.MeshPhongMaterial({ color });
 
             const torus = new THREE.Mesh(geometry, material);
-
-            scene.add(torus);
-
             torus.position.x = x;
             torus.position.y = y;
             torus.position.z = z;
+            torus.receiveShadow = true;
+            torus.castShadow = true;
+            scene.add(torus);
             return torus;
         }
         const toruses = [
-            makeTorusInstance(geometryTorus, 0xaa4488, 80, 30, 0)
+            makeTorusInstance(geometryTorus, 0xaa4488, 2, 1, 0)
         ];
 
         // create TorusKnot and basic material
-        const geometryTorusKnot = new THREE.TorusKnotGeometry(20, 5, 100, 16);
+        const geometryTorusKnot = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 16);
         function makeTorusKnotInstance(geometry, color, x, y, z) {
             const material = new THREE.MeshPhongMaterial({ color });
 
             const torusKnot = new THREE.Mesh(geometry, material);
 
-            scene.add(torusKnot);
 
             torusKnot.position.x = x;
             torusKnot.position.y = y;
             torusKnot.position.z = z;
+            torusKnot.receiveShadow = true;
+            torusKnot.castShadow = true;
+            scene.add(torusKnot);
             return torusKnot;
         }
         const torusKnots = [
-            makeTorusKnotInstance(geometryTorusKnot, 0x44aa88, -80, 30, 0),
+            makeTorusKnotInstance(geometryTorusKnot, 0x44aa88, -2, 1, 0),
         ];
 
         //===================== Events ======================//
@@ -144,8 +228,8 @@
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = document.querySelector('#{{include.id}}');
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix
-            }
+                camera.updateProjectionMatrix();
+            };
             torusKnots.forEach((torusKnot, ndx) => {
                 const speed = 1 + ndx * .1;
                 const rot = time * speed;
@@ -176,4 +260,3 @@
     main();
 
 </script>
-
