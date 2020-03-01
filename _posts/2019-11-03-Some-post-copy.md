@@ -20,4 +20,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Mauris cursus mattis molestie a iaculis. Eu sem integer vitae justo eget magna fermentum iaculis. Scelerisque purus semper eget duis. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Arcu non sodales neque sodales. Vel fringilla est ullamcorper eget nulla facilisi etiam. Dui id ornare arcu odio ut. Interdum varius sit amet mattis vulputate enim.
 
-{% include three-js-arque.html id='d' obj='Cubierta-Marbella.obj' %}
+<!-- {% include three-js-arque.html id='d' obj='Cubierta-Marbella.obj' %} -->
