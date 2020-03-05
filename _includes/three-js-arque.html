@@ -80,7 +80,7 @@
                 });
                 console.log(object);
                 object.position.set(0, 0, 0);
-
+                object.scale.set(10, 10, 10);
                 scene.add(object);
             });
         }
@@ -135,7 +135,7 @@
         scene.add(ground);
 
         var grid = new THREE.GridHelper(50, 50, 0x000000, 0x000000);
-        grid.material.opacity = 0.2;
+        grid.material.opacity = 0.1;
         grid.material.transparent = true;
         scene.add(grid);
 
@@ -145,7 +145,7 @@
         // an animation loop is required when either damping or auto-rotation are enabled
         controls.dampingFactor = 0.05;
         controls.minDistance = 1.2;
-        controls.maxDistance = 25;
+        controls.maxDistance = 35;
         controls.maxPolarAngle = Math.PI / 2;
 
         // ==================== SKYDOME ===================================//
