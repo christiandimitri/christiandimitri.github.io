@@ -68,31 +68,19 @@
             objLoader.load('{{include.obj}}', function (object) {
                 object.traverse(child => {
                     if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
-                    object.castShadow = true;
-                    object.receiveShadow = true;
                 });
-                object.position.y += 1;
+                object.castShadow = true;
+                object.receiveShadow = true;
                 scene.add(object);
             });
         }
         var model = loadModel('{{ include.color }}');
+        // TODO obj shadow drop not working
+        // var intersects = raycaster.intersectObjects(objects, true);
 
         // =============== STL loader =================//
 
-        // Binary files 
 
-        // var material = new THREE.MeshPhongMaterial({ color: 0xAAAAAA, specular: 0x111111, shininess: 200 });
-        // var loader = new THREE.STLLoader();
-        // loader.load('/assets/models/stl/Cubierta-Marbella.stl/', function (geometry) {
-
-        //     var mesh = new THREE.Mesh(geometry, material);
-        //     mesh.rotation.set(- Math.PI / 2, 0, 0);
-        //     mesh.castShadow = true;
-        //     mesh.receiveShadow = true;
-
-        //     scene.add(mesh);
-
-        // });
 
         // =============== set light =====================================//
         // // // set background color
@@ -110,7 +98,7 @@
 
         var dirLight = new THREE.PointLight(0xffffff, 0.8, 18, 2);
         dirLight.color.setHSL(0.1, 1, 0.95);
-        dirLight.position.set(-3, 6, -3);
+        dirLight.position.set(-3, 6, 0);
         // ============= set up shadow properties for the light ============//
         dirLight.castShadow = true;
 
@@ -126,6 +114,8 @@
         dirLight.shadow.camera.near = 0.01;
         dirLight.shadow.camera.far = 3500;
         dirLight.shadow.bias = -0.0001;
+        var dirHelper = new THREE.PointLightHelper(dirLight);
+        scene.add(dirHelper);
         scene.add(dirLight);
 
         // ==================== set renderer ==============================//
@@ -156,6 +146,25 @@
         controls.minDistance = 1.2;
         controls.maxDistance = 20;
         controls.maxPolarAngle = Math.PI / 2;
+
+        // box
+
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        function makeBoxInstance(geometry, color, x, y, z) {
+            const material = new THREE.MeshPhongMaterial({ color });
+
+            const cube = new THREE.Mesh(geometry, material);
+            cube.position.x = x;
+            cube.position.y = y;
+            cube.position.z = z;
+            cube.receiveShadow = true;
+            cube.castShadow = true;
+            scene.add(cube);
+            return cube;
+        }
+        const cubes = [
+            makeBoxInstance(geometry, 0xff4444, 0, 1, 2),
+        ];
 
 
         // ==================== SKYDOME ===================================//
