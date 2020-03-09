@@ -1,0 +1,238 @@
+<div id="info">
+	<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - exporter - gltf<br /><br />
+	<button id="export_scene">Export Scene1</button>
+	<button id="export_scenes">Export Scene1 and THREE.Scene 2</button>
+	<button id="export_object">Export Model</button><br />
+	<button id="export_obj">Export WaltHead</button>
+	<button id="export_objects">Export Sphere and Grid</button>
+	<button id="export_scene_object">Export Scene1 and Sphere</button>
+	<br /><br />
+	<label><input id="option_trs" name="trs" type="checkbox" />TRS</label>
+	<label><input id="option_visible" name="visible" type="checkbox" checked="checked" />Only Visible</label>
+	<label><input id="option_drawrange" name="visible" type="checkbox" checked="checked" />Truncate
+		drawRange</label><br />
+	<label><input id="option_binary" name="visible" type="checkbox">Binary (<code>.glb</code>)</label>
+	<label><input id="option_forceindices" name="visible" type="checkbox">Force indices</label>
+	<label><input id="option_forcepot" name="visible" type="checkbox">Force POT textures</label>
+	<label><input id="option_maxsize" name="maxSize" type="number" value="4096" min="2" max="8192" step="1"> Max texture
+		size</label>
+</div>
+
+<script>
+	function exportGLTF(input) {
+
+		var gltfExporter = new THREE.GLTFExporter();
+
+		var options = {
+			trs: document.getElementById('option_trs').checked,
+			onlyVisible: document.getElementById('option_visible').checked,
+			truncateDrawRange: document.getElementById('option_drawrange').checked,
+			binary: document.getElementById('option_binary').checked,
+			forceIndices: document.getElementById('option_forceindices').checked,
+			forcePowerOfTwoTextures: document.getElementById('option_forcepot').checked,
+			maxTextureSize: Number(document.getElementById('option_maxsize').value) || Infinity // To prevent NaN value
+		};
+		gltfExporter.parse(input, function (result) {
+
+			if (result instanceof ArrayBuffer) {
+
+				saveArrayBuffer(result, 'scene.glb');
+
+			} else {
+
+				var output = JSON.stringify(result, null, 2);
+				// console.log(output);
+				saveString(output, 'scene.gltf');
+
+			}
+
+		}, options);
+
+	}
+
+	document.getElementById('export_scene').addEventListener('click', function () {
+
+		exportGLTF(scene1);
+
+	});
+
+	document.getElementById('export_scenes').addEventListener('click', function () {
+
+		exportGLTF([scene1, scene2]);
+
+	});
+
+	document.getElementById('export_object').addEventListener('click', function () {
+
+		exportGLTF(sphere);
+
+	});
+	document.getElementById('export_obj').addEventListener('click', function () {
+
+		exportGLTF(waltHead);
+
+	});
+
+	document.getElementById('export_objects').addEventListener('click', function () {
+
+		exportGLTF([sphere, gridHelper]);
+
+	});
+
+	document.getElementById('export_scene_object').addEventListener('click', function () {
+
+		exportGLTF([scene1, gridHelper]);
+
+	});
+
+
+	var link = document.createElement('a');
+	link.style.display = 'none';
+	document.body.appendChild(link); // Firefox workaround, see #6594
+
+	function save(blob, filename) {
+
+		link.href = URL.createObjectURL(blob);
+		link.download = filename;
+		link.click();
+
+		// URL.revokeObjectURL( url ); breaks Firefox...
+
+	}
+
+	function saveString(text, filename) {
+
+		save(new Blob([text], { type: 'text/plain' }), filename);
+
+	}
+
+
+	function saveArrayBuffer(buffer, filename) {
+
+		save(new Blob([buffer], { type: 'application/octet-stream' }), filename);
+
+	}
+
+	var container;
+
+	var camera, object, scene1, scene2, renderer;
+	var gridHelper, model, sphere, waltHead;
+
+	init();
+	animate();
+
+	function init() {
+
+		container = document.createElement('div');
+		document.body.appendChild(container);
+
+		scene1 = new THREE.Scene();
+		scene1.name = 'Scene1';
+
+		// ---------------------------------------------------------------------
+		// Perspective Camera
+		// ---------------------------------------------------------------------
+		camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+		camera.position.set(600, 400, 0);
+
+		camera.name = "PerspectiveCamera";
+		scene1.add(camera);
+
+		// ---------------------------------------------------------------------
+		// Ambient light
+		// ---------------------------------------------------------------------
+		var light = new THREE.AmbientLight(0xffffff, 0.2);
+		light.name = 'AmbientLight';
+		scene1.add(light);
+
+		// ---------------------------------------------------------------------
+		// DirectLight
+		// ---------------------------------------------------------------------
+		light = new THREE.DirectionalLight(0xffffff, 1);
+		light.target.position.set(0, 0, - 1);
+		light.add(light.target);
+		light.lookAt(- 1, - 1, 0);
+		light.name = 'DirectionalLight';
+		scene1.add(light);
+
+		// ---------------------------------------------------------------------
+		// Grid
+		// ---------------------------------------------------------------------
+		gridHelper = new THREE.GridHelper(2000, 20);
+		// gridHelper.position.y = - 50;
+		gridHelper.name = "Grid";
+		scene1.add(gridHelper);
+
+		// ---------------------------------------------------------------------
+		// Axes
+		// ---------------------------------------------------------------------
+		var axes = new THREE.AxesHelper(500);
+		axes.name = "AxesHelper";
+		scene1.add(axes);
+
+		var geometry = new THREE.SphereBufferGeometry(50, 32, 32);
+		var material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+		sphere = new THREE.Mesh(geometry, material);
+		// scene1.add(sphere);
+
+		function loadModel(color) {
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setPath('/assets/models/obj/');
+			objLoader.load('Edificio-Aldesa.obj', function (object) {
+				object.traverse(child => {
+					if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
+					child.castShadow = true;
+					child.receiveShadow = true;
+					sphere = child;
+				});
+				object.position.set(0, 0, 0);
+				object.scale.set(500, 500, 500);
+				scene1.add(object);
+			});
+		}
+		model = loadModel('#7b9095');
+
+		renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize(window.innerWidth, window.innerHeight);
+
+		container.appendChild(renderer.domElement);
+
+		//
+
+		window.addEventListener('resize', onWindowResize, false);
+
+	}
+
+	function onWindowResize() {
+
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+
+		renderer.setSize(window.innerWidth, window.innerHeight);
+
+	}
+
+	//
+
+	function animate() {
+
+		requestAnimationFrame(animate);
+
+		render();
+
+	}
+
+	function render() {
+
+		var timer = Date.now() * 0.0001;
+
+		camera.position.x = Math.cos(timer) * 800;
+		camera.position.z = Math.sin(timer) * 800;
+
+		camera.lookAt(scene1.position);
+		renderer.render(scene1, camera);
+
+	}
+
+</script>
