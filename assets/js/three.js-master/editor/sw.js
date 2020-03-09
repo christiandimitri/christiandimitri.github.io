@@ -3,7 +3,7 @@
 const assets = [
 	'./',
 
-	'../files/favicon.ico',
+	'assets/files/favicon.ico',
 
 	'../build/three.module.js',
 
