@@ -71,7 +71,7 @@
         // ======== OBJ Loader ============ //
         function loadModel(color) {
             var objLoader = new THREE.OBJLoader();
-            objLoader.setPath('https://media.githubusercontent.com/media/christiandimitri/christiandimitri.github.io/master/assets/models/obj/');
+            objLoader.setPath('assets/models/obj/');
             objLoader.load('{{include.obj}}', function (object) {
                 object.traverse(child => {
                     if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
