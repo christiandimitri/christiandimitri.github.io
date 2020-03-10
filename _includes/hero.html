@@ -36,8 +36,8 @@
         {% if page.title %} {{page.title}} {% else %} {{site.title}} {% endif %}
       </h1>
       
-      <h2 class="subtitle">
-        {% if page.subtitle %} {{page.subtitle}} {% else %} {{site.subtitle}} {% endif %}
+      <h2 class="subtitle has-text-centered">
+        {% if page.subtitle %} {{page.subtitle}} {% elsif page.subtitle1 %} {% include text-animated.html %} {% else %} {{site.subtitle}} {% endif %}
        
       </h2>
       
