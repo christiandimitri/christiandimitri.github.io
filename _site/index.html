@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/assets/main.css">
     <link rel="shortcut icon" href="http://localhost:4000/assets/files/favicon.ico" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://localhost:4000/assets/js/bulma-carousel.min.js"></script>
+
     <script src="/assets/js/main.js"></script>
     <script src="http://localhost:4000/assets/js/three.js">
     </script>
@@ -22,7 +24,6 @@
     </script>
     <script src="http://localhost:4000/assets/js/GLTFExporter.js">
     </script>
-
     <title> CHRISTIAN DIMITRI  </title>
 </head>
 
@@ -120,6 +121,36 @@
     </div>
   </div>
 </section>
+
+<section class="section">
+    <div class="container">
+        <!-- Start Carousel -->
+        <div id="carousel-demo" class="carousel">
+            <div class="item-1">
+                <img src="assets/img/8-cats.jpg" alt="">
+            </div>
+            <div class="item-2">
+                <img src="assets/img/3-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg" alt=""> </div>
+            <div class="item-3">
+                <img src="assets/img/9-ski.png" alt="">
+            </div>
+        </div>
+        <img src="assets/img/11-jekyll.png" alt="">
+    </div>
+</section>
+
+<script type="module">
+
+    // Initialize all elements with carousel class.
+    const carousels = bulmaCarousel.attach('.carousel', options);
+
+    // To access to bulmaCarousel instance of an element
+    const element = document.querySelector('#carousel-demo');
+    if (element && element.bulmaCarousel) {
+        // bulmaCarousel instance is available as element.bulmaCarousel
+    }
+</script>
+
 <section class="" id="skills-home">
   <div class="section">
     <div class="container">
@@ -326,14 +357,16 @@
   <div class="section">
     <div class="container">
       <div class="content">
-      <div class="buttons is-centered are-large">
-        
-        <button onclick="window.location.href = 'about-me.html';" class="button is-primary is-outlined">About Me</button>
-        
-        <button onclick="window.location.href = 'blog/index.html';" class="button is-primary is-outlined">My Blog</button>
-        
+        <div class="buttons is-centered are-large">
+          
+          <button onclick="window.location.href = 'about-me.html';"
+            class="button is-primary is-outlined">About Me</button>
+          
+          <button onclick="window.location.href = 'blog/index.html';"
+            class="button is-primary is-outlined">My Blog</button>
+          
+        </div>
       </div>
-    </div>
 </section>
 
 <footer class="footer" id="small-footer">
