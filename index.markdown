@@ -6,7 +6,10 @@ hero:
   image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 
 title: CHRISTIAN DIMITRI
-subtitle: Architect & Computational Designer
+subtitle1: Architect 
+subtitle2: Computational Designer
+subtitle3: Parametric Specialist
+subtitle4: Tech Freak
 categories:
  - title: Architecture
    url: architecture
