@@ -7,7 +7,7 @@ hero:
  particles: default
  size: is-medium
  color: is-info
- image: assets/img/13-objLoader.jpg
+ image: assets/img/17-objLoader.jpg
 description: 
     In this post i will import a 3D model into a threejs canvas in my wesbite, and load some materials, lights, and more actions and events. This provides live interaction with the 3D world for architects, designers and others in the field.
 ---
