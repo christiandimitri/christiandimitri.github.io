@@ -1,13 +1,13 @@
 ---
 layout: post
 title: threeJS
-subtitle: GLTF Exporter for gltfLoader
+subtitle: OBJ To GLTF
 author: Christian Dimitri
 hero:
  particles: snow
  size: is-large
  color: is-primary
- image: assets/img/11-jekyll.png
+ image: assets/img/17-obj2gltf.jpg
 description: 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis enim ut tellus elementum sagittis vitae. A arcu cursus vitae congue mauris rhoncus aenean.
 
