@@ -1,7 +1,7 @@
 ---
 layout: post
 title: threeJS
-subtitle: Create rotated geometries in WebGL with Three.js
+subtitle: Create rotated geometries in WebGL with ThreeJS
 author: Christian Dimitri
 hero:
  particles: default

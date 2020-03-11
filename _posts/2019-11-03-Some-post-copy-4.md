@@ -1,7 +1,7 @@
 ---
 layout: post
 title: threeJS
-subtitle: Load 3D Models
+subtitle: Load External 3D Objects
 author: Christian Dimitri
 hero:
  particles: default

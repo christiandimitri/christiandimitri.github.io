@@ -64,13 +64,13 @@ $main-color: white;
   height: 45px;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
-  color: #ecf0f1;
+  color: #e0e8eb;
 }
 .content__container {
   font-weight: 600;
   overflow: hidden;
   height: 40px;
-  padding: 0 40px;
+  padding: 0 30px;
 }
 .content__container:before {
   content: '[';
@@ -84,10 +84,10 @@ $main-color: white;
 
 }
 .content__container:after, .content__container:before {
-  // position: absolute;
+  position: absolute;
   top: 0;
-  color: rgb(255, 255, 255);
-  font-size: 42px;
+  color: rgb(0, 190, 181);
+  font-size: 35px;
   line-height: 40px;
   -webkit-animation-name: opacity;
   -webkit-animation-duration: 2s;
