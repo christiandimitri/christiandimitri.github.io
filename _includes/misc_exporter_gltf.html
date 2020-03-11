@@ -178,7 +178,7 @@
 		function loadModel(color) {
 			var objLoader = new THREE.OBJLoader();
 			objLoader.setPath('assets/models/obj/');
-			objLoader.load('Edificio-Aldesa.obj', function (object) {
+			objLoader.load('Edificio-Aldesa-joined.obj', function (object) {
 				object.traverse(child => {
 					if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
 					child.castShadow = true;
