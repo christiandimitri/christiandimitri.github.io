@@ -1,23 +1,32 @@
-<div id="info">
-	<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - exporter - gltf<br /><br />
-	<button id="export_scene">Export Scene1</button>
-	<button id="export_scenes">Export Scene1 and THREE.Scene 2</button>
-	<button id="export_object">Export Model</button><br />
-	<button id="export_obj">Export WaltHead</button>
-	<button id="export_objects">Export Sphere and Grid</button>
-	<button id="export_scene_object">Export Scene1 and Sphere</button>
-	<br /><br />
-	<label><input id="option_trs" name="trs" type="checkbox" />TRS</label>
-	<label><input id="option_visible" name="visible" type="checkbox" checked="checked" />Only Visible</label>
-	<label><input id="option_drawrange" name="visible" type="checkbox" checked="checked" />Truncate
-		drawRange</label><br />
-	<label><input id="option_binary" name="visible" type="checkbox">Binary (<code>.glb</code>)</label>
-	<label><input id="option_forceindices" name="visible" type="checkbox">Force indices</label>
-	<label><input id="option_forcepot" name="visible" type="checkbox">Force POT textures</label>
-	<label><input id="option_maxsize" name="maxSize" type="number" value="4096" min="2" max="8192" step="1"> Max texture
-		size</label>
+<div class="column is-paddingless">
+	<div class="card">
+		<div class="card-content" id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - exporter -
+			gltf<br /><br />
+			<button id="export_scene">Export Scene1</button>
+			<button id="export_scenes">Export Scene1 and THREE.Scene 2</button>
+			<button id="export_object">Export Model</button><br />
+			<button id="export_obj">Export WaltHead</button>
+			<button id="export_objects">Export Sphere and Grid</button>
+			<button id="export_scene_object">Export Scene1 and Sphere</button>
+			<br /><br />
+			<label><input id="option_trs" name="trs" type="checkbox" />TRS</label>
+			<label><input id="option_visible" name="visible" type="checkbox" checked="checked" />Only
+				Visible</label>
+			<label><input id="option_drawrange" name="visible" type="checkbox" checked="checked" />Truncate
+				drawRange</label><br />
+			<label><input id="option_binary" name="visible" type="checkbox">Binary (<code>.glb</code>)</label>
+			<label><input id="option_forceindices" name="visible" type="checkbox">Force indices</label>
+			<label><input id="option_forcepot" name="visible" type="checkbox">Force POT textures</label>
+			<label><input id="option_maxsize" name="maxSize" type="number" value="4096" min="2" max="8192" step="1">
+				Max texture
+				size</label>
+		</div>
+		<div class="card-image large-height">
+			<canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+		</div>
+	</div>
 </div>
-
 <script>
 	function exportGLTF(input) {
 
@@ -113,7 +122,7 @@
 
 	}
 
-	var container;
+	var canvas;
 
 	var camera, object, scene1, scene2, renderer;
 	var gridHelper, model, sphere, waltHead;
@@ -123,8 +132,7 @@
 
 	function init() {
 
-		container = document.createElement('div');
-		document.body.appendChild(container);
+		canvas = document.querySelector('#{{include.id}}');
 
 		scene1 = new THREE.Scene();
 		scene1.name = 'Scene1';
@@ -177,7 +185,7 @@
 
 		function loadModel(color) {
 			var objLoader = new THREE.OBJLoader();
-			objLoader.setPath('assets/models/obj/');
+			objLoader.setPath("{{'assets/models/obj/' | absolute_url}}");
 			objLoader.load('Edificio-Aldesa-joined.obj', function (object) {
 				object.traverse(child => {
 					if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
@@ -186,17 +194,16 @@
 					sphere = child;
 				});
 				object.position.set(0, 0, 0);
-				object.scale.set(500, 500, 500);
+				object.scale.set(800, 800, 800);
 				scene1.add(object);
 			});
 		}
 		model = loadModel('#7b9095');
 
-		renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+		renderer.setSize(canvas.innerWidth, canvas.innerHeight);
 		renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(window.innerWidth, window.innerHeight);
 
-		container.appendChild(renderer.domElement);
 
 		//
 
@@ -204,12 +211,15 @@
 
 	}
 
-	function onWindowResize() {
-
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-
-		renderer.setSize(window.innerWidth, window.innerHeight);
+	function onWindowResize(renderer) {
+		const canvas = document.querySelector('#{{include.id}}');
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const needResize = canvas.width !== width || canvas.clientHeight !== height;
+		if (needResize) {
+			renderer.setSize(width, height, false);
+		}
+		return needResize;
 
 	}
 
@@ -224,7 +234,11 @@
 	}
 
 	function render() {
-
+		if (onWindowResize(renderer)) {
+			const canvas = document.querySelector('#{{include.id}}');
+			camera.aspect = canvas.clientWidth / canvas.clientHeight;
+			camera.updateProjectionMatrix();
+		};
 		var timer = Date.now() * 0.0001;
 
 		camera.position.x = Math.cos(timer) * 800;

@@ -216,7 +216,13 @@ $main-color: white;
   background-position: center !important;
   background-size: cover !important;
 }
-
+.large-height{ 
+  height: 900px;
+  
+  overflow: hidden;
+  background-position: center !important;
+  background-size: cover !important;
+}
 #projects{
   background-position: center;
   background-size: cover;
@@ -300,7 +306,9 @@ margin-top: 1.5rem;
   margin-top:0;
   margin-bottom: 0;
 }
-
+.is-padding{
+  padding:1em;
+}
 
 /* style the thumbail navigation */
 li {

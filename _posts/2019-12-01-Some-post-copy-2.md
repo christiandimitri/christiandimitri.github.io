@@ -16,4 +16,4 @@ description:
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. 
 
-{% include misc_exporter_gltf.html %}
+{% include misc_exporter_gltf.html id='exporter' %}
