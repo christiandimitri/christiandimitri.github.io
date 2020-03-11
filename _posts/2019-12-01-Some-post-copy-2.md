@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hello World
+title: GLTF Exporter for threejs gltfLoader
 author: Christian Dimitri
 hero:
  particles: snow
