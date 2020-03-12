@@ -130,15 +130,19 @@
         var ground = new THREE.Mesh(groundGeo, groundMat);
         ground.receiveShadow = true;
         ground.rotation.x = - Math.PI / 2;
-        ground.material.transparent = true;
-        // ground.material.depthWrite = false;
+        ground.position.y = -0.001;
         scene.add(ground);
 
-        var grid = new THREE.GridHelper(50, 50, 0x000000, 0x000000);
+        var grid = new THREE.GridHelper(50, 10, 0x000000, 0x000000);
         grid.material.opacity = 0.1;
         grid.material.transparent = true;
-        // scene.add(grid);
+        grid.position.y = -0.001;
+        scene.add(grid);
 
+        // ===================== axes ===================================//
+        var axes = new THREE.AxesHelper(25);
+        axes.name = "AxesHelper";
+        scene.add(axes);
         // ===================== controls ==================================//
         var controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
@@ -192,12 +196,17 @@
         // ===================== Render ==========================//
         // adding scene and camera to the render
         function render(time) {
-            time *= 0.001;
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = document.querySelector('#{{include.id}}');
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
                 camera.updateProjectionMatrix();
             };
+            var timer = Date.now() * 0.0001;
+
+            camera.position.x = Math.cos(timer) * 20;
+            camera.position.z = Math.sin(timer) * 20;
+
+            camera.lookAt(0, 0, 0);
             renderer.render(scene, camera);
 
             requestAnimationFrame(render);

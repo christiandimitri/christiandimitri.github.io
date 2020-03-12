@@ -178,15 +178,12 @@
 		axes.name = "AxesHelper";
 		scene1.add(axes);
 
-		var geometry = new THREE.SphereBufferGeometry(50, 32, 32);
-		var material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-		sphere = new THREE.Mesh(geometry, material);
-		// scene1.add(sphere);
+		
 
 		function loadModel(color) {
 			var objLoader = new THREE.OBJLoader();
 			objLoader.setPath("{{'assets/models/obj/' | absolute_url}}");
-			objLoader.load('Edificio-Aldesa-joined.obj', function (object) {
+			objLoader.load('{{include.obj}}', function (object) {
 				object.traverse(child => {
 					if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
 					child.castShadow = true;
