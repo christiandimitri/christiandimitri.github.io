@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Translation Surfaces
+subtitle: Panelling
 author: Christian Dimitri
 hero:
  size: is-large
