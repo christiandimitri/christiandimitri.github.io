@@ -1,5 +1,5 @@
 ---
----
+  ---
   // Bulma navigation menu
   document.addEventListener('DOMContentLoaded', () => {
 
@@ -27,10 +27,10 @@
 
     // hero image header
     var list = document.querySelectorAll('[data-header-image]')
-    console.log(list);
+    // console.log(list);
     for (let item of list) {
       var url = item.getAttribute('data-header-image');
-      console.log("Working!!", url)
+      // console.log("Working!!", url)
       item.style.backgroundImage = "url('" + url + "')";
     }
     // no move on click
