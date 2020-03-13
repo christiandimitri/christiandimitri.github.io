@@ -1,0 +1,46 @@
+<!-- Start Carousel -->
+<div class="carousel is-clipped is-flex" id="carousel-demo">
+    <div class="carousel-item has-background is-active is-clipped">
+        <img class="is-background" src="{{include.render1}}" alt="" width="100%" height="100%" />
+    </div>
+    <div class="carousel-item has-background is-active is-clipped">
+        <img class="is-background" src="{{include.render2}}" alt="" width="100%" height="100%" />
+    </div>
+    <div class="carousel-item has-background is-active is-clipped">
+        <img class="is-background" src="{{include.render3}}" alt="" width="100%" height="100%" />
+    </div>
+    <div class="carousel-item has-background is-active is-clipped">
+        <img class="is-background" src="{{include.render4}}" alt="" width="100%" height="100%" />
+    </div>
+</div>
+
+<script type="module">
+
+    // Initialize all elements with carousel class.
+    const carousels = bulmaCarousel.attach('.carousel', bulmaCarousel.options);
+
+    // To access to bulmaCarousel instance of an element
+    const element = document.querySelector('#carousel-demo');
+    if (element && element.bulmaCarousel) {
+        // bulmaCarousel instance is available as element.bulmaCarousel
+        element.bulmaCarousel.on('show', function (bulmaCarouselInstance) {
+            console.log(bulmaCarouselInstance.index);
+        });
+
+    }
+    // If animation is fade then force carouselContainer size (due to the position: absolute)
+    if (element.classList.contains('is-background') && this.items.length) {
+        let img = this.items[0].querySelector('img');
+        let scale = 1;
+        if (img.naturalWidth) {
+            scale = width / img.naturalWidth;
+            this.container.style.height = (img.naturalHeight * scale) + 'px';
+        } else {
+            img.onload = () => {
+                scale = width / img.naturalWidth;
+                this.container.style.height = (img.naturalHeight * scale) + 'px';
+            }
+        }
+    }
+
+</script>

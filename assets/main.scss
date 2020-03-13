@@ -34,6 +34,7 @@ $input-shadow: none;
 
 // Import only what you need from Bulma
 @import "../_sass/bulma-0.8.0/bulma.sass";
+@import "node_modules/bulma-carousel/src/sass/index.sass";
 
 @import "../_sass/myStyles.scss";
 
@@ -54,14 +55,27 @@ $main-color: white;
   background-size: cover;
   background-blend-mode: multiply;
 }
-
+.is-background{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.carousel-item{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
 .subtitle-content {
-  
   position: relative;
   display: flex;
   justify-content: center;
   align-items: baseline;
   height: 45px;
+  max-height: 80px;
   overflow: hidden;
   font-family: 'Lato', sans-serif;
   color: #e0e8eb;
@@ -69,18 +83,18 @@ $main-color: white;
 .content__container {
   font-weight: 600;
   overflow: hidden;
-  height: 40px;
-  padding: 0 30px;
+  // height: 40px;
+  // padding: 0 30px;
 }
 .content__container:before {
   content: '[';
   position: absolute;
-  transform: translateX(-140px);
+  transform: translateX(-130px);
 }
 .content__container:after {
   content: ']';
   position: absolute;
-  margin-left: 130px;
+  margin-left: 120px;
 
 }
 .content__container:after, .content__container:before {
@@ -309,7 +323,9 @@ margin-top: 1.5rem;
 .is-padding{
   padding:1em;
 }
-
+.carousel{
+  overflow: hidden;
+}
 /* style the thumbail navigation */
 li {
   list-style-type: none;

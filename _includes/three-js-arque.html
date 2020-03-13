@@ -70,8 +70,8 @@
 
         // ======== OBJ Loader ============ //
         function loadModel(color) {
-            var objLoader = new THREE.OBJLoader();
-            objLoader.setPath("{{'assets/models/obj/' | absolute_url}}");
+            var objLoader = new THREE.FBXLoader();
+            objLoader.setPath("{{'assets/models/fbx/' | absolute_url}}");
             objLoader.load('{{include.obj}}', function (object) {
                 object.traverse(child => {
                     if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
@@ -86,6 +86,7 @@
         }
         var model = loadModel('{{ include.color }}');
 
+        
 
 
         // =============== set light =====================================//
