@@ -1,5 +1,5 @@
 ---
-  ---
+---
   // Bulma navigation menu
   document.addEventListener('DOMContentLoaded', () => {
 
