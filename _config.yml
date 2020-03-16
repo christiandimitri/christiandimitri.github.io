@@ -4,7 +4,7 @@ title: Christian Dimitri
 subtitle: Architect & Computational Designer
 logo: assets/img/dimi-white.png
 
-paginate: 2
+paginate: 4
 paginate_path: "/blog/page:num/"
 
 gem 'github-pages', '170', group: :jekyll_plugins

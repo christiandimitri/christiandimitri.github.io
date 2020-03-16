@@ -9,7 +9,7 @@ hero:
  color: is-info
  image: assets/img/16-objLoader.jpg
 description: 
-    In this post i will import a 3D model into a threejs canvas in my wesbite, and load some materials, lights, and more actions and events. This provides live interaction with the 3D world for architects, designers and others in the field.
+    In this post i will import a 3D model into a threejs canvas in my wesbite, and load some materials, lights, and more actions and events.
 ---
 
 # What is Three.JS ?

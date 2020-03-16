@@ -9,7 +9,7 @@ hero:
  color: is-primary
  image: assets/img/16-gltfExporter.png
 description: 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis enim ut tellus elementum sagittis vitae. A arcu cursus vitae congue mauris rhoncus aenean.
+    In this post I am going to provide a threejs canvas that exports a .obj file to .gltf file.
 
 ---
 

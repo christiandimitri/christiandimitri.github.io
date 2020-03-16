@@ -2,9 +2,9 @@
 layout: page-base
 title: My Blog
 hero:
-  size: is-large
-  color: is-primary
-  image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
+ size: is-large
+ color: is-primary
+ image: assets/img/1-Andres-Flajszer-CODA-MPDA-GRIDSHELLS.jpg
 ---
 
 <section class="section">
@@ -16,29 +16,17 @@ hero:
           <div class="card-image small-height" style="background-image: url('{{post.hero.image | absolute_url}}');">
           </div>
           <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="{{site.data.me.author-img | absolute_url}}" alt="Author Image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-4">{{post.title}}</p>
-                <p class="subtitle is-7">@{{post.author}}</p>
-              </div>
-            </div>
-
             <div class="content">
               {{post.description}}
               {% for tag in post.tags %}
               <a href="#">#{{post.tag}}</a>
               {%endfor%}
               <br>
-              <span class="icon has-text-primary">
+              <!-- <span class="icon has-text-primary">
                 <i class="fas fa-calendar"></i>
               </span>
               <time datetime="{{post.date | date: '%Y-%m-%d'}}"
-                class="has-text-grey">{{post.date | date_to_string}}</time>
+                class="has-text-grey">{{post.date | date_to_string}}</time> -->
             </div>
           </div>
         </div>
