@@ -95,7 +95,6 @@ $main-color: white;
   content: ']';
   position: absolute;
   margin-left: 120px;
-
 }
 .content__container:after, .content__container:before {
   position: absolute;
@@ -223,9 +222,14 @@ $main-color: white;
   background-position: center !important;
   background-size: cover !important;
 }
+.smaller-height{
+  height:150px;
+  overflow: hidden;
+  background-position: center !important;
+  background-size: cover !important;
+}
 .medium-height{ 
   height: 500px;
-  
   overflow: hidden;
   background-position: center !important;
   background-size: cover !important;
@@ -319,6 +323,7 @@ margin-top: 1.5rem;
   margin-left: 0;
   margin-top:0;
   margin-bottom: 0;
+  z-index: 1000;
 }
 .is-padding{
   padding:1em;
@@ -326,6 +331,11 @@ margin-top: 1.5rem;
 .carousel{
   overflow: hidden;
 }
+/* thumbail buttons styles */
+.is-transparent{
+  border: none;
+}
+
 /* style the thumbail navigation */
 li {
   list-style-type: none;

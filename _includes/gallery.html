@@ -1,0 +1,30 @@
+<!-- Add thumbnails with anchor links pointing to corresponding images. -->
+
+<ul class="thumbs">
+    <li><a id="anchor-1" href="#slide-1"><img src="{{'assets/img/Cubierta-Curva-Marbella.jpg' | absolute_url}}" /></a>
+    </li>
+    <li><a id="anchor-2" href="#slide-2"><img src="{{'assets/img/Cubierta-Edificio.jpg' | absolute_url}}" /></a></li>
+    <li><a id="anchor-3" href="#slide-3"><img
+                src="{{'assets/img/Cubierta-Lidel-Can-Vidalet.jpg' | absolute_url}}" /></a></li>
+    <li><a id="anchor-4" href="#slide-4"><img src="{{'assets/img/Cubierta-Pista-de-padel.jpg' | absolute_url}}" /></a>
+    </li>
+    <li><a id="anchor-5" href="#slide-5"><img src="{{'assets/img/Edificio-Aldesa.jpg' | absolute_url}}" /></a></li>
+</ul>
+
+<!-- add images to the webpage -->
+<div class="container" id="slide">
+    <ul class="slide">
+        <li class="first" id="slide-1">
+            {% include three-js-arque.html obj='Cubierta-Curva-Marbella.fbx' id='e' color='#7b9095' %}</li>
+        <li id="slide-2">{% include three-js-arque.html obj='Cubierta-Edificio.fbx' id='f' color='#7b9095' %}
+        </li>
+        <li id="slide-3">
+            {% include three-js-arque.html obj='Cubierta-Lidel-Can-Vidalet.fbx' id='g' color='#7b9095' %}
+        </li>
+        <li id="slide-4">
+            {% include three-js-arque.html obj='Cubierta-Pista-de-padel.fbx' id='h' color='#7b9095' %}</li>
+        <li id="slide-5">{% include three-js-arque.html obj='Edificio-Aldesa.fbx' id='i' color='#7b9095' %}</li>
+    </ul>
+</div>
+
+<!-- Romove anchor event. -->

@@ -13,8 +13,8 @@ description:
 
 ---
 
-# This is a Title
+# GLTF Converter
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis enim ut tellus elementum sagittis vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. 
 
 {% include misc_exporter_gltf.html id='exporter' obj='Edificio-Aldesa-joined.obj' %}

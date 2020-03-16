@@ -33,6 +33,13 @@
       // console.log("Working!!", url)
       item.style.backgroundImage = "url('" + url + "')";
     }
-    // no move on click
+    // button image
+    var buttonList = document.querySelectorAll('[data-button-image]')
+    // console.log(list);
+    for (let item of buttonList) {
+      var url = item.getAttribute('data-button-image');
+      // console.log("Working!!", url)
+      item.style.backgroundImage = "url('" + url + "')";
+    }
 
   });

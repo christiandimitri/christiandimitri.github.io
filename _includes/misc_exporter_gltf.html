@@ -27,6 +27,7 @@
 		</div>
 	</div>
 </div>
+
 <script>
 	function exportGLTF(input) {
 
@@ -127,15 +128,19 @@
 	var camera, object, scene1, scene2, renderer;
 	var gridHelper, model, sphere, waltHead;
 
-	init();
-	animate();
 
 	function init() {
 
 		canvas = document.querySelector('#{{include.id}}');
+		
+		// ==================== set renderer ==============================//
+		var renderer = new THREE.WebGLRenderer({ antilias: true, canvas });
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.shadowMap.enabled = true;
+		renderer.shadowMap.type = THREE.BasicShadowMap;
 
-		scene1 = new THREE.Scene();
-		scene1.name = 'Scene1';
+		scene = new THREE.Scene();
+		scene.name = 'Scene1';
 
 		// ---------------------------------------------------------------------
 		// Perspective Camera
@@ -144,14 +149,14 @@
 		camera.position.set(600, 400, 0);
 
 		camera.name = "PerspectiveCamera";
-		scene1.add(camera);
+		scene.add(camera);
 
 		// ---------------------------------------------------------------------
 		// Ambient light
 		// ---------------------------------------------------------------------
 		var light = new THREE.AmbientLight(0xffffff, 0.2);
 		light.name = 'AmbientLight';
-		scene1.add(light);
+		scene.add(light);
 
 		// ---------------------------------------------------------------------
 		// DirectLight
@@ -161,7 +166,7 @@
 		light.add(light.target);
 		light.lookAt(- 1, - 1, 0);
 		light.name = 'DirectionalLight';
-		scene1.add(light);
+		scene.add(light);
 
 		// ---------------------------------------------------------------------
 		// Grid
@@ -169,16 +174,16 @@
 		gridHelper = new THREE.GridHelper(2000, 20);
 		// gridHelper.position.y = - 50;
 		gridHelper.name = "Grid";
-		scene1.add(gridHelper);
+		scene.add(gridHelper);
 
 		// ---------------------------------------------------------------------
 		// Axes
 		// ---------------------------------------------------------------------
 		var axes = new THREE.AxesHelper(500);
 		axes.name = "AxesHelper";
-		scene1.add(axes);
+		scene.add(axes);
 
-		
+
 
 		function loadModel(color) {
 			var objLoader = new THREE.OBJLoader();
@@ -192,58 +197,45 @@
 				});
 				object.position.set(0, 0, 0);
 				object.scale.set(800, 800, 800);
-				scene1.add(object);
+				scene.add(object);
 			});
 		}
 		model = loadModel('#7b9095');
 
-		renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
-		renderer.setSize(canvas.innerWidth, canvas.innerHeight);
-		renderer.setPixelRatio(window.devicePixelRatio);
-
-
-		//
-
-		window.addEventListener('resize', onWindowResize, false);
-
-	}
-
-	function onWindowResize(renderer) {
-		const canvas = document.querySelector('#{{include.id}}');
-		const width = canvas.clientWidth;
-		const height = canvas.clientHeight;
-		const needResize = canvas.width !== width || canvas.clientHeight !== height;
-		if (needResize) {
-			renderer.setSize(width, height, false);
-		}
-		return needResize;
-
-	}
-
-	//
-
-	function animate() {
-
-		requestAnimationFrame(animate);
-
-		render();
-
-	}
-
-	function render() {
-		if (onWindowResize(renderer)) {
+		//===================== Events ======================//
+		function resizeRendererToDisplaySize(renderer) {
 			const canvas = document.querySelector('#{{include.id}}');
-			camera.aspect = canvas.clientWidth / canvas.clientHeight;
-			camera.updateProjectionMatrix();
+			const width = canvas.clientWidth;
+			const height = canvas.clientHeight;
+			const needResize = canvas.width !== width || canvas.clientHeight !== height;
+			if (needResize) {
+				renderer.setSize(width, height, false);
+			}
+			return needResize;
+		}
+		// ===================== Render ==========================//
+		// adding scene and camera to the render
+		function render(time) {
+			if (resizeRendererToDisplaySize(renderer)) {
+				const canvas = document.querySelector('#{{include.id}}');
+				camera.aspect = canvas.clientWidth / canvas.clientHeight;
+				camera.updateProjectionMatrix();
+			};
+			var timer = Date.now() * 0.0001;
+
+			camera.position.x = Math.cos(timer) * 800;
+			camera.position.z = Math.sin(timer) * 800;
+
+			camera.lookAt(scene.position);
+			renderer.render(scene, camera);
+
+			requestAnimationFrame(render);
 		};
-		var timer = Date.now() * 0.0001;
 
-		camera.position.x = Math.cos(timer) * 800;
-		camera.position.z = Math.sin(timer) * 800;
-
-		camera.lookAt(scene1.position);
-		renderer.render(scene1, camera);
+		requestAnimationFrame(render);
 
 	}
+	init();
+
 
 </script>
