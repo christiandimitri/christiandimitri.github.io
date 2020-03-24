@@ -31,16 +31,36 @@
 			varying vec3 vWorldPosition;
 
 			void main() {
-
 				float h = normalize( vWorldPosition + offset ).y;
 				gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h , 0.0), exponent ), 0.0 ) ), 1.0 );
-
 			}
 </script>
 
 <script>
     // Our Javascript will go here.
-    // console.clear();
+    var scene = new THREE.Scene();
+
+    function delete3DOBJ(objName) {
+        var selectObject = scene.getObjectByName(objName);
+        scene.remove(selectObject);
+        selectObject = null;
+    }
+
+    function loadModel(color, path) {
+        var objLoader = new THREE.FBXLoader();
+        objLoader.setPath("{{'assets/models/fbx/' | absolute_url}}");
+        objLoader.load(path, function (object) {
+            object.traverse(child => {
+                if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
+                child.castShadow = true;
+                child.receiveShadow = true;
+            });
+            object.position.set(0, 0, 0);
+            object.scale.set(10, 10, 10);
+            object.name = 'currentObject';
+            scene.add(object);
+        });
+    }
 
     function main() {
 
@@ -65,28 +85,10 @@
         camera.position.x = -20;
 
         //================== set scene ======================//
-        var scene = new THREE.Scene();
 
         // ======== OBJ Loader ============ //
-        function loadModel(color) {
-            var objLoader = new THREE.FBXLoader();
-            objLoader.setPath("{{'assets/models/fbx/' | absolute_url}}");
-            objLoader.load('{{include.obj}}', function (object) {
-                object.traverse(child => {
-                    if (child.material) child.material = new THREE.MeshPhongMaterial({ color, specular: 0x111111, shininess: 200 });
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                });
-                console.log(object);
-                object.position.set(0, 0, 0);
-                object.scale.set(10, 10, 10);
-                scene.add(object);
-            });
-        }
-        var model = loadModel('{{ include.color }}');
 
-        
-
+        var model = loadModel('{{ include.color }}', '{{include.obj}}', scene);
 
         // =============== set light =====================================//
         // // // set background color
@@ -193,7 +195,7 @@
             }
             return needResize;
         }
-        
+
         function onDocumentMouseMove(event) {
 
             event.preventDefault();
@@ -202,7 +204,7 @@
             mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
         }
-        
+
         // ===================== Render ==========================//
         // adding scene and camera to the render
         function render(time) {

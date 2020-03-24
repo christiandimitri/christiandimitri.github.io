@@ -10,7 +10,6 @@ hero:
  image: assets/img/16-gltfExporter.png
 description: 
     In this post I am going to provide a threejs canvas that exports a .obj file to .gltf file.
-
 ---
 
 # GLTF Converter

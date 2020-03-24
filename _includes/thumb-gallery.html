@@ -1,34 +1,50 @@
-<section class="section" id="thumb-gallery">
-    <div class="columns thumbs">
+<section class="section">
+    <div class="columns thumbs" id="thumb-gallery" onclick="changeOBJ(event)">
         <div class="column has-text-centered">
-            <button id="anchor-1" href="#slide-1"
+            <button class="buttonThumb" obj-path="Cubierta-Curva-Marbella.fbx"
                 data-button-image="{{'assets/img/Cubierta-Curva-Marbella.jpg' | absolute_url}}"
                 class="button smaller-height is-paddingless is-transparent is-fullwidth is-large is-clipped">
             </button>
         </div>
         <div class="column has-text-centered">
-            <button id="anchor-2" href="#slide-2"
+            <button class="buttonThumb" obj-path="Cubierta-Edificio.fbx"
                 data-button-image="{{'assets/img/Cubierta-Edificio.jpg' | absolute_url}}"
                 class="button smaller-height is-paddingless is-transparent is-fullwidth is-large is-clipped">
             </button>
         </div>
         <div class="column has-text-centered">
-            <button id="anchor-3" href="#slide-3"
+            <button class="buttonThumb" obj-path="Cubierta-Lidel-Can-Vidalet.fbx"
                 data-button-image="{{'assets/img/Cubierta-Lidel-Can-Vidalet.jpg' | absolute_url}}"
                 class="button smaller-height is-paddingless is-transparent is-fullwidth is-large is-clipped">
             </button>
         </div>
         <div class="column has-text-centered">
-            <button id="anchor-4" href="#slide-4"
+            <button class="buttonThumb" obj-path="Cubierta-Pista-de-padel.fbx"
                 data-button-image="{{'assets/img/Cubierta-Pista-de-padel.jpg' | absolute_url}}"
                 class="button smaller-height is-paddingless is-transparent is-fullwidth is-large is-clipped">
             </button>
         </div>
         <div class="column has-text-centered">
-            <button id="anchor-5" href="#slide-5"
+            <button class="buttonThumb" obj-path="Edificio-Aldesa.fbx"
                 data-button-image="{{'assets/img/Edificio-Aldesa.jpg' | absolute_url}}"
                 class="button smaller-height is-paddingless is-transparent is-fullwidth is-large is-clipped">
             </button>
         </div>
     </div>
+    <div class="column is-paddingless">
+        <div class="card">
+            <div class="card-image medium-height" id="mainCanvas">
+                {% include three-js-arque.html id='a' obj='Cubierta-Edificio.fbx' color='#7b9095' %}
+            </div>
+        </div>
+    </div>
 </section>
+<script type="text/javascript">
+    // thumbnails gallery
+    function changeOBJ(event) {
+        delete3DOBJ('currentObject');
+        event = event || window.event;
+        var targetElement = event.target || event.srcElement;
+        var model = loadModel('#7b9095', targetElement.getAttribute("obj-path"), scene);
+    }
+</script>
