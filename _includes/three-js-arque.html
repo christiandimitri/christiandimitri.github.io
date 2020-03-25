@@ -37,6 +37,10 @@
 </script>
 
 <script>
+    /**
+    * @author Christan Dimitri http://chrisdimi.me/
+    */
+
     // Our Javascript will go here.
     var scene = new THREE.Scene();
 
@@ -95,7 +99,8 @@
         scene.background = new THREE.Color().setHSL(0.6, 0, 1);
         scene.fog = new THREE.Fog(scene.background, 1, 5000);
         //  set hemlight
-        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2);
+        hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
+        hemiLight.color.setHSL(0, 0, 0.8627);
         hemiLight.position.set(0, 50, 0);
         scene.add(hemiLight);
         // 
@@ -121,12 +126,13 @@
         dirLight.shadow.camera.far = 5000;
         dirLight.shadow.bias = -0.0001;
         var dirHelper = new THREE.PointLightHelper(dirLight);
-        scene.add(dirHelper);
+        // scene.add(dirHelper);
         scene.add(dirLight);
 
         // ===================== ground ===================================//
         var groundGeo = new THREE.PlaneBufferGeometry(50, 50);
-        var groundMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
+        var groundMat = new THREE.ShadowMaterial();
+        groundMat.opacity = 0.3;
         // groundMat.color.setHSL(0.095, 1, 0.75);
 
         var ground = new THREE.Mesh(groundGeo, groundMat);
@@ -135,11 +141,20 @@
         ground.position.y = -0.001;
         scene.add(ground);
 
-        var grid = new THREE.GridHelper(50, 10, 0x000000, 0x000000);
-        grid.material.opacity = 0.1;
-        grid.material.transparent = true;
+        var gridMaterial = new THREE.LineBasicMaterial({
+            color: 0x000000,
+            linewidth: 2,
+        });
+        var grid = new THREE.GridHelper(50, 10, 0x696969, 0x696969);
+        grid.material.opacity = 0.3;
+        // grid.material.transparent = true;
         grid.position.y = -0.001;
         scene.add(grid);
+        var grid2 = new THREE.GridHelper(50, 50, 0xffffff, 0xffffff);
+        grid2.material.opacity = 0.2;
+        grid2.material.transparent = true;
+        grid2.position.y = -0.001;
+        scene.add(grid2);
 
         // ===================== axes ===================================//
         var axes = new THREE.AxesHelper(25);
@@ -150,7 +165,7 @@
         controls.enableDamping = true;
         // an animation loop is required when either damping or auto-rotation are enabled
         controls.dampingFactor = 0.05;
-        controls.minDistance = 1.2;
+        controls.minDistance = 0.5;
         controls.maxDistance = 35;
         controls.maxPolarAngle = Math.PI / 2;
 
@@ -159,10 +174,10 @@
         var vertexShader = document.getElementById('vertexShader').textContent;
         var fragmentShader = document.getElementById('fragmentShader').textContent;
         var uniforms = {
-            "topColor": { value: new THREE.Color(0x0077ff) },
-            "bottomColor": { value: new THREE.Color(0xffffff) },
-            "offset": { value: 0 },
-            "exponent": { value: 0.75 }
+            "topColor": { value: new THREE.Color(0xb1b1b1) },
+            "bottomColor": { value: new THREE.Color(0xb1b1b1) },
+            "offset": { value: 60 },
+            "exponent": { value: 0.6 }
         };
         uniforms["topColor"].value.copy(hemiLight.color);
 

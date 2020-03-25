@@ -34,7 +34,7 @@
     <div class="column is-paddingless">
         <div class="card">
             <div class="card-image medium-height" id="mainCanvas">
-                {% include three-js-arque.html id='a' obj='Cubierta-Edificio.fbx' color='#7b9095' %}
+                {% include three-js-arque.html id='a' obj='Cubierta-Edificio.fbx' color='#696969' %}
             </div>
         </div>
     </div>
@@ -45,6 +45,6 @@
         delete3DOBJ('currentObject');
         event = event || window.event;
         var targetElement = event.target || event.srcElement;
-        var model = loadModel('#7b9095', targetElement.getAttribute("obj-path"), scene);
+        var model = loadModel('#696969', targetElement.getAttribute("obj-path"), scene);
     }
 </script>
