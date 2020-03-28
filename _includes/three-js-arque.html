@@ -1,7 +1,16 @@
-<div class="column is-paddingless">
-    <div class="card">
-        <div class="card-image medium-height">
-            <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+<div class="columns">
+    <div class="column is-paddingless">
+        <div class="card">
+            <div class="card-image medium-height">
+                <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="column is-one-quarter is-paddingless">
+        <div class="card canvas-control">
+            <div class="card-content medium-height is-padding">
+                {% include three-js-menu.html %}
+            </div>
         </div>
     </div>
 </div>
@@ -43,6 +52,7 @@
 
     // Our Javascript will go here.
     var scene = new THREE.Scene();
+    var camera;
 
     function delete3DOBJ(objName) {
         var selectObject = scene.getObjectByName(objName);
@@ -51,6 +61,7 @@
     }
 
     function loadModel(color, path) {
+
         var objLoader = new THREE.FBXLoader();
         objLoader.setPath("{{'assets/models/fbx/' | absolute_url}}");
         objLoader.load(path, function (object) {
@@ -64,6 +75,16 @@
             object.name = 'currentObject';
             scene.add(object);
         });
+    }
+
+
+    function rotateCamera() {
+        var timer = Date.now() * 0.0001;
+
+        camera.position.x = Math.cos(timer) * 20;
+        camera.position.z = Math.sin(timer) * 20;
+
+        camera.lookAt(0, 0, 0);
     }
 
     function main() {
@@ -81,7 +102,7 @@
         const aspect = window.innerWidth / window.innerHeight;
         const near = 0.1;
         const far = 5000;
-        var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.lookAt(new THREE.Vector3(0, 1, 0));
 
         camera.position.z = 15;
@@ -161,13 +182,77 @@
         axes.name = "AxesHelper";
         scene.add(axes);
         // ===================== controls ==================================//
-        var controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        // an animation loop is required when either damping or auto-rotation are enabled
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 0.5;
-        controls.maxDistance = 35;
-        controls.maxPolarAngle = Math.PI / 2;
+        var controls, control;
+        function orbitControls(camera, element, rotate, pan, zoom, autoRotation, keys) {
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableRotate = rotate;
+            controls.enableKeys = keys;
+            controls.enableZoom = zoom;
+            controls.enablePan = pan;
+            controls.autoRotate = autoRotation;
+            controls.autoRotateSpeed = 1;
+            controls.target = new THREE.Vector3(0, 0, 0);
+            controls.panningMode = 1;
+            controls.keys = {
+                LEFT: 37, //left arrow
+                UP: 38, // up arrow
+                RIGHT: 39, // right arrow
+                BOTTOM: 40 // down arrow
+            }
+            controls.mouseButtons = {
+                LEFT: THREE.MOUSE.ROTATE,
+                MIDDLE: THREE.MOUSE.PAN,
+                RIGHT: THREE.MOUSE.DOLLY,
+            }
+            controls.enableDamping = true;
+            // an animation loop is required when either damping or auto-rotation are enabled
+            controls.dampingFactor = 0.05;
+            controls.minDistance = 0.5;
+            controls.maxDistance = 35;
+            // vertical angle control
+            controls.minPolarAngle = -Math.PI / 2;
+            controls.maxPolarAngle = Math.PI / 2;
+            //  horizontally angle control
+            // controls.minAzimuthAngle = -Math.PI / 2;
+            // controls.maxAzimuthAngle = Math.PI / 2;
+        }
+        control = orbitControls(camera, renderer.domElement, false, false, false, true, false);
+
+        // toggle camera rotation button
+        var rotationButton = document.querySelector('#cameraRotation');
+        console.log("Camera rotation enabled, Orbit controls disabled, select navigation type from the toolbar");
+        rotationButton.addEventListener('click', function () {
+            console.clear();
+            if (controls.autoRotate == true) {
+                controls.autoRotate = false;
+                console.log("Camera auto-rotate disabled, toggle to enable");
+            }
+            else {
+                controls.autoRotate = true;
+                console.log("Camera auto-rotate enabled, toggle to disable");
+            }
+        }, false);
+
+        function disableCameraRotation() {
+            controls.autoRotate = false;
+        }
+        function enableCameraRotation() {
+            controls.autoRotate = true;
+        }
+        // toggle orbit control
+        var orbitButton = document.querySelector('#orbitControl');
+
+        orbitButton.addEventListener('click', function () {
+            if (controls.autoRotate == false) {
+                console.log("Orbit controls enabled, toggle to disable");
+            }
+            else if (controls.autoRotate == true) {
+                console.log("Camera auto-rotate enabled, toggle to disable");
+            } else {
+                console.log("Orbit controls ready to enable");
+            }
+        }, false)
+
 
         // ==================== SKYDOME ===================================//
 
@@ -211,15 +296,6 @@
             return needResize;
         }
 
-        function onDocumentMouseMove(event) {
-
-            event.preventDefault();
-
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-        }
-
         // ===================== Render ==========================//
         // adding scene and camera to the render
         function render(time) {
@@ -228,14 +304,9 @@
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
                 camera.updateProjectionMatrix();
             };
-            var timer = Date.now() * 0.0001;
+            controls.update();
 
-            camera.position.x = Math.cos(timer) * 20;
-            camera.position.z = Math.sin(timer) * 20;
-
-            camera.lookAt(0, 0, 0);
             renderer.render(scene, camera);
-
             requestAnimationFrame(render);
         };
 

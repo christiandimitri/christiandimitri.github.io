@@ -50,7 +50,7 @@
       {% capture particle-config %}{% if page.hero.particles == 'snow' %}assets/particles-snow.json{% else %}assets/particles.json{% endif %} {% endcapture %}
 
       particlesJS.load('particles-js', "{{ particle-config | absolute_url}}", function () {
-        console.log('callback - particles.js config loaded');
+        // console.log('callback - particles.js config loaded');
       });
     })
   </script>

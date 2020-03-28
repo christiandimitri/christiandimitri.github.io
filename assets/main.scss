@@ -336,3 +336,22 @@ margin-top: 1.5rem;
 .is-transparent{
   border: none;
 }
+
+.left-paddingless{
+  padding-left: 0 !important;
+}
+.right-paddingless{
+  padding-right: 0 !important;
+}
+.canvas-control{
+  background-color: #eee;
+  overflow-y: scroll;
+}
+.is-size-8{
+  font-size: 0.7rem;
+}
+#dropdown-menu{
+  width: 100%;
+  padding-right: 1.5em;
+}
+
