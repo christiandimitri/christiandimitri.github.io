@@ -319,7 +319,7 @@ margin-top: 1.5rem;
   width: 100%;
   height: 100%;
   display: block !important;
-  background-color: $grey-light;
+  background-color: #b1b1b1;
   margin-right: 0;
   margin-left: 0;
   margin-top:0;
@@ -345,13 +345,26 @@ margin-top: 1.5rem;
 }
 .canvas-control{
   background-color: #eee;
-  overflow-y: scroll;
 }
 .is-size-8{
   font-size: 0.7rem;
 }
-#dropdown-menu{
-  width: 100%;
-  padding-right: 1.5em;
+.is-bottom{
+  position:absolute;
+  bottom: 0;
 }
-
+.is-control{
+  background-color: #eee;
+}
+.message-body.is-console{
+  background-color: #DBDBDB;
+  border-width: thin;
+  border-top-left-radius: 0px;
+  border-top-right-radius: px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 0px;
+  border-color: #727272;
+}
+.navigation-controls{
+  
+}

@@ -6,11 +6,20 @@
             </div>
         </div>
     </div>
-    <div class="column is-one-quarter is-paddingless">
-        <div class="card canvas-control">
-            <div class="card-content medium-height is-padding">
+    <div class="column is-one-quarter is-paddingless is-control">
+        <div class="card medium-height is-control">
+            <div class="card-content canvas-control is-padding">
                 {% include three-js-menu.html %}
             </div>
+            <article class="message is-bottom is-info">
+                <div class="message-header">
+                    <p>Info</p>
+                </div>
+                <div class="message-body is-console">
+                    <strong>Pellentesque risus mi</strong>, tempus quis
+                    placerat ut, porta nec nulla.
+                </div>
+            </article>
         </div>
     </div>
 </div>
@@ -87,7 +96,27 @@
         camera.lookAt(0, 0, 0);
     }
 
+    function textLoad(text) {
+        var loader = new THREE.FontLoader();
+        loader.load("{{'assets/js/three.js-master/examples/fonts/helvetiker_regular.typeface.json' | absolute_url}}", function (font) {
+            var geometry = new THREE.TextGeometry(text, {
+                font: font,
+                size: 1,
+                height: 5,
+                curveSegments: 12,
+                bevelEnabled: 10,
+                bevelThickness: 10,
+                bevelSize: 8,
+                bevelOffsset: 0,
+                bevelSegments: 5
+            });
+        });
+    }
+
     function main() {
+        // =========== text in canvas canvas ==========
+        var info = document.getElementById('#info');
+
 
         //========= set renderer to 'canvas id' ===============//
         const canvas = document.querySelector('#{{include.id}}');
@@ -182,78 +211,95 @@
         axes.name = "AxesHelper";
         scene.add(axes);
         // ===================== controls ==================================//
-        var controls, control;
-        function orbitControls(camera, element, rotate, pan, zoom, autoRotation, keys) {
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableRotate = rotate;
-            controls.enableKeys = keys;
-            controls.enableZoom = zoom;
-            controls.enablePan = pan;
-            controls.autoRotate = autoRotation;
-            controls.autoRotateSpeed = 1;
-            controls.target = new THREE.Vector3(0, 0, 0);
-            controls.panningMode = 1;
-            controls.keys = {
-                LEFT: 37, //left arrow
-                UP: 38, // up arrow
-                RIGHT: 39, // right arrow
-                BOTTOM: 40 // down arrow
-            }
-            controls.mouseButtons = {
-                LEFT: THREE.MOUSE.ROTATE,
-                MIDDLE: THREE.MOUSE.PAN,
-                RIGHT: THREE.MOUSE.DOLLY,
-            }
-            controls.enableDamping = true;
-            // an animation loop is required when either damping or auto-rotation are enabled
-            controls.dampingFactor = 0.05;
-            controls.minDistance = 0.5;
-            controls.maxDistance = 35;
-            // vertical angle control
-            controls.minPolarAngle = -Math.PI / 2;
-            controls.maxPolarAngle = Math.PI / 2;
-            //  horizontally angle control
-            // controls.minAzimuthAngle = -Math.PI / 2;
-            // controls.maxAzimuthAngle = Math.PI / 2;
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableRotate = false;
+        controls.enableKeys = false;
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1;
+        controls.target = new THREE.Vector3(0, 0, 0);
+        controls.panningMode = 1;
+        controls.keys = {
+            LEFT: 37, //left arrow
+            UP: 38, // up arrow
+            RIGHT: 39, // right arrow
+            BOTTOM: 40 // down arrow
         }
-        control = orbitControls(camera, renderer.domElement, false, false, false, true, false);
+        controls.mouseButtons = {
+            LEFT: THREE.MOUSE.ROTATE,
+            MIDDLE: THREE.MOUSE.PAN,
+            RIGHT: THREE.MOUSE.DOLLY,
+        }
+        controls.enableDamping = true;
+        // an animation loop is required when either damping or auto-rotation are enabled
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 0.5;
+        controls.maxDistance = 35;
+        // vertical angle control
+        controls.minPolarAngle = -Math.PI / 2;
+        controls.maxPolarAngle = Math.PI / 2;
+        //  horizontally angle control
+        // controls.minAzimuthAngle = -Math.PI / 2;
+        // controls.maxAzimuthAngle = Math.PI / 2;
 
         // toggle camera rotation button
         var rotationButton = document.querySelector('#cameraRotation');
         console.log("Camera rotation enabled, Orbit controls disabled, select navigation type from the toolbar");
         rotationButton.addEventListener('click', function () {
             console.clear();
-            if (controls.autoRotate == true) {
-                controls.autoRotate = false;
+            if (controls.autoRotate == false) {
+                controls.autoRotate = true;
+                controls.enableRotate = false;
+                controls.enableKeys = false;
+                controls.enableZoom = false;
+                controls.enablePan = false;
                 console.log("Camera auto-rotate disabled, toggle to enable");
             }
             else {
-                controls.autoRotate = true;
+                controls.autoRotate = false;
+                controls.enableRotate = true;
+                controls.enableKeys = true;
+                controls.enableZoom = true;
+                controls.enablePan = true;
                 console.log("Camera auto-rotate enabled, toggle to disable");
             }
+
         }, false);
 
-        function disableCameraRotation() {
-            controls.autoRotate = false;
-        }
-        function enableCameraRotation() {
-            controls.autoRotate = true;
-        }
         // toggle orbit control
         var orbitButton = document.querySelector('#orbitControl');
-
         orbitButton.addEventListener('click', function () {
-            if (controls.autoRotate == false) {
+            console.clear();
+            if (controls.autoRotate == true) {
+                controls.autoRotate = false;
+                controls.enableRotate = true;
+                controls.enableKeys = true;
+                controls.enableZoom = true;
+                controls.enablePan = true;
                 console.log("Orbit controls enabled, toggle to disable");
             }
-            else if (controls.autoRotate == true) {
+            else {
+                controls.autoRotate = true;
+                controls.enableRotate = false;
+                controls.enableKeys = false;
+                controls.enableZoom = false;
+                controls.enablePan = false;
                 console.log("Camera auto-rotate enabled, toggle to disable");
-            } else {
-                console.log("Orbit controls ready to enable");
             }
         }, false)
 
-
+        // drag controls
+        var dragButton = document.querySelector('#dragControl');
+        dragButton.addEventListener('click', function () {
+            console.clear();
+            if (controls.autoRotate == false) {
+                console.log("Camera auto-rotate enabled, toggle to disable");
+            }
+            else if (controls.keys == true) {
+                console.log("Camera auto-rotate enabled, toggle to disable");
+            }
+        }, false)
         // ==================== SKYDOME ===================================//
 
         var vertexShader = document.getElementById('vertexShader').textContent;
@@ -295,7 +341,9 @@
             }
             return needResize;
         }
+        function onMouseOverOBJColor(object) {
 
+        }
         // ===================== Render ==========================//
         // adding scene and camera to the render
         function render(time) {

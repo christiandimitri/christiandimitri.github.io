@@ -1,34 +1,35 @@
 <aside class="menu">
     <p class="menu-label">
-        Navigation
+        Navigation Controls
     </p>
-    <div class="dropdown">
-        <div class="dropdown-trigger">
-            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>------ ------</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </button>
+    <div class="columns navigation-controls has-text-centered">
+        <div class="column is-one-quarter">
+            <span class="icon is-medium navigation">
+                <button id="cameraRotation" class="fa-stack">
+                    <i class="fas fa-undo fa-stack-1x has-text-primary"></i>
+                </button>
+            </span>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-                <a id="cameraRotation" class="dropdown-item is-size-8">
-                    Toggle camera rotation
-                </a>
-                <a id="orbitControl" class="dropdown-item is-size-8">
-                    Toggle orbit control
-                </a>
-                <a href="#" class="dropdown-item is-size-8">
-                    Toggle drag control
-                </a>
-                <a href="#" class="dropdown-item is-size-8">
-                    Toggle first person control
-                </a>
-                <a href="#" class="dropdown-item is-size-8">
-                    Toggle trackball control
-                </a>
-            </div>
+        <div class="column is-one-quarter">
+            <span class="icon is-medium">
+                <button id="orbitControl" class="fa-stack">
+                    <i class="fas fa-sync fa-stack-1x"></i>
+                </button>
+            </span>
+        </div>
+        <div class="column is-one-quarter">
+            <span class="icon is-medium">
+                <button id="dragControl" class="fa-stack">
+                    <i class="fas fa-arrows-alt fa-stack-1x"></i>
+                </button>
+            </span>
+        </div>
+        <div class="column is-one-quarter">
+            <span class="icon is-medium">
+                <button id="firstPersonControl" class="fa-stack">
+                    <i class="fas fa-street-view fa-stack-1x"></i>
+                </button>
+            </span>
         </div>
     </div>
 </aside>
