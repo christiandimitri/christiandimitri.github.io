@@ -2,24 +2,25 @@
     <div class="column is-paddingless">
         <div class="card">
             <div class="card-image medium-height">
+                <div class="card-content threejs-navigation-panel">
+                    {% include three-js-nav.html %}
+                </div>
                 <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
+                <article class="message is-bottom is-dark">
+                    <div class="message-body is-console-output">
+                        <strong>canvas info</strong>
+                    </div>
+                    <input class="input is-console-input is-dark" type="text" placeholder="Text input">
+                </article>
             </div>
         </div>
     </div>
-    <div class="column is-one-quarter is-paddingless is-control">
-        <div class="card medium-height is-control">
-            <div class="card-content canvas-control is-padding">
+    <div class="column is-one-quarter is-paddingless control-panel">
+        <div class="card medium-height control-panel">
+            <div class="control-panel">
                 {% include three-js-menu.html %}
             </div>
-            <article class="message is-bottom is-info">
-                <div class="message-header">
-                    <p>Info</p>
-                </div>
-                <div class="message-body is-console">
-                    <strong>Pellentesque risus mi</strong>, tempus quis
-                    placerat ut, porta nec nulla.
-                </div>
-            </article>
+
         </div>
     </div>
 </div>
@@ -245,7 +246,8 @@
 
         // toggle camera rotation button
         var rotationButton = document.querySelector('#cameraRotation');
-        console.log("Camera rotation enabled, Orbit controls disabled, select navigation type from the toolbar");
+        var infoText = "Camera rotation enabled, Orbit controls disabled, select navigation type from the toolbar";
+
         rotationButton.addEventListener('click', function () {
             console.clear();
             if (controls.autoRotate == false) {

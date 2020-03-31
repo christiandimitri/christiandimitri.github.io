@@ -17,7 +17,7 @@ layout: default
                 <div id="footer-buttons">
                     <p class="buttons">
                         {% for button in site.data.contact %}
-                        <a class="button is-primary is-small" {% if button.type == 'social'%}href="{{button.url}}"
+                        <a class="button is-primary is-small" {% if button.type == 'social' %}href="{{button.url}}"
                             target="_blank" {% else if button.type == 'mail'%}mailto='{{button.url}}' {%endif%}>
                             <span class="icon">
                                 <i class="{{button.icon}}"></i>
