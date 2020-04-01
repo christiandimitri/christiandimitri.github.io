@@ -10,7 +10,7 @@
 $steel-blue: #4682b4;
 $purple: #8A4D76;
 $pink: #FA7C91;
-$brown: #757763;
+$brown: #292929;
 $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
 $dark-grey: #363636;
@@ -18,8 +18,10 @@ $light-grey: hsl(0, 0%, 71%) ;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$tabs-toggle-link-active-background-color	: $brown;
+$tabs-toggle-link-active-background-color	: $dark-grey;
 $tabs-toggle-link-active-border-color: $light-grey;
+$tabs-toggle-link-active-color: $light-grey !important;
+$tabs-toggle-link-border-color: $brown;
 $grey-dark: $dark-grey;
 $grey-light: $brown;
 $primary: $steel-blue;
@@ -27,6 +29,7 @@ $info: $purple;
 $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+
 // Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
 $control-border-width: 2px;
@@ -397,4 +400,6 @@ z-index: 20;
 .top-radiusless{
   border-top-left-radius: 0px !important;
   border-top-right-radius: 0px !important;
+  background-color: $light-grey;
+  color: $brown !important;
 }
