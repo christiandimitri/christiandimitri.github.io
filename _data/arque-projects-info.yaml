@@ -1,0 +1,20 @@
+- name: Cuvierta Curva Marbella
+  client: Marbella
+  year: 2015
+  weight: 1.5 tonnes
+- name: Cuvierta Edificio
+  client: Edificio
+  year: 2015
+  weight: 1.5 tonnes
+- name: Cuvierta Lidel Can Vidalet
+  client: Lidel
+  year: 2015
+  weight: 1.5 tonnes
+- name: Cuvierta Pista de Padel
+  client: Pista
+  year: 2015
+  weight: 1.5 tonnes
+- name: Edificio Aldesa
+  client: Aldesa
+  year: 2015
+  weight: 1.5 tonnes
