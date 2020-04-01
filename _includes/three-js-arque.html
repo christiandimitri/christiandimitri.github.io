@@ -7,7 +7,7 @@
                 </div>
                 <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
                 <article class="message is-bottom is-dark">
-                    <div class="message-body is-console-output">
+                    <div id="canvas-info" class="message-body is-console-output">
                         <strong>canvas info</strong>
                     </div>
                     <input class="input is-console-input is-dark" type="text" placeholder="Text input">
@@ -247,7 +247,7 @@
         // toggle camera rotation button
         var rotationButton = document.querySelector('#cameraRotation');
         var infoText = "Camera rotation enabled, Orbit controls disabled, select navigation type from the toolbar";
-
+        document.getElementById("canvas-info").innerHTML = infoText;
         rotationButton.addEventListener('click', function () {
             console.clear();
             if (controls.autoRotate == false) {
@@ -256,7 +256,8 @@
                 controls.enableKeys = false;
                 controls.enableZoom = false;
                 controls.enablePan = false;
-                console.log("Camera auto-rotate disabled, toggle to enable");
+                infoText = "Camera auto-rotate enabled, toggle to disable";
+                document.getElementById("canvas-info").innerHTML = infoText;
             }
             else {
                 controls.autoRotate = false;
@@ -264,7 +265,8 @@
                 controls.enableKeys = true;
                 controls.enableZoom = true;
                 controls.enablePan = true;
-                console.log("Camera auto-rotate enabled, toggle to disable");
+                infoText = "Camera auto-rotate disabled, toggle to enable";
+                document.getElementById("canvas-info").innerHTML = infoText;
             }
 
         }, false);
@@ -279,7 +281,8 @@
                 controls.enableKeys = true;
                 controls.enableZoom = true;
                 controls.enablePan = true;
-                console.log("Orbit controls enabled, toggle to disable");
+                infoText = "Orbit controls enabled, toggle to disable";
+                document.getElementById("canvas-info").innerHTML = infoText;
             }
             else {
                 controls.autoRotate = true;
@@ -287,7 +290,8 @@
                 controls.enableKeys = false;
                 controls.enableZoom = false;
                 controls.enablePan = false;
-                console.log("Camera auto-rotate enabled, toggle to disable");
+                infoText = "Orbit controls disabled, toggle to enable";
+                document.getElementById("canvas-info").innerHTML = infoText;
             }
         }, false)
 
