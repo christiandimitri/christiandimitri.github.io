@@ -4,7 +4,9 @@
             <div class="card-image medium-height">
                 <div class="card-content threejs-navigation-panel">
                     {% include three-js-nav.html %}
+                    {% include three-js-app-info.html %}
                 </div>
+
                 <canvas id='{{include.id}}' class="threeJS-canvas"></canvas>
                 <article class="message is-bottom is-dark">
                     <div id="canvas-info" class="message-body is-console-output">

@@ -23,6 +23,7 @@ $tabs-toggle-link-active-background-color	: $brown;
 $tabs-toggle-link-active-border-color: $light-grey;
 $tabs-toggle-link-active-color: $light-grey !important;
 $tabs-toggle-link-border-color: $brown;
+$dropdown-item-hover-background-color	:transparent !important;
 $grey-dark: $dark-grey;
 $grey-light: $brown;
 $primary: $steel-blue;
@@ -30,6 +31,20 @@ $info: $purple;
 $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+
+.button.is-rounded {
+  border-radius: 290486px;
+}
+
+.field.has-addons .control:first-child .is-rounded {
+  border-bottom-left-radius: 290486px;
+  border-top-left-radius: 290486px;
+}
+.field.has-addons .control:last-child .is-rounded {
+  border-bottom-right-radius: 290486px;
+  border-top-right-radius: 290486px;
+}
+
 
 // Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
@@ -390,6 +405,7 @@ margin-top: 1.5rem;
 .threejs-navigation-panel{
 position: absolute;
 z-index: 20;
+width: 100%;
 }
 #tab-content p {
   display: none;
