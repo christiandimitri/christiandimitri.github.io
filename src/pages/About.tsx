@@ -43,6 +43,10 @@ export function About() {
                 LinkedIn
               </a>
             </dd>
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
           </dl>
         </aside>
         <div className="about-main">

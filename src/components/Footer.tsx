@@ -10,7 +10,7 @@ export function Footer() {
         <a href={site.linkedin} target="_blank" rel="noreferrer">
           LinkedIn
         </a>
-        <a href={`mailto:${site.email}`}>Email</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
         <a href={site.cv} target="_blank" rel="noreferrer">
           CV
         </a>
