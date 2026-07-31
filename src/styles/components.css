@@ -764,6 +764,17 @@
   width: 100%;
   height: auto;
   border-radius: 16px;
+  border: 1px solid var(--border);
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.5s var(--ease);
+}
+
+:root[data-theme="dark"] .about-photo {
+  filter: grayscale(1) contrast(1.12) brightness(0.82);
+}
+
+.about-photo:hover {
+  filter: grayscale(0) contrast(1);
 }
 
 .about-aside {
