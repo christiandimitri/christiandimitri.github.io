@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#8b8b95" stroke-width="1.6"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#84cc16" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="640" fill="#0e0e10"/>
+
+  <!-- faint grid -->
+  <g stroke="#1c1c21" stroke-width="1">
+    <path d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200"/>
+    <path d="M80 0V640M160 0V640M240 0V640M320 0V640M400 0V640M480 0V640M560 0V640M640 0V640M720 0V640M800 0V640M880 0V640M960 0V640M1040 0V640M1120 0V640"/>
+  </g>
+
+  <text x="60" y="66" fill="#f4f4f5" font-size="26" font-weight="600">AEC agent — proof of concept</text>
+  <text x="60" y="94" fill="#6b6b74" font-size="15">model in, verdict out, render on the side · personal project, in progress</text>
+
+  <!-- Row 1: Revit -> Rhino.Inside -> Grasshopper -->
+  <g>
+    <rect x="60" y="150" width="200" height="70" rx="12" fill="#161619" stroke="#2c2c33"/>
+    <text x="160" y="181" fill="#f4f4f5" font-size="17" font-weight="600" text-anchor="middle">Revit</text>
+    <text x="160" y="203" fill="#8b8b95" font-size="12.5" text-anchor="middle">physical + analytical model</text>
+
+    <line x1="260" y1="185" x2="330" y2="185" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+    <text x="295" y="172" fill="#6b6b74" font-size="11.5" text-anchor="middle">Rhino.Inside</text>
+
+    <rect x="332" y="150" width="220" height="70" rx="12" fill="#161619" stroke="#2c2c33"/>
+    <text x="442" y="181" fill="#f4f4f5" font-size="17" font-weight="600" text-anchor="middle">Grasshopper</text>
+    <text x="442" y="203" fill="#8b8b95" font-size="12.5" text-anchor="middle">live canvas, read before write</text>
+  </g>
+
+  <!-- Claude over MCP, double arrow to Grasshopper -->
+  <g>
+    <rect x="640" y="150" width="220" height="70" rx="12" fill="#1a1625" stroke="#8b5cf6"/>
+    <text x="750" y="181" fill="#f4f4f5" font-size="17" font-weight="600" text-anchor="middle">Claude</text>
+    <text x="750" y="203" fill="#a78bfa" font-size="12.5" text-anchor="middle">agent over MCP</text>
+    <line x1="554" y1="175" x2="638" y2="175" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+    <line x1="638" y1="196" x2="554" y2="196" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- Render branch -->
+  <g>
+    <rect x="920" y="150" width="220" height="70" rx="12" fill="#161619" stroke="#2c2c33"/>
+    <text x="1030" y="181" fill="#f4f4f5" font-size="17" font-weight="600" text-anchor="middle">Higgsfield / GPT-Image</text>
+    <text x="1030" y="203" fill="#8b8b95" font-size="12.5" text-anchor="middle">cinematic render + video</text>
+    <line x1="860" y1="185" x2="918" y2="185" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- Two analysis streams -->
+  <g>
+    <line x1="400" y1="220" x2="330" y2="310" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+    <line x1="484" y1="220" x2="554" y2="310" stroke="#8b8b95" stroke-width="1.6" marker-end="url(#arr)"/>
+
+    <rect x="170" y="315" width="260" height="80" rx="12" fill="#161619" stroke="#2c2c33"/>
+    <text x="300" y="347" fill="#f4f4f5" font-size="16" font-weight="600" text-anchor="middle">Structure</text>
+    <text x="300" y="369" fill="#8b8b95" font-size="12.5" text-anchor="middle">COMPAS FEA → forces, stresses,</text>
+    <text x="300" y="385" fill="#8b8b95" font-size="12.5" text-anchor="middle">modal response</text>
+
+    <rect x="460" y="315" width="260" height="80" rx="12" fill="#161619" stroke="#2c2c33"/>
+    <text x="590" y="347" fill="#f4f4f5" font-size="16" font-weight="600" text-anchor="middle">Performance</text>
+    <text x="590" y="369" fill="#8b8b95" font-size="12.5" text-anchor="middle">Ladybug / Honeybee → kWh/m²·yr,</text>
+    <text x="590" y="385" fill="#8b8b95" font-size="12.5" text-anchor="middle">daylight</text>
+  </g>
+
+  <!-- Verdict -->
+  <g>
+    <line x1="300" y1="395" x2="390" y2="470" stroke="#84cc16" stroke-width="1.6" marker-end="url(#arrg)"/>
+    <line x1="590" y1="395" x2="500" y2="470" stroke="#84cc16" stroke-width="1.6" marker-end="url(#arrg)"/>
+
+    <rect x="240" y="475" width="410" height="80" rx="12" fill="#141a10" stroke="#84cc16"/>
+    <text x="445" y="507" fill="#f4f4f5" font-size="16" font-weight="600" text-anchor="middle">Normative verdict</text>
+    <text x="445" y="529" fill="#a3c76d" font-size="12.5" text-anchor="middle">Eurocodes + Código Estructural · CTE DB-HE</text>
+    <text x="445" y="545" fill="#a3c76d" font-size="12.5" text-anchor="middle">passes / fails clause by clause, with the fix</text>
+  </g>
+
+  <!-- write-back, dashed = future -->
+  <g>
+    <path d="M 240 515 L 100 515 L 100 222" fill="none" stroke="#6b6b74" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+    <text x="112" y="470" fill="#6b6b74" font-size="12">write back to BIM</text>
+    <text x="112" y="487" fill="#6b6b74" font-size="12">(to be continued)</text>
+  </g>
+
+  <!-- optimization loop -->
+  <g>
+    <path d="M 720 355 C 800 355 800 275 760 222" fill="none" stroke="#6b6b74" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+    <text x="806" y="300" fill="#6b6b74" font-size="12">optimization loop</text>
+  </g>
+</svg>

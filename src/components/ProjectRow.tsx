@@ -27,6 +27,11 @@ export function ProjectRow({ project, index }: { project: Project; index: number
           {href && <span className="project-visit">{project.links?.site ? "visit ↗" : "source ↗"}</span>}
         </span>
       </span>
+      {project.image && (
+        <span className="project-thumb" aria-hidden="true">
+          <img src={project.image} alt="" loading="lazy" />
+        </span>
+      )}
     </>
   );
 

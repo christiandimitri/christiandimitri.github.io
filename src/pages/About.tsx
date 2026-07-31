@@ -1,4 +1,4 @@
-import { timeline, publications, languages } from "../data/timeline";
+import { timeline, publications, languages, award } from "../data/timeline";
 import { site } from "../data/site";
 import { usePageTitle } from "../lib/usePageTitle";
 import { useReveal } from "../lib/useReveal";
@@ -22,7 +22,7 @@ export function About() {
             <dt>Working on</dt>
             <dd>BIM &amp; CAD software for the web</dd>
             <dt>Languages</dt>
-            <dd>{languages.map((l) => l.name).join(", ")}</dd>
+            <dd>{languages.map((l) => `${l.name} (${l.level})`).join(", ")}</dd>
             <dt>Documents</dt>
             <dd>
               <a href={site.cv} target="_blank" rel="noreferrer">
@@ -47,11 +47,10 @@ export function About() {
         </aside>
         <div className="about-main">
           <p className="about-lede reveal">
-            I&rsquo;m a Lebanese architect who moved to Barcelona to study parametric design and
-            never stopped writing code. Ten years later the drawing board is a text editor:
-            I build the software that architecture and construction run on — IFC viewers,
-            DXF editors, CAD plugins, geometry engines, and lately AI agents for the built
-            environment.
+            I&rsquo;m a Lebanese architect who moved to Barcelona to study parametric design
+            and never really left the code editor after that. These days I build the software
+            that architecture and construction run on: IFC viewers, DXF editors, CAD plugins,
+            geometry engines, and lately AI agents for the built environment.
           </p>
           <ol className="timeline">
             {timeline.map((entry, i) => (
@@ -70,6 +69,10 @@ export function About() {
               {publications.map((p) => (
                 <li key={p}>{p}</li>
               ))}
+            </ul>
+            <h2>Award</h2>
+            <ul>
+              <li>{award}</li>
             </ul>
           </section>
         </div>

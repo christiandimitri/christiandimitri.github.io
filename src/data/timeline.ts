@@ -6,34 +6,49 @@ export type TimelineEntry = {
 
 export const timeline: TimelineEntry[] = [
   {
-    period: "2011–2016",
-    title: "Architecture — Beirut",
-    body: "Master of Architecture at the Holy Spirit University of Kaslik (USEK). Drawing boards, concrete, and a growing suspicion that the most interesting part of every project was the geometry problem hiding inside it.",
+    period: "2009–2016",
+    title: "Architecture school — Lebanon",
+    body: "BSc and MSc in architecture at USEK, thesis on turning an old stadium into a sports hub. Along the way: SLB Architects, the Blank Workshop, and a summer in Bordeaux building the Bordeaux-Bastide model for Youssef Tohme. I liked the geometry problems more than the deadlines.",
+  },
+  {
+    period: "2016–2018",
+    title: "Robots, marble and a prize",
+    body: "3D scanning and KUKA robot work at Marbres de France, a freeform marble washbasin for NERINEA, the ARTE ROBOTICA workshop in Paris where our team project Insection took best project on an ABB arm. With Building Reality we won the Morpheus Cup 2018, real-estate division. Somewhere in there I stopped calling myself just an architect.",
   },
   {
     period: "2017–2018",
-    title: "Parametric design — Barcelona",
-    body: "Master in Parametric Design in Architecture (MPDA) at UPC Barcelona. Built and stress-tested actively-bent gridshells, and wrote a thesis on rationalizing freeform surfaces into planar quad meshes — where scripting stopped being a tool and became the job.",
+    title: "MPDA — Barcelona",
+    body: "Master in Parametric Design in Architecture at UPC. We designed, engineered and physically built an actively-bent gridshell, and my thesis chased the rationalization of freeform surfaces into planar quad meshes. Scripting stopped being a tool here and became the job.",
   },
   {
-    period: "2018–2021",
-    title: "Computational design & fabrication",
-    body: "Grasshopper and C# full-time: custom plugins, form-finding, digital fabrication with CNC and robotic arms, and Arque — a parametric configurator that put five steel canopies on the ground across Spain.",
+    period: "2018–2019",
+    title: "Noumena",
+    body: "Computational-design internship: digital fabrication, 3D printing, Grasshopper all day. First taste of shipping design tools other people had to use.",
   },
   {
-    period: "2021–2023",
-    title: "BIM software developer",
-    body: "Crossed fully into software. Built Hydra (solar analysis on web IFC viewers), Pris (Revit ↔ Civil 3D interop), Vero (Navisworks/Revit QA automation) and Optinave (cloud analysis for naval structures) — .NET on the desktop, web tech everywhere else.",
+    period: "2020–2022",
+    title: "Estructuras Arqué",
+    body: "Parametric specialist for a steel-structures fabricator. Automated the structural workflow with Tekla, Grasshopper and ShapeDiver, and built the Arqué configurator that put five canopies on the ground across Spain.",
   },
   {
-    period: "2023–today",
-    title: "Web BIM at scale",
-    body: "3D on the web as a day job: Check2Build's BIM quality-assurance platform (IFC + point clouds in the browser), an AI-assisted civil autograder at Monstar Lab, and a WASM-powered DXF editor for a construction-robotics platform. React, three.js, C++, Python, C# — whatever the geometry needs.",
+    period: "2022–2023",
+    title: "Going full software",
+    body: "The freelance-and-startup stretch. Parametric Monkey: turning a Grasshopper proof of concept into a scalable .NET app. Mule Studio: Tekla and Grasshopper automation that fed the Guggenheim UAE effort. Then a year at e-verse building BIM plugins — a solar-farm layout tool and the Navisworks add-ins (Pris, Vero) — in proper scrum, with proper clients.",
+  },
+  {
+    period: "2024–now",
+    title: "CheckToBuild",
+    body: "BIM developer on a QA/QC and inspection platform: IFC and fragments pipeline, deviation checks between as-designed models and laser-scanned reality, React Three Fiber performance work on large IFCs and octree point clouds, Civil 3D automations bridged to React through WebView2.",
+  },
+  {
+    period: "2025–now",
+    title: "Monstarlab",
+    body: "Outside consultant on an ML system that auto-grades Civil 3D designs. I own the geometry: extracting and cleaning alignments, feature lines and TIN surfaces, generating training data, and the half-edge topology utilities that keep grading-line tracing robust. Internal validation sits around 99% across project scenarios.",
   },
   {
     period: "on the side",
-    title: "Open source, agents & music",
-    body: "R3F rendering libraries (r3f-peridot, fragments-webxr), LLM agents for BIM quantities, and an unreasonable amount of code that makes techno — driving Ableton Live programmatically and mastering tracks with a Python DSP engine.",
+    title: "Agents, MCP and music",
+    body: "Open-source R3F libraries, my own MCP servers, an AEC agent that critiques Grasshopper definitions instead of building demo towers, and a lot of code that makes techno — driving Ableton Live programmatically and mastering against reference tracks with a Python DSP engine.",
   },
 ];
 
@@ -42,9 +57,11 @@ export const publications = [
   "ARTE ROBOTICA V.01 — Computational Robotic Painting Workshop with DesignMorphine: INSECTION",
 ];
 
+export const award = "Morpheus Cup 2018 — winner, Real Estate division (with Building Reality)";
+
 export const languages = [
-  { name: "English", level: "native" },
   { name: "Arabic", level: "native" },
-  { name: "French", level: "fluent" },
-  { name: "Spanish", level: "fluent" },
+  { name: "French", level: "advanced" },
+  { name: "English", level: "advanced" },
+  { name: "Spanish", level: "conversational" },
 ];

@@ -1,10 +1,10 @@
 export const site = {
   name: "Christian Dimitri",
-  tagline: "Architect turned software engineer",
+  tagline: "Architect / BIM developer",
   heroTitle: "I turn buildings into software.",
   heroSub:
-    "Architect turned software engineer in Barcelona — I build BIM and CAD tools for the web: IFC and DXF viewers that survive real-world file sizes, plugins across Rhino, Revit and Civil 3D, and AI tooling for the built environment.",
-  heroNow: "Currently building at Check2Build and Monstar Lab.",
+    "I'm an architect who ended up a software developer, based in Barcelona. These days I build parametric and interoperable workflows across Autodesk and open-BIM stacks: real-time inspection tools, grading automation, viewers that survive files from actual construction sites.",
+  heroNow: "Currently at CheckToBuild, consulting for Monstarlab on the side.",
   email: "christian.j.dimitrii@gmail.com",
   github: "https://github.com/christiandimitri",
   linkedin: "https://linkedin.com/in/chrisdimitri",
