@@ -48,7 +48,7 @@ export const timeline: TimelineEntry[] = [
   {
     period: "on the side",
     title: "Agents, MCP and music",
-    body: "Open-source R3F libraries, my own MCP servers, an AEC agent that critiques Grasshopper definitions instead of building demo towers, and a lot of code that makes techno — driving Ableton Live programmatically and mastering against reference tracks with a Python DSP engine.",
+    body: "Open-source R3F libraries, my own MCP servers, an AEC agent that critiques Grasshopper definitions instead of building demo towers, and music tooling: driving Ableton Live programmatically and mastering against reference tracks with a Python DSP engine.",
   },
 ];
 

@@ -79,7 +79,7 @@ export const projects: Project[] = [
     slug: "ableton-studio",
     title: "Ableton by code",
     oneLiner:
-      "Producing techno without touching the DAW: a 59-tool MCP layer into Live, gzipped-XML surgery on .als files, and 44 skills that encode groove as functions.",
+      "Driving Ableton Live entirely by code: a 59-tool MCP layer into Live, gzipped-XML surgery on .als files, and 44 skills that encode groove as functions.",
     year: "2025–26",
     tags: ["Music", "Python", "MCP", "AI"],
     gradient: ["#f43f5e", "#8b5cf6"],
