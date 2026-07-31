@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christian Dimitri — Architect turned software engineer</title>
+    <meta
+      name="description"
+      content="Christian Dimitri is an architect turned software engineer in Barcelona, building BIM and CAD tools for the web — IFC viewers, DXF editors, computational geometry and AI tooling for the built environment."
+    />
+    <link rel="canonical" href="https://christiandimitri.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Christian Dimitri — Architect turned software engineer" />
+    <meta
+      property="og:description"
+      content="BIM and CAD tools for the web — IFC viewers, DXF editors, computational geometry and AI tooling for the built environment."
+    />
+    <meta property="og:url" content="https://christiandimitri.github.io/" />
+    <meta property="og:image" content="https://christiandimitri.github.io/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var t =
+            s === "light" || s === "dark"
+              ? s
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Christian Dimitri",
+        "jobTitle": "Software Engineer (BIM / AEC)",
+        "url": "https://christiandimitri.github.io/",
+        "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+        "alumniOf": [
+          "Universitat Politècnica de Catalunya",
+          "Holy Spirit University of Kaslik"
+        ],
+        "sameAs": [
+          "https://github.com/christiandimitri",
+          "https://linkedin.com/in/chrisdimitri"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
