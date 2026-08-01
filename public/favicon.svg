@@ -18,9 +18,9 @@
     <path d="M10,45 C25,43 40,47 54,45" />
   </g>
   <g class="fg" fill="none">
-    <circle cx="29" cy="35" r="15" stroke-width="6.2" stroke-linecap="round"
-      stroke-dasharray="66.5 27.7" transform="rotate(55 29 35)" />
-    <circle cx="37.5" cy="38.5" r="6.3" stroke-width="3.9" />
-    <line x1="43.8" y1="25.5" x2="43.8" y2="44.5" stroke-width="3.9" stroke-linecap="round" />
+    <circle cx="30" cy="36" r="15" stroke-width="5.6" stroke-linecap="round"
+      stroke-dasharray="78.5 15.7" transform="rotate(-25 30 36)" />
+    <circle cx="30" cy="36" r="7.5" stroke-width="4.8" />
+    <line x1="37.5" y1="14.5" x2="37.5" y2="43" stroke-width="4.8" stroke-linecap="round" />
   </g>
 </svg>

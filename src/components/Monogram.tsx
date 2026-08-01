@@ -19,16 +19,16 @@ export function Monogram({ size = 34 }: { size?: number }) {
       </g>
       <g stroke="var(--bg)" fill="none">
         <circle
-          cx="29"
-          cy="35"
+          cx="30"
+          cy="36"
           r="15"
-          strokeWidth="6.2"
+          strokeWidth="5.6"
           strokeLinecap="round"
-          strokeDasharray="66.5 27.7"
-          transform="rotate(55 29 35)"
+          strokeDasharray="78.5 15.7"
+          transform="rotate(-25 30 36)"
         />
-        <circle cx="37.5" cy="38.5" r="6.3" strokeWidth="3.9" />
-        <line x1="43.8" y1="25.5" x2="43.8" y2="44.5" strokeWidth="3.9" strokeLinecap="round" />
+        <circle cx="30" cy="36" r="7.5" strokeWidth="4.8" />
+        <line x1="37.5" y1="14.5" x2="37.5" y2="43" strokeWidth="4.8" strokeLinecap="round" />
       </g>
     </svg>
   );
