@@ -24,11 +24,11 @@ export function Monogram({ size = 34 }: { size?: number }) {
           r="15"
           strokeWidth="5.6"
           strokeLinecap="round"
-          strokeDasharray="78.5 15.7"
-          transform="rotate(-25 30 36)"
+          strokeDasharray="68 26.2"
+          transform="rotate(50 30 36)"
         />
-        <circle cx="30" cy="36" r="7.5" strokeWidth="4.8" />
-        <line x1="37.5" y1="14.5" x2="37.5" y2="43" strokeWidth="4.8" strokeLinecap="round" />
+        <line x1="30" y1="28.5" x2="30" y2="43.5" strokeWidth="4.8" strokeLinecap="round" />
+        <path d="M30,28.5 A7.5,7.5 0 0 0 30,43.5" strokeWidth="4.8" strokeLinecap="round" />
       </g>
     </svg>
   );
