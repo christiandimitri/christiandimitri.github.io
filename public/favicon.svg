@@ -1,12 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    rect { fill: #18181b; }
-    text { fill: #fbfbfa; }
+    .sq { fill: #18181b; }
+    .fg { stroke: #fbfbfa; }
     @media (prefers-color-scheme: dark) {
-      rect { fill: #f4f4f5; }
-      text { fill: #0c0c0d; }
+      .sq { fill: #f4f4f5; }
+      .fg { stroke: #0c0c0d; }
     }
   </style>
-  <rect width="34" height="34" rx="9" />
-  <text x="17" y="18" text-anchor="middle" dominant-baseline="central" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="600" font-size="15" letter-spacing="-0.5">cd</text>
+  <rect class="sq" width="64" height="64" rx="17" />
+  <g class="fg" opacity="0.22" fill="none" stroke-width="1.6">
+    <path d="M17,10 C15,25 19,40 17,54" />
+    <path d="M29,10 C31,25 27,40 29,54" />
+    <path d="M41,10 C39,25 43,40 41,54" />
+    <path d="M53,10 C54,25 51,40 53,54" />
+    <path d="M10,19 C25,17 40,21 54,19" />
+    <path d="M10,32 C25,34 40,30 54,32" />
+    <path d="M10,45 C25,43 40,47 54,45" />
+  </g>
+  <g class="fg" fill="none">
+    <circle cx="29" cy="35" r="15" stroke-width="6.2" stroke-linecap="round"
+      stroke-dasharray="66.5 27.7" transform="rotate(55 29 35)" />
+    <circle cx="37.5" cy="38.5" r="6.3" stroke-width="3.9" />
+    <line x1="43.8" y1="25.5" x2="43.8" y2="44.5" stroke-width="3.9" stroke-linecap="round" />
+  </g>
 </svg>
