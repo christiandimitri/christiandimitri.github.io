@@ -36,14 +36,14 @@ export const timeline: TimelineEntry[] = [
     body: "The freelance-and-startup stretch. Parametric Monkey: turning a Grasshopper proof of concept into a scalable .NET app. Mule Studio: Tekla and Grasshopper automation that fed the Guggenheim UAE effort. Then a year at e-verse building BIM plugins — a solar-farm layout tool and the Navisworks add-ins (Pris, Vero) — in proper scrum, with proper clients.",
   },
   {
-    period: "2024–now",
+    period: "2024–2026",
     title: "CheckToBuild",
     body: "BIM developer on a QA/QC and inspection platform: IFC and fragments pipeline, deviation checks between as-designed models and laser-scanned reality, React Three Fiber performance work on large IFCs and octree point clouds, Civil 3D automations bridged to React through WebView2.",
   },
   {
     period: "2025–now",
     title: "Monstarlab",
-    body: "Outside consultant on an ML system that auto-grades Civil 3D designs. I own the geometry: extracting and cleaning alignments, feature lines and TIN surfaces, generating training data, and the half-edge topology utilities that keep grading-line tracing robust. Internal validation sits around 99% across project scenarios.",
+    body: "Consultant on an ML system that auto-grades Civil 3D designs — now my main engagement. I own the geometry: extracting and cleaning alignments, feature lines and TIN surfaces, generating training data, and the half-edge topology utilities that keep grading-line tracing robust. Internal validation sits around 99% across project scenarios.",
   },
   {
     period: "on the side",

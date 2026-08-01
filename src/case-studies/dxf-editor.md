@@ -1,11 +1,11 @@
 ---
 title: A web DXF editor for files that break desktop CAD
 context: construction robotics
-year: 2024–now
+year: 2024–2026
 summary: Browser CAD editing at the scale construction robotics needs — C++ core in WASM, GPU highlighting, viewport streaming.
 ---
 
-For a construction-robotics platform, floor plans are not documentation, they're input: machines work from them. The files arrive as DXF, they are routinely hundreds of megabytes, and the people who need to view and correct them should not need a CAD seat and a workstation. So the editor lives in the browser, and my job is making that not be a contradiction.
+For a construction-robotics platform, floor plans are not documentation, they're input: machines work from them. The files arrive as DXF, they are routinely hundreds of megabytes, and the people who need to view and correct them should not need a CAD seat and a workstation. So the editor lives in the browser, and my job was making that not be a contradiction.
 
 ## The shape of the problem
 

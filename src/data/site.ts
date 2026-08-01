@@ -4,7 +4,8 @@ export const site = {
   heroTitle: "I turn buildings into software.",
   heroSub:
     "I'm an architect who ended up a software developer, based in Barcelona. These days I build parametric and interoperable workflows across Autodesk and open-BIM stacks: real-time inspection tools, grading automation, viewers that survive files from actual construction sites.",
-  heroNow: "Currently at CheckToBuild, consulting for Monstarlab on the side.",
+  heroNow:
+    "Currently consulting for Monstarlab, and spending the rest of my time experimenting with new tools.",
   email: "christian.j.dimitrii@gmail.com",
   github: "https://github.com/christiandimitri",
   linkedin: "https://linkedin.com/in/chrisdimitri",
@@ -33,7 +34,8 @@ export const strings = {
     heroTitle: "Convierto edificios en software.",
     heroSub:
       "Soy arquitecto y acabé siendo desarrollador de software, en Barcelona. Hoy construyo flujos paramétricos e interoperables sobre los ecosistemas de Autodesk y openBIM: herramientas de inspección en tiempo real, automatización de explanaciones y visores que aguantan archivos de obra reales.",
-    heroNow: "Actualmente en CheckToBuild, y como consultor para Monstarlab.",
+    heroNow:
+      "Actualmente como consultor para Monstarlab, y el resto del tiempo experimentando con herramientas nuevas.",
     tagline: "Arquitecto / desarrollador BIM",
     nav: { work: "Trabajo", writing: "Escritos", about: "Sobre mí" },
     selectedWork: "Trabajo seleccionado",
