@@ -17,18 +17,27 @@ export function Monogram({ size = 34 }: { size?: number }) {
         <path d="M10,32 C25,34 40,30 54,32" />
         <path d="M10,45 C25,43 40,47 54,45" />
       </g>
-      <g stroke="var(--bg)" fill="none">
+      <g fill="none">
         <circle
-          cx="30"
-          cy="36"
-          r="15"
-          strokeWidth="5.6"
+          cx="25"
+          cy="37.5"
+          r="7.6"
+          stroke="var(--bg)"
+          strokeWidth="6.6"
           strokeLinecap="round"
-          strokeDasharray="68 26.2"
-          transform="rotate(50 30 36)"
+          strokeDasharray="35.5 12.2"
+          transform="rotate(40 25 37.5)"
         />
-        <line x1="30" y1="28.5" x2="30" y2="43.5" strokeWidth="4.8" strokeLinecap="round" />
-        <path d="M30,28.5 A7.5,7.5 0 0 0 30,43.5" strokeWidth="4.8" strokeLinecap="round" />
+        <circle cx="39" cy="37.5" r="7.6" stroke="var(--text-weak)" strokeWidth="6.6" />
+        <line
+          x1="46.6"
+          y1="18.5"
+          x2="46.6"
+          y2="44.6"
+          stroke="var(--text-weak)"
+          strokeWidth="6.6"
+          strokeLinecap="round"
+        />
       </g>
     </svg>
   );
