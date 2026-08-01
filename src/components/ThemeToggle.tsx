@@ -19,21 +19,30 @@ const OPTIONS: { mode: Mode; label: string; icon: string }[] = [
 ];
 
 export function ThemeToggle() {
-  const [mode, setMode] = useState<Mode>(stored);
+  // Server renders "system"; the real preference is read after mount so the
+  // markup stays hydration-safe.
+  const [mode, setModeState] = useState<Mode>("system");
 
   useEffect(() => {
-    document.documentElement.dataset.theme = resolve(mode);
-    if (mode === "system") {
-      localStorage.removeItem("theme");
-      const mq = matchMedia("(prefers-color-scheme: dark)");
-      const onChange = () => {
-        document.documentElement.dataset.theme = resolve("system");
-      };
-      mq.addEventListener("change", onChange);
-      return () => mq.removeEventListener("change", onChange);
-    }
-    localStorage.setItem("theme", mode);
+    setModeState(stored());
+  }, []);
+
+  useEffect(() => {
+    if (mode !== "system") return;
+    const mq = matchMedia("(prefers-color-scheme: dark)");
+    const onChange = () => {
+      document.documentElement.dataset.theme = resolve("system");
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, [mode]);
+
+  const setMode = (m: Mode) => {
+    setModeState(m);
+    document.documentElement.dataset.theme = resolve(m);
+    if (m === "system") localStorage.removeItem("theme");
+    else localStorage.setItem("theme", m);
+  };
 
   return (
     <div className="theme-toggle" role="group" aria-label="Theme">

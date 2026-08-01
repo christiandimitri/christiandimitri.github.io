@@ -17,6 +17,7 @@ export function Footer() {
         <a href={site.portfolio} target="_blank" rel="noreferrer">
           Portfolio (PDF)
         </a>
+        <a href="/feed.xml">RSS</a>
       </div>
       <p className="footer-note">
         Built with React + TypeScript, deployed from{" "}

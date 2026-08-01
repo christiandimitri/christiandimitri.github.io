@@ -3,7 +3,22 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getPost, posts, formatDate } from "../lib/posts";
 import { usePageTitle } from "../lib/usePageTitle";
+import { useThemeValue } from "../lib/useThemeValue";
 import { NotFound } from "./NotFound";
+
+/** Images with a light-theme variant, keyed by their dark (default) src. */
+const THEMED_IMAGES: Record<string, string> = {
+  "/img/aec-agent-pipeline.svg": "/img/aec-agent-pipeline-light.svg",
+};
+
+function MdImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const theme = useThemeValue();
+  const src =
+    theme === "light" && props.src && THEMED_IMAGES[props.src]
+      ? THEMED_IMAGES[props.src]
+      : props.src;
+  return <img {...props} src={src} loading="lazy" />;
+}
 
 export function Post() {
   const { slug } = useParams<{ slug: string }>();
@@ -25,6 +40,7 @@ export function Post() {
         <h1>{post.title}</h1>
         <p className="post-meta">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <span>{post.minutes} min read</span>
           <span className="post-meta-tags">
             {post.tags.map((t) => (
               <span key={t}>{t}</span>
@@ -33,7 +49,9 @@ export function Post() {
         </p>
       </header>
       <div className="prose">
-        <Markdown remarkPlugins={[remarkGfm]}>{post.body}</Markdown>
+        <Markdown remarkPlugins={[remarkGfm]} components={{ img: MdImage }}>
+          {post.body}
+        </Markdown>
       </div>
       <nav className="post-nav" aria-label="More posts">
         {older ? (

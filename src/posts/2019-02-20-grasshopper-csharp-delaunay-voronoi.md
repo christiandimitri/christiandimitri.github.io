@@ -30,6 +30,8 @@ foreach (Point3d p in points)
 
 The circumcircle test is one determinant. The only part that needs real care is the boundary extraction: an edge is boundary if it belongs to exactly one bad triangle. I got that wrong twice before it clicked.
 
+![One Bowyer–Watson insertion, in three steps](/img/bowyer-watson.svg)
+
 Voronoi then costs almost nothing. Connect the circumcenters of adjacent triangles and you have your cells. Duality is the closest thing computational geometry has to a magic trick.
 
 ## What the SDK teaches you

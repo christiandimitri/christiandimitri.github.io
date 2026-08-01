@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="1200" height="440" fill="#0e0e10"/>
+  <g stroke="#1c1c21" stroke-width="1">
+    <path d="M0 110H1200M0 220H1200M0 330H1200"/>
+    <path d="M300 0V440M600 0V440M900 0V440"/>
+  </g>
+
+  <text x="60" y="52" fill="#f4f4f5" font-size="22" font-weight="600">Bowyer–Watson, one insertion</text>
+
+  <!-- Panel 1: bad triangles -->
+  <g transform="translate(70,90)">
+    <text x="0" y="0" fill="#8b8b95" font-size="13">1 · circumcircles containing p are “bad”</text>
+    <g stroke="#3f3f46" fill="none" stroke-width="1.4">
+      <path d="M40 220 L150 60 L250 180 Z"/>
+      <path d="M150 60 L280 40 L250 180 Z"/>
+      <path d="M40 220 L250 180 L200 290 Z"/>
+    </g>
+    <g stroke="#ef4444" fill="none" stroke-width="1.6">
+      <path d="M150 60 L250 180 L170 250 Z" opacity="0.9"/>
+      <circle cx="196" cy="160" r="86" stroke-dasharray="5 5" opacity="0.55"/>
+    </g>
+    <circle cx="205" cy="170" r="5" fill="#84cc16"/>
+    <text x="216" y="175" fill="#84cc16" font-size="13">p</text>
+  </g>
+
+  <!-- Panel 2: boundary polygon -->
+  <g transform="translate(470,90)">
+    <text x="0" y="0" fill="#8b8b95" font-size="13">2 · remove them, keep the boundary polygon</text>
+    <g stroke="#3f3f46" fill="none" stroke-width="1.4">
+      <path d="M40 220 L150 60 L250 180"/>
+      <path d="M150 60 L280 40"/>
+      <path d="M40 220 L200 290"/>
+    </g>
+    <path d="M150 60 L280 40 L250 180 L200 290 L40 220 Z" stroke="#8b5cf6" fill="none" stroke-width="2"/>
+    <circle cx="185" cy="170" r="5" fill="#84cc16"/>
+  </g>
+
+  <!-- Panel 3: retriangulate -->
+  <g transform="translate(870,90)">
+    <text x="0" y="0" fill="#8b8b95" font-size="13">3 · connect p to every boundary edge</text>
+    <path d="M150 60 L280 40 L250 180 L200 290 L40 220 Z" stroke="#3f3f46" fill="none" stroke-width="1.4"/>
+    <g stroke="#84cc16" stroke-width="1.6">
+      <path d="M185 170 L150 60"/>
+      <path d="M185 170 L280 40"/>
+      <path d="M185 170 L250 180"/>
+      <path d="M185 170 L200 290"/>
+      <path d="M185 170 L40 220"/>
+    </g>
+    <circle cx="185" cy="170" r="5" fill="#84cc16"/>
+  </g>
+</svg>

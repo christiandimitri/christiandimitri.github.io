@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import { projects, allTags } from "../data/projects";
+import { strings, type Lang } from "../data/site";
 import { ProjectRow } from "./ProjectRow";
 import { useReveal } from "../lib/useReveal";
 
-export function ProjectList() {
+export function ProjectList({ lang = "en" }: { lang?: Lang }) {
   const [view, setView] = useState<"selected" | "all">("selected");
   const [tag, setTag] = useState<string | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
+  const t = strings[lang];
 
   const visible = useMemo(() => {
     let list = projects;
@@ -29,7 +31,7 @@ export function ProjectList() {
               setTag(null);
             }}
           >
-            Selected work
+            {t.selectedWork}
           </button>
           <button
             type="button"
@@ -39,7 +41,7 @@ export function ProjectList() {
               setTag(null);
             }}
           >
-            Everything
+            {t.everything}
           </button>
         </div>
         <button
@@ -48,29 +50,32 @@ export function ProjectList() {
           aria-expanded={tagsOpen}
           onClick={() => setTagsOpen((o) => !o)}
         >
-          Tags{tag ? `: ${tag}` : ""}
+          {t.tags}
+          {tag ? `: ${tag}` : ""}
         </button>
       </div>
       {tagsOpen && (
         <div className="tag-filter" role="group" aria-label="Filter by tag">
-          {allTags.map((t) => (
+          {allTags.map((tg) => (
             <button
-              key={t}
+              key={tg}
               type="button"
-              className={`tag-pill ${tag === t ? "is-active" : ""}`}
-              onClick={() => setTag(tag === t ? null : t)}
+              className={`tag-pill ${tag === tg ? "is-active" : ""}`}
+              onClick={() => setTag(tag === tg ? null : tg)}
             >
-              {t}
+              {tg}
             </button>
           ))}
         </div>
       )}
       <div className="project-list">
         {visible.map((p, i) => (
-          <ProjectRow key={p.slug} project={p} index={i} />
+          <ProjectRow key={p.slug} project={p} index={i} lang={lang} />
         ))}
       </div>
-      {visible.length === 0 && <p className="projects-empty">Nothing tagged “{tag}” yet.</p>}
+      {visible.length === 0 && tag && (
+        <p className="projects-empty">{t.nothingTagged(tag)}</p>
+      )}
     </section>
   );
 }

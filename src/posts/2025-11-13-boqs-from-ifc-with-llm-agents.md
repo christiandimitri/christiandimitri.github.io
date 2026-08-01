@@ -16,6 +16,8 @@ The system is a FastAPI service wrapping two very different kinds of intelligenc
 
 Between them sits a RAG layer: the standards documents chunked into ChromaDB, retrieved per element, so the classifier agent cites actual clause text instead of hallucinating categories.
 
+![The two lanes: deterministic measuring, probabilistic classifying](/img/bim-llm-arch.svg)
+
 ```python
 result = classifier.run(
     element_summary=summarize(element),           # name, type, psets, materials

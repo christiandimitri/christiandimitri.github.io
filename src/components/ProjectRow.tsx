@@ -1,8 +1,23 @@
+import { Link } from "react-router-dom";
 import type { Project } from "../data/projects";
+import { strings, type Lang } from "../data/site";
+import { useThemeValue } from "../lib/useThemeValue";
 
-export function ProjectRow({ project, index }: { project: Project; index: number }) {
+export function ProjectRow({
+  project,
+  index,
+  lang = "en",
+}: {
+  project: Project;
+  index: number;
+  lang?: Lang;
+}) {
   const [g1, g2] = project.gradient;
+  const t = strings[lang];
+  const theme = useThemeValue();
   const href = project.links?.site ?? project.links?.repo;
+  const imgSrc =
+    theme === "light" && project.imageLight ? project.imageLight : project.image;
 
   const inner = (
     <>
@@ -17,19 +32,29 @@ export function ProjectRow({ project, index }: { project: Project; index: number
           </h3>
           <span className="project-year">{project.year}</span>
         </span>
-        <span className="project-oneliner">{project.oneLiner}</span>
+        <span className="project-oneliner">
+          {lang === "es" ? project.oneLinerEs : project.oneLiner}
+        </span>
         <span className="project-tags">
-          {project.tags.map((t) => (
-            <span key={t} className="project-tag">
-              {t}
+          {project.tags.map((tag) => (
+            <span key={tag} className="project-tag">
+              {tag}
             </span>
           ))}
-          {href && <span className="project-visit">{project.links?.site ? "visit ↗" : "source ↗"}</span>}
+          {project.caseStudy ? (
+            <span className="project-visit">{t.caseStudy}</span>
+          ) : (
+            href && (
+              <span className="project-visit">
+                {project.links?.site ? t.visit : t.source}
+              </span>
+            )
+          )}
         </span>
       </span>
-      {project.image && (
+      {imgSrc && (
         <span className="project-thumb" aria-hidden="true">
-          <img src={project.image} alt="" loading="lazy" />
+          <img src={imgSrc} alt="" loading="lazy" />
         </span>
       )}
     </>
@@ -43,7 +68,11 @@ export function ProjectRow({ project, index }: { project: Project; index: number
 
   return (
     <article className="project reveal" style={style}>
-      {href ? (
+      {project.caseStudy ? (
+        <Link className="project-surface" to={`/work/${project.slug}`}>
+          {inner}
+        </Link>
+      ) : href ? (
         <a className="project-surface" href={href} target="_blank" rel="noreferrer">
           {inner}
         </a>

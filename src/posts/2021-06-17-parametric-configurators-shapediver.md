@@ -39,4 +39,10 @@ const bom = JSON.parse(session.getOutputByName("BOM").content[0].data);
 
 ![Padel court canopy](/img/arque-padel.jpg)
 
+Two more of the five built canopies — a supermarket in Can Vidalet and a building roof structure:
+
+![Supermarket roof, Can Vidalet](/img/arque-lidl.jpg)
+
+![Building roof structure](/img/arque-edificio.jpg)
+
 The interesting engineering was never the geometry. It was the contract: what the model promises the interface, and what the interface protects the user from. That's API design, applied to buildings. Grasshopper turns out to be a decent backend language as long as you treat the canvas like a service: versioned, validated, and tested with inputs you didn't choose yourself.

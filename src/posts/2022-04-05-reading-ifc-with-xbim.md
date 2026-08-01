@@ -11,7 +11,11 @@ If you build software for construction, sooner or later every road leads to **IF
 
 IFC is not a 3D format. It's an **EXPRESS schema**, an object graph with hundreds of entity types, where a wall is `IfcWall` but its geometry, placement, material and properties are all separate entities linked through relationship objects. Nothing is where a graphics programmer expects it.
 
-The canonical surprise: properties are not *on* the element. They hang off `IfcRelDefinesByProperties` relations pointing to property sets. I spent a genuinely embarrassing afternoon looking for a wall's fire rating before that clicked. Once you internalize "everything is a relationship", the schema stops fighting you:
+The canonical surprise: properties are not *on* the element. They hang off `IfcRelDefinesByProperties` relations pointing to property sets. I spent a genuinely embarrassing afternoon looking for a wall's fire rating before that clicked.
+
+![How one wall's data actually hangs together in IFC](/img/ifc-graph.svg)
+
+Once you internalize "everything is a relationship", the schema stops fighting you:
 
 ```csharp
 using var model = IfcStore.Open("project.ifc");
